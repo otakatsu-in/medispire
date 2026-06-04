@@ -15,7 +15,7 @@ export default function Home() {
   const { openBooking } = useBooking();
 
   useEffect(() => {
-    document.title = "MediSpire | Your Key to Healthcare in Germany";
+    document.title = "MediSpire | Key to your practice in Germany";
   }, []);
 
   const fadeIn = {

@@ -31,7 +31,7 @@ export default function AboutUs() {
               className="space-y-6"
             >
               <div className="aspect-square max-w-md mx-auto rounded-2xl overflow-hidden bg-muted">
-                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop" alt="Dr. Sandeep Amin" className="w-full h-full object-cover" />
+                <img src="/dr-sandeep.png" alt="Dr. Sandeep Amin" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sandeep Amin</h3>
@@ -49,7 +49,7 @@ export default function AboutUs() {
               className="space-y-6"
             >
               <div className="aspect-square max-w-md mx-auto rounded-2xl overflow-hidden bg-muted">
-                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop" alt="Dr. Sangeeta Pai" className="w-full h-full object-cover" />
+                <img src="/dr-sangeeta.png" alt="Dr. Sangeeta Pai" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sangeeta Pai</h3>

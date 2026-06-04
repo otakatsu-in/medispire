@@ -107,7 +107,7 @@ export function Layout({ children }: { children: ReactNode }) {
           
           <Link href="/" className="flex flex-col items-start shrink-0 mr-8">
             <span className="font-bold text-2xl tracking-tight text-white leading-none">MediSpire</span>
-            <span className="text-[0.65rem] text-primary-foreground/80 font-medium uppercase tracking-wider mt-0.5">Your Key to Healthcare</span>
+            <span className="text-[0.65rem] text-primary-foreground/80 font-medium uppercase tracking-wider mt-0.5">Key to your practice in Germany</span>
           </Link>
           
           <div className="hidden lg:flex flex-1 justify-center">
@@ -229,7 +229,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <div className="space-y-6">
             <div>
               <span className="font-bold text-3xl tracking-tight text-white block mb-1">MediSpire</span>
-              <span className="text-xs text-accent font-bold uppercase tracking-widest">Your Key to Healthcare</span>
+              <span className="text-xs text-accent font-bold uppercase tracking-widest">Key to your practice in Germany</span>
             </div>
             <p className="text-sm text-primary-foreground/70 leading-relaxed pr-4">
               Guidance from real German-registered doctors who've walked the same path. No agents. No hidden fees. No false promises.
