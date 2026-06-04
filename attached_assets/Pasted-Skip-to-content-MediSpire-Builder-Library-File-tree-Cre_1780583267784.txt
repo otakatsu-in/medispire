@@ -1,0 +1,141 @@
+Skip to content
+
+
+MediSpire Builder
+
+
+
+
+
+
+Library
+
+File tree
+Create apps, documents, images, and more with the agent
+
+Pasted--MediSpire-Website-Builder-Prompt-Use-this-prompt-with-_1780583193641.txt
+Build the website
+
+Just now
+Working
+
+Scroll to latest
+
+Make, test, iterate…
+
+
+Economy
+
+
+
+Loading... - Replit
+
+
+Pasted--MediSpire-Website-Builder-Prompt-Use-this-prompt-with-_1780583193641.txt
+# MediSpire Website Builder Prompt
+## Use this prompt with Replit AI, Bolt.new, Lovable, or any AI website builder
+
+---
+
+## PROMPT (Copy Everything Below This Line)
+
+---
+
+Build a full-stack, SEO-optimized, content-heavy website called **MediSpire** (medispire.de) — a one-stop guidance platform for Indian healthcare professionals planning to move to Germany. The website is founded by **Dr. Sandeep Amin** (Founder & CEO) and **Dr. Sangeeta Pai** (Co-Founder & COO), both practicing senior medical specialists in Germany with 10+ years of experience helping Indian professionals navigate the German healthcare system.
+
+---
+
+## TECH STACK & SETUP
+
+- **Frontend:** React.js with Next.js (for SSR/SEO) or plain HTML/CSS/JS if simpler
+- **Styling:** Tailwind CSS — clean, minimal, professional medical aesthetic
+- **Color Palette:** White (#FFFFFF) primary, deep navy blue (#1A2E4A) for headers/CTAs, gold/amber (#D4A017) for accents, light grey (#F5F7FA) for section backgrounds
+- **Typography:** Inter or Poppins — clean, highly readable
+- **Icons:** Lucide React or FontAwesome
+- **Animations:** Subtle scroll-fade-in, hover effects — nothing flashy
+- **Mobile:** Fully responsive, mobile-first
+- **SEO:** Every page must have meta title, meta description, Open Graph tags, canonical URL, schema markup (Organization, FAQPage, BreadcrumbList)
+- **Performance:** Lazy loading for images, optimized fonts
+
+---
+
+## NAVIGATION / HEADER
+
+Sticky top navigation bar with:
+- Logo: "MediSpire" with tagline "Your Key to Healthcare in Germany"
+- Nav links: Home | About Us | Why Germany | For Doctors | For Dentists | For Nurses & Allied | Services | Blog | Resources | Contact Us
+- Prominent CTA button: **"Book Free Consultation"** → opens booking modal
+- Mobile hamburger menu
+
+---
+
+## PAGE STRUCTURE & FULL CONTENT
+
+### PAGE 1: HOME (`/`)
+
+**Hero Section:**
+- Full-width banner with headline: "Your Gateway to a Healthcare Career in Germany"
+- Subheadline: "Guidance from real German-registered doctors who've walked the same path. No agents. No hidden fees. No false promises."
+- Two CTAs: "Book a Free Consultation" (primary) + "Explore Your Path" (secondary, scrolls down)
+- Trust badges: "8+ Years Experience | 500+ Professionals Guided | No Agents Involved"
+
+**Why Choose MediSpire Section:**
+- 3 columns: 🇩🇪 First-hand consultation from registered German doctors | 📋 End-to-end personalized guidance | ✅ Transparent, agent-free process
+
+**Who We Help Section (Profession Cards):**
+Four clickable cards:
+1. Doctors (MBBS / MD / MS)
+2. Dentists (BDS / MDS)
+3. Nurses & Midwives (GNM / BSc / MSc Nursing)
+4. Allied Health (Radiographers, Pharmacists, Dental Assistants)
+Each card links to its dedicated page.
+
+**Why Germany Section:**
+Icon grid with descriptions:
+- 💰 Attractive Salary (€5,000–€10,000/month depending on specialty)
+- ⚖️ Work-Life Balance (structured hours, no burnout culture)
+- 🏖️ ~30 Days Paid Holidays
+- 📈 High Demand for Medical Professionals (shortage of 50,000+ doctors)
+- 🏥 World-Class Healthcare System
+- 🛡️ Social Security & Health Insurance
+- ✈️ Freedom to Travel Across Europe
+- 🏡 Pathway to PR & German Citizenship
+- 🎓 Continuous Medical Education (CME) support
+
+**Step-by-Step Journey Overview (Visual Timeline):**
+1. Language Learning (German B2/C1)
+2. Document Preparation & Translation
+3. Credential Evaluation (Approbation / Berufserlaubnis)
+4. FSP Exam Preparation (for doctors/dentists)
+5. Hospitation / Observership
+6. Job Application & Interview
+7. Visa & Relocation
+8. Settling in Germany
+
+**Testimonials Section:**
+- Quote carousel with real testimonials from the existing site:
+  - Dr. Harish Prabhu: "Speaking to Dr. Amin even before coming to Germany gave me a clear picture..."
+  - Dr. Akshaya Krishnamurthy: "Dr. Sangeeta Pai has had a great impact in my life..."
+  - Dr. Shyam, Germany: "She has constantly helped and motivated me throughout my journey..."
+  - Dr. Renu Nain, India: "I would highly recommend a career consultation with her..."
+
+**Services Overview Strip:**
+13 service tiles (icons + labels):
+Online German Language | Medical/Dental License | Job Application | FSP Training | Translation of Documents | Document Analysis | Motivation Letter | Hospitation | Visa Assistance | Defizitbescheid | Accommodation | Bridging Courses | Job Opportunities
+
+**Blog Preview Section:**
+3 latest blog cards with featured image, category tag, title, excerpt, "Read More" link
+
+**CTA Banner:**
+"Ready to Start Your Journey to Germany?" with Book Appointment button
+
+---
+
+### PAGE 2: ABOUT US (`/about-us`)
+
+**Mission Statement:**
+"Having gained vast knowledge of the German medical system and guiding healthcare aspirants for over 8 years, we now aspire to inspire all foreign healthcare professionals aiming for a brilliant career in Germany through MediSpire."
+
+**Dr. Sandeep Amin — Founder & CEO:**
+Full bio as follows:
+Dr. Sandeep Amin completed his MBBS from BLD Institute, India, and his postgraduate in Diagnostic Radiology. He moved to Ger...

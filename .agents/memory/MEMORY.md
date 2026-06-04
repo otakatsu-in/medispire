@@ -1,0 +1,1 @@
+- [MediSpire nav pattern](medispire-nav.md) — NavigationMenuLink must use `asChild` wrapping wouter Link, not the reverse, to avoid nested `<a>` hydration errors.
