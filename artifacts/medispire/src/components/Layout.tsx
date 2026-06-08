@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Menu, X, Facebook, Twitter, Linkedin, Instagram, MessageCircle, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Youtube, MessageCircle, Phone, Mail, ChevronDown } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -88,14 +88,17 @@ export function Layout({ children }: { children: ReactNode }) {
             <a href="tel:+491626498523" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <Phone size={12} /> +49 162 649 8523
             </a>
-            <a href="mailto:info.medispire@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-              <Mail size={12} /> info.medispire@gmail.com
+            <span className="text-primary-foreground/30">|</span>
+            <a href="tel:+918310010112" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+              <Phone size={12} /> +91 83100 10112
+            </a>
+            <a href="mailto:medispire.de@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+              <Mail size={12} /> medispire.de@gmail.com
             </a>
             <div className="flex items-center gap-3 ml-2 border-l border-primary-foreground/20 pl-4">
-              <a href="#" className="hover:text-accent transition-colors"><Facebook size={14} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><Twitter size={14} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><Linkedin size={14} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><Instagram size={14} /></a>
+              <a href="https://www.facebook.com/profile.php?id=61589388965018" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors"><Facebook size={14} /></a>
+              <a href="https://www.instagram.com/docs.in.de/" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors"><Instagram size={14} /></a>
+              <a href="https://www.youtube.com/@DocsinDE" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors"><Youtube size={14} /></a>
             </div>
           </div>
         </div>
@@ -235,10 +238,9 @@ export function Layout({ children }: { children: ReactNode }) {
               Guidance from real German-registered doctors who've walked the same path. No agents. No hidden fees. No false promises.
             </p>
             <div className="flex gap-4 pt-2">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Facebook size={18} /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Twitter size={18} /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Linkedin size={18} /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Instagram size={18} /></a>
+              <a href="https://www.facebook.com/profile.php?id=61589388965018" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Facebook size={18} /></a>
+              <a href="https://www.instagram.com/docs.in.de/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Instagram size={18} /></a>
+              <a href="https://www.youtube.com/@DocsinDE" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary-foreground/90 hover:bg-accent hover:text-accent-foreground transition-all"><Youtube size={18} /></a>
             </div>
           </div>
           
@@ -274,15 +276,21 @@ export function Layout({ children }: { children: ReactNode }) {
             </h4>
             <ul className="space-y-4 text-sm text-primary-foreground/80">
               <li>
-                <a href="mailto:info.medispire@gmail.com" className="group flex items-start gap-3 hover:text-white transition-colors">
+                <a href="mailto:medispire.de@gmail.com" className="group flex items-start gap-3 hover:text-white transition-colors">
                   <Mail size={18} className="mt-0.5 text-accent group-hover:text-white transition-colors" />
-                  <span>info.medispire@gmail.com</span>
+                  <span>medispire.de@gmail.com</span>
                 </a>
               </li>
               <li>
                 <a href="tel:+491626498523" className="group flex items-start gap-3 hover:text-white transition-colors">
                   <Phone size={18} className="mt-0.5 text-accent group-hover:text-white transition-colors" />
-                  <span>+49 162 649 8523</span>
+                  <span>+49 162 649 8523 (DE)</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918310010112" className="group flex items-start gap-3 hover:text-white transition-colors">
+                  <Phone size={18} className="mt-0.5 text-accent group-hover:text-white transition-colors" />
+                  <span>+91 83100 10112 (IN)</span>
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -318,7 +326,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
       {/* Floating WhatsApp Button */}
       <a 
-        href="https://wa.me/491626498523?text=Hi%20MediSpire!%20I%20need%20guidance%20about%20moving%20to%20Germany%20as%20a%20healthcare%20professional."
+        href="https://wa.me/918310010112?text=Hi%20MediSpire!%20I%20need%20guidance%20about%20moving%20to%20Germany%20as%20a%20healthcare%20professional."
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-xl hover:bg-[#20bd5a] hover:scale-110 transition-all duration-300"

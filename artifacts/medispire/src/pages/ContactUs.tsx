@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Globe, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Clock, Phone, Facebook, Instagram, Youtube, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function ContactUs() {
@@ -54,8 +54,8 @@ export default function ContactUs() {
                     <Mail className="text-primary mt-1" size={24} />
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Email</h4>
-                      <a href="mailto:info.medispire@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        info.medispire@gmail.com
+                      <a href="mailto:medispire.de@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        medispire.de@gmail.com
                       </a>
                     </div>
                   </CardContent>
@@ -66,8 +66,11 @@ export default function ContactUs() {
                     <MessageCircle className="text-primary mt-1" size={24} />
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Phone / WhatsApp</h4>
-                      <a href="tel:+491626498523" className="text-muted-foreground hover:text-primary transition-colors">
-                        +49 162 649 8523
+                      <a href="tel:+491626498523" className="text-muted-foreground hover:text-primary transition-colors block">
+                        +49 162 649 8523 (DE)
+                      </a>
+                      <a href="tel:+918310010112" className="text-muted-foreground hover:text-primary transition-colors block mt-1">
+                        +91 83100 10112 (IN)
                       </a>
                     </div>
                   </CardContent>
@@ -105,16 +108,13 @@ export default function ContactUs() {
               <div className="pt-6">
                 <h4 className="font-bold mb-4">Follow Us</h4>
                 <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
+                  <a href="https://www.facebook.com/profile.php?id=61589388965018" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
                     <Facebook size={20} />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
+                  <a href="https://www.instagram.com/docs.in.de/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
                     <Instagram size={20} />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
-                    <Linkedin size={20} />
-                  </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
+                  <a href="https://www.youtube.com/@DocsinDE" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-sm">
                     <Youtube size={20} />
                   </a>
                 </div>
@@ -179,7 +179,7 @@ export default function ContactUs() {
                 <h3 className="text-xl font-bold mb-2">Want a faster reply?</h3>
                 <p className="text-muted-foreground mb-6">Our team is active on WhatsApp and usually replies within hours.</p>
                 <a 
-                  href="https://wa.me/491626498523" 
+                  href="https://wa.me/918310010112" 
                   target="_blank" 
                   rel="noreferrer"
                   className="inline-block w-full"

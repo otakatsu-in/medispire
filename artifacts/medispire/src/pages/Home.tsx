@@ -481,7 +481,7 @@ export default function Home() {
             </Button>
             
             <a 
-              href="https://wa.me/491626498523" 
+              href="https://wa.me/918310010112" 
               target="_blank" 
               rel="noreferrer"
               className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"

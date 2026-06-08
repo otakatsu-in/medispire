@@ -276,7 +276,7 @@ export default function BookAppointment() {
                 <p className="text-muted-foreground text-sm">Message us directly on WhatsApp</p>
               </div>
               <a 
-                href="https://wa.me/491626498523?text=Hi%20MediSpire!%20I%20would%20like%20to%20book%20a%20consultation."
+                href="https://wa.me/918310010112?text=Hi%20MediSpire!%20I%20would%20like%20to%20book%20a%20consultation."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex"

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Facebook, Twitter, Linkedin, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Youtube, MessageCircle } from "lucide-react";
 
 const blogPosts = [
   {
@@ -210,18 +210,18 @@ export default function BlogPost() {
             <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
               <span className="font-bold">Share this article:</span>
               <div className="flex gap-2">
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Facebook size={18} />
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Twitter size={18} />
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Linkedin size={18} />
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <MessageCircle size={18} />
-                </Button>
+                <a href="https://www.facebook.com/profile.php?id=61589388965018" target="_blank" rel="noreferrer">
+                  <Button variant="outline" size="icon" className="rounded-full"><Facebook size={18} /></Button>
+                </a>
+                <a href="https://www.instagram.com/docs.in.de/" target="_blank" rel="noreferrer">
+                  <Button variant="outline" size="icon" className="rounded-full"><Instagram size={18} /></Button>
+                </a>
+                <a href="https://www.youtube.com/@DocsinDE" target="_blank" rel="noreferrer">
+                  <Button variant="outline" size="icon" className="rounded-full"><Youtube size={18} /></Button>
+                </a>
+                <a href="https://wa.me/918310010112" target="_blank" rel="noreferrer">
+                  <Button variant="outline" size="icon" className="rounded-full"><MessageCircle size={18} /></Button>
+                </a>
               </div>
             </div>
           </div>

@@ -19,8 +19,9 @@ export default function Impressum() {
           <h2>Medispire UG</h2>
           <p>
             Address: Emsdettener Str. 10, 48268 Greven, Germany<br />
-            Email: <a href="mailto:info.medispire@gmail.com">info.medispire@gmail.com</a><br />
-            Phone: <a href="tel:+491626498523">+49 162 649 8523</a>
+            Email: <a href="mailto:medispire.de@gmail.com">medispire.de@gmail.com</a><br />
+            Phone (DE): <a href="tel:+491626498523">+49 162 649 8523</a><br />
+            Phone (IN): <a href="tel:+918310010112">+91 83100 10112</a>
           </p>
 
           <h3>Responsible for content</h3>
