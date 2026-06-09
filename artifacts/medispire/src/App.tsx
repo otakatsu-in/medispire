@@ -1,6 +1,7 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BookingProvider } from "@/components/BookingContext";
@@ -19,12 +20,16 @@ import Services from "@/pages/Services";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Resources from "@/pages/Resources";
-import Contact from "@/pages/Contact";
 import ContactUs from "@/pages/ContactUs";
 import BookAppointment from "@/pages/BookAppointment";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
 import Terms from "@/pages/Terms";
+import SalaryCalculator from "@/pages/SalaryCalculator";
+import DocumentChecklist from "@/pages/DocumentChecklist";
+import StateComparison from "@/pages/StateComparison";
+import LanguageTimeline from "@/pages/LanguageTimeline";
+import ReadinessChecklist from "@/pages/ReadinessChecklist";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -56,12 +61,17 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/resources" component={Resources} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/contact" component={ContactUs} />
         <Route path="/contact-us" component={ContactUs} />
         <Route path="/book-appointment" component={BookAppointment} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/datenschutz" component={Datenschutz} />
         <Route path="/terms" component={Terms} />
+        <Route path="/tools/salary-calculator" component={SalaryCalculator} />
+        <Route path="/tools/document-checklist" component={DocumentChecklist} />
+        <Route path="/tools/state-compare" component={StateComparison} />
+        <Route path="/tools/language-timeline" component={LanguageTimeline} />
+        <Route path="/tools/readiness-checklist" component={ReadinessChecklist} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
@@ -71,16 +81,18 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <BookingProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
-        </BookingProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <BookingProvider>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+          </BookingProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 

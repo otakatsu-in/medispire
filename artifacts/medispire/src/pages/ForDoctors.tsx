@@ -1,127 +1,204 @@
 import { useEffect } from "react";
+import { Link } from "wouter";
+import { motion } from "framer-motion";
 import { useBooking } from "@/components/BookingContext";
+import { SEO } from "@/components/SEO";
+import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { CheckCircle2 } from "lucide-react";
+import { 
+  Stethoscope, GraduationCap, FileCheck, 
+  Globe2, Building2, BookOpen,
+  Landmark, Briefcase, ChevronRight, Calculator, TrendingUp
+} from "lucide-react";
+
+const pathwaySteps = [
+  { icon: Globe2,        title: "Language Mastery", badge: "B2 + C1 Medical", desc: "Pass Goethe/TELC B2, then master C1 Medical German. This is the foundation for your visa, FSP exam, and day-to-day clinical communication." },
+  { icon: FileCheck,     title: "Document Verification", badge: "Embassy Apostille", desc: "Indian degrees require Embassy Verification (Urkundenüberprüfung) — not a standard Apostille. Submit to the State Ärztekammer to receive your Defizitbescheid." },
+  { icon: Building2,     title: "Relocation & Hospitation", badge: "§16d Visa", desc: "Enter Germany on the Recognition Partnership Visa. Complete an observership (Hospitation) in a German hospital to acclimatize before the FSP exam." },
+  { icon: BookOpen,      title: "Fachsprachenprüfung (FSP)", badge: "Medical Language Exam", desc: "Simulate a doctor-patient consultation in German, write a medical report, and discuss the case. Passing this grants you the Berufserlaubnis (Temporary License)." },
+  { icon: Briefcase,     title: "Work as Assistenzarzt", badge: "Earn ~€5,000/mo", desc: "With your Berufserlaubnis, legally work full-time under supervision in a German hospital while you prepare for the Kenntnisprüfung." },
+  { icon: GraduationCap, title: "Kenntnisprüfung (KP)", badge: "Medical Equivalence Exam", desc: "Oral-practical exam covering Internal Medicine, Surgery, and Pharmacology to prove your knowledge meets German university standards." },
+  { icon: Landmark,      title: "Approbation & Facharzt", badge: "Permanent License", desc: "Full Approbation granted. Now enter the 5–6 year specialty training (Facharzt) of your choice — no entrance exam like NEET-PG." },
+];
+
+const salaries = [
+  { role: "Assistenzarzt", sub: "Resident, Year 1", amount: "€5,100 – €5,600", desc: "From day 1 with Berufserlaubnis" },
+  { role: "Facharzt",      sub: "After specialisation", amount: "€6,800 – €8,800", desc: "5–6 year specialty training" },
+  { role: "Oberarzt",      sub: "Senior Consultant", amount: "€8,600 – €11,000", desc: "Leading a department" },
+  { role: "Chefarzt",      sub: "Head of Department", amount: "€10,000 – €25,000+", desc: "Incl. private patient billing" },
+];
+
+const faqs = [
+  { q: "Is my Indian MBBS/MD/MS degree automatically recognized?", a: "No. India is a non-EU country, so your curriculum must be assessed for equivalence. Almost all Indian doctors receive a Defizitbescheid and must pass the Kenntnisprüfung (KP) to prove their medical knowledge meets German standards." },
+  { q: "Do I have to repeat my MD/MS in Germany?", a: "Germany does not recognize an Indian MDS/MS as a Facharzt. However, your Indian clinical experience is often credited towards the 5–6 year German specialty training, shortening your overall path significantly." },
+  { q: "What is the difference between Berufserlaubnis and Approbation?", a: "Berufserlaubnis is a temporary, supervised license (up to 2 years) allowing you to work and earn a salary while preparing for exams. Approbation is the permanent, unrestricted medical license granted after passing the KP." },
+  { q: "Can I choose my medical specialty?", a: "Yes! Unlike NEET-PG, in Germany you apply directly to hospitals for a residency in your desired specialty. Internal Medicine, Surgery, and Anaesthesia have very high vacancy rates." },
+  { q: "How much does the entire process cost?", a: "Expect to invest €8,000–€12,000 over 1.5–2 years (language courses, translations, embassy fees, exam fees, flights, initial living expenses). We can help you budget this in your consultation." },
+];
 
 export default function ForDoctors() {
   const { openBooking } = useBooking();
 
   useEffect(() => {
-    document.title = "For Doctors | MediSpire";
+    document.title = "For Doctors | MBBS/MD/MS Pathway to Germany | MediSpire";
   }, []);
 
-  const steps = [
-    { title: "Step 1: Learn German (A1 → B2/C1)", desc: "Timeline: 12–18 months. Goethe Institut, online platforms, MediSpire's partnered language coaches." },
-    { title: "Step 2: Document Preparation", desc: "Degree certificates, transcripts, medical council registration, good standing certificate, work experience letters, passport, police clearance." },
-    { title: "Step 3: Get Documents Translated & Apostilled", desc: "Only certified translators accepted. MediSpire connects you with authorized translators." },
-    { title: "Step 4: Apply for Berufserlaubnis (Temporary License)", desc: "Issued by State Medical Chamber (Ärztekammer). Allows you to practice under supervision while pursuing Approbation." },
-    { title: "Step 5: Defizitbescheid (Deficiency Notice)", desc: "Ärztekammer assesses your qualification gaps. MediSpire helps you understand and respond to this document." },
-    { title: "Step 6: Fachsprachprüfung (FSP)", desc: "Medical Language Exam — B2/C1 level German proficiency specifically in medical context. MediSpire offers dedicated FSP preparation coaching." },
-    { title: "Step 7: Hospitation / Observership", desc: "4–12 week observership in German hospitals. Builds network and improves German medical vocabulary. MediSpire assists with placements." },
-    { title: "Step 8: Job Application", desc: "CV in German format (Lebenslauf), cover letter (Motivationsschreiben), references. MediSpire reviews and prepares your complete application package." },
-    { title: "Step 9: Interview Preparation", desc: "Mock interviews, common German hospital HR questions, salary negotiation guidance." },
-    { title: "Step 10: Visa Application (Job Seeker / Work Visa)", desc: "Required documents: Berufserlaubnis, job offer, accommodation proof, health insurance. MediSpire provides visa checklist and support." },
-    { title: "Step 11: Approbation (Permanent Medical License)", desc: "Final full license issued after Gleichwertigkeitsprüfung (equivalence exam) or equivalence assessment." },
-    { title: "Step 12: Arrive, Settle & Thrive", desc: "Accommodation, Anmeldung (registration), bank account, tax number, integration." },
-  ];
-
-  const faqs = [
-    { q: "How long does the entire process take from India to working in Germany?", a: "The full process typically takes 2–4 years from starting German language learning to receiving your Approbation and starting work. However, with Berufserlaubnis you can begin working under supervision within 1.5–2 years." },
-    { q: "Do I need B2 or C1 German for the FSP exam?", a: "B2 is the minimum requirement for the FSP exam. However, C1 is strongly recommended for specialist roles and significantly improves your communication in clinical settings and with patients." },
-    { q: "What is the FSP (Fachsprachprüfung) exam?", a: "The FSP is a medical language proficiency exam conducted by the Ärztekammer (State Medical Chamber). It tests your ability to take patient histories, document findings, and present cases in German. It is mandatory for all foreign doctors." },
-    { q: "What is Defizitbescheid and how do I handle it?", a: "A Defizitbescheid is a deficiency notice from the Ärztekammer listing areas where your Indian qualification differs from the German standard. MediSpire provides expert guidance to respond to it effectively and plan your path forward." },
-    { q: "Can I work in Germany while my Approbation is being processed?", a: "Yes. You can apply for a Berufserlaubnis (temporary medical license), which allows you to practice under supervision while your full Approbation application is processed." },
-    { q: "Is my Indian MBBS/MD degree recognized in Germany?", a: "Indian degrees are not automatically recognized. You must go through an equivalence assessment by the Ärztekammer. MediSpire guides you through this entire process step by step." },
-    { q: "What is the difference between Approbation and Berufserlaubnis?", a: "Berufserlaubnis is a temporary, supervised medical license valid for a limited period, granted while your full Approbation is processed. Approbation is the permanent, unrestricted medical license to practice in Germany." },
-    { q: "Which German state is best to apply in as an Indian doctor?", a: "States vary significantly in processing times and requirements. Some states like Baden-Württemberg, Bavaria, and North Rhine-Westphalia have streamlined processes for foreign doctors. MediSpire advises on state-specific strategies." },
-    { q: "Do I need to do a Hospitation (observership) in Germany?", a: "A Hospitation is not legally mandatory but is strongly recommended. It provides hands-on exposure to German clinical practice, helps build your professional network, and significantly strengthens your job application." },
-    { q: "What visa do I need to move to Germany as a doctor?", a: "Most Indian doctors use either a Job Seeker Visa (to search for jobs in Germany) or apply directly for a Work Visa once they have a job offer. MediSpire provides full visa documentation support." }
-  ];
-
   return (
-    <div className="w-full">
-      <section className="bg-primary text-primary-foreground py-16 px-4">
-        <div className="container mx-auto text-center max-w-3xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Your Path to Practising Medicine in Germany</h1>
-          <p className="text-xl text-primary-foreground/80">A complete roadmap for MBBS, MD, and MS graduates from India.</p>
+    <div className="w-full bg-[#F8FAFC]">
+      <SEO 
+        title="For Doctors | MBBS & MD/MS Pathway to Germany | MediSpire"
+        description="The ultimate guide for Indian doctors. Learn the exact steps to get your German Approbation, pass the FSP & KP exams, and secure a high-paying residency."
+        canonicalUrl="/for-doctors"
+      />
+
+      <PageHero
+        badge="Exclusive Pathway for MBBS/MD/MS Graduates"
+        badgeIcon={<Stethoscope size={14} />}
+        title="The Complete Guide to German Approbation"
+        titleAccent="German Approbation"
+        subtitle="Navigate the FSP, Berufserlaubnis, and Kenntnisprüfung with guidance from Indian doctors already practising in Germany."
+      >
+        <Button
+          size="lg"
+          className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8 py-3 rounded-full shadow-md transition-all hover:-translate-y-0.5"
+          onClick={openBooking}
+        >
+          Book Free Assessment
+        </Button>
+      </PageHero>
+
+      {/* Pathway Steps — compact grid */}
+      <section className="py-14 px-4 bg-[#F8FAFC]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary">The Medical Recognition Pathway</h2>
+              <p className="text-sm text-muted-foreground mt-1">7 steps from your Indian degree to a German Approbation.</p>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground font-medium shrink-0">
+              <span className="w-3 h-3 rounded-full bg-accent inline-block"></span> Key milestone
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {pathwaySteps.map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="bg-white rounded-2xl border border-border p-5 hover:shadow-lg hover:border-accent/30 transition-all duration-200 group relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-accent to-yellow-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shrink-0">
+                    {i + 1}
+                  </div>
+                  <span className="text-[10px] font-bold text-accent uppercase tracking-widest bg-accent/10 px-2 py-0.5 rounded-full">
+                    {step.badge}
+                  </span>
+                </div>
+                <h4 className="font-bold text-primary text-base mb-1.5">{step.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+
+            {/* CTA card */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.42 }}
+              className="bg-primary rounded-2xl p-5 flex flex-col justify-between"
+            >
+              <div>
+                <TrendingUp className="text-accent mb-3" size={24} />
+                <h4 className="font-bold text-white text-base mb-2">Ready to start your journey?</h4>
+                <p className="text-white/70 text-sm leading-relaxed">Get a personalised roadmap from a doctor who has lived this process.</p>
+              </div>
+              <Button
+                onClick={openBooking}
+                className="mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-xl w-full text-sm"
+              >
+                Free Consultation
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-primary">The 12-Step Roadmap</h2>
-            <div className="space-y-4">
-              {steps.map((step, idx) => (
-                <div key={idx} className="bg-secondary p-6 rounded-xl border border-border flex gap-4">
-                  <div className="hidden sm:flex w-10 h-10 rounded-full bg-primary text-primary-foreground items-center justify-center font-bold shrink-0">
-                    {idx + 1}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">{step.title}</h4>
-                    <p className="text-muted-foreground">{step.desc}</p>
-                  </div>
+      {/* Salaries */}
+      <section className="py-12 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary">Salaries in Germany</h2>
+              <p className="text-sm text-muted-foreground mt-1">Regulated by union tariffs — identical pay regardless of nationality.</p>
+            </div>
+            <Link href="/tools/salary-calculator">
+              <Button variant="outline" className="shrink-0 rounded-full px-5 py-2 text-sm font-bold border-accent text-primary hover:bg-accent hover:text-accent-foreground transition-all">
+                <Calculator className="mr-2 h-4 w-4" /> Calculate Net Pay
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {salaries.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="bg-[#F8FAFC] rounded-2xl p-5 border border-border hover:shadow-md hover:-translate-y-1 transition-all duration-200 group"
+              >
+                <p className="text-xs text-muted-foreground font-semibold uppercase tracking-widest mb-1">{s.sub}</p>
+                <h4 className="font-bold text-primary text-base mb-2">{s.role}</h4>
+                <div className="text-lg font-black text-accent mb-2 group-hover:bg-accent group-hover:text-white px-3 py-1 rounded-lg bg-white border border-border/50 inline-block transition-colors text-sm">
+                  {s.amount}
                 </div>
-              ))}
-            </div>
+                <p className="text-muted-foreground text-xs mt-2">{s.desc}</p>
+                <p className="text-[10px] text-muted-foreground/50 font-bold uppercase tracking-widest border-t border-border/50 pt-3 mt-3">Gross / month</p>
+              </motion.div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-primary">Salary Expectations</h2>
-            <div className="bg-card rounded-xl border border-border overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow className="bg-muted">
-                    <TableHead className="font-bold">Role</TableHead>
-                    <TableHead className="font-bold">Gross Monthly Salary</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">Assistenzarzt (Junior)</TableCell>
-                    <TableCell>€4,500 – €6,000</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Facharzt (Specialist)</TableCell>
-                    <TableCell>€7,000 – €12,000</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Oberarzt (Consultant)</TableCell>
-                    <TableCell>€9,000 – €14,000</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Chefarzt (Head of Department)</TableCell>
-                    <TableCell>€15,000 – €30,000+</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+      {/* FAQs */}
+      <section className="py-12 px-4 bg-[#1A2E4A] text-white">
+        <div className="container mx-auto max-w-4xl">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">Critical Questions Answered</h2>
+            <p className="text-sm text-white/60 mt-1">Everything Indian doctors ask before making the move.</p>
           </div>
+          <Accordion type="single" collapsible className="w-full space-y-2">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="border-b-0 bg-white/5 rounded-xl px-5 data-[state=open]:bg-white/10 transition-colors">
+                <AccordionTrigger className="text-left font-semibold text-sm hover:text-accent py-4 hover:no-underline">
+                  <span className="flex gap-3 items-start">
+                    <span className="text-accent shrink-0 font-bold">Q.</span> {faq.q}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-white/75 text-sm leading-relaxed pb-5 pl-7">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
 
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-primary">Frequently Asked Questions</h2>
-            <Accordion type="single" collapsible className="w-full bg-card border border-border rounded-xl px-6">
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`}>
-                  <AccordionTrigger className="text-left font-medium text-lg">{faq.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-
-          <div className="bg-primary text-primary-foreground p-8 md:p-12 rounded-2xl text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Begin?</h2>
-            <p className="text-lg mb-8 opacity-90">Book a 1-on-1 Consultation with Dr. Sandeep Amin to chart out your personalized career roadmap.</p>
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground h-14 px-8 text-lg" onClick={openBooking}>
-              Book a 1-on-1 Consultation with Dr. Sandeep Amin
-            </Button>
-          </div>
+      {/* Final CTA */}
+      <section className="py-16 px-4 bg-white text-center">
+        <div className="container mx-auto max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Stop reading generic advice.<br />Speak to a Doctor who did it.</h2>
+          <p className="text-sm text-muted-foreground mb-8">Book a free consultation with our expert team in India to assess your clinical experience and get a personalized roadmap. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin.</p>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
+            Book Your Free Consultation <ChevronRight className="ml-1 w-5 h-5" />
+          </Button>
         </div>
       </section>
     </div>

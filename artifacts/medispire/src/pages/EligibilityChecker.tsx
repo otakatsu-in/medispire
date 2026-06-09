@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ChevronRight, ChevronLeft, MessageCircle, ArrowRight } from "lucide-react";
+import { CheckCircle2, MessageCircle, ArrowRight } from "lucide-react";
+import { QuizWizard, QuizStep, Answers } from "@/components/QuizWizard";
+import { SEO } from "@/components/SEO";
 
-type Step = { question: string; key: string; options: { label: string; value: string; desc?: string }[] };
-
-const steps: Step[] = [
+const steps: QuizStep[] = [
   {
     question: "What is your healthcare profession?",
     key: "profession",
@@ -60,8 +60,6 @@ const steps: Step[] = [
     ],
   },
 ];
-
-type Answers = Record<string, string>;
 
 function getResult(answers: Answers) {
   const { profession, language, documents, experience } = answers;
@@ -184,20 +182,11 @@ export default function EligibilityChecker() {
   const [showResult, setShowResult] = useState(false);
   const [direction, setDirection] = useState(1);
 
-  useEffect(() => {
-    document.title = "Eligibility Checker | MediSpire";
-  }, []);
-
-  const step = steps[currentStep];
-  const isAnswered = !!answers[step?.key];
-  const result = showResult ? getResult(answers) : null;
-
-  const handleSelect = (value: string) => {
-    setAnswers((prev) => ({ ...prev, [step.key]: value }));
+  const handleSelect = (key: string, value: string) => {
+    setAnswers((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleNext = () => {
-    if (!isAnswered) return;
     setDirection(1);
     if (currentStep < steps.length - 1) {
       setCurrentStep((s) => s + 1);
@@ -221,8 +210,74 @@ export default function EligibilityChecker() {
     setShowResult(false);
   };
 
+  const result = showResult ? getResult(answers) : null;
+
+  const resultView = result ? (
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+      <div className={`${result.bgColor} border-2 rounded-2xl p-8 mb-8 text-center`}>
+        <div className={`text-5xl font-extrabold ${result.color} mb-2`}>{result.score}%</div>
+        <div className={`text-xl font-bold ${result.color} mb-1`}>{result.readiness}</div>
+        <div className="text-sm text-muted-foreground">Readiness Score</div>
+      </div>
+
+      <div className="bg-white border border-border rounded-2xl p-8 mb-6">
+        <h3 className="text-xl font-bold text-primary mb-2">{result.headline}</h3>
+        <div className="inline-block bg-accent/10 text-accent font-bold text-sm px-4 py-1.5 rounded-full mb-4">{result.timeline}</div>
+        <p className="text-muted-foreground leading-relaxed">{result.summary}</p>
+      </div>
+
+      <div className="bg-secondary rounded-2xl p-8 mb-8">
+        <h3 className="text-lg font-bold text-primary mb-4">Your Recommended Next Steps</h3>
+        <ul className="space-y-3">
+          {result.nextSteps.map((s, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <CheckCircle2 size={20} className="text-accent shrink-0 mt-0.5" />
+              <span className="text-sm text-foreground">{s}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4 mb-8">
+        <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold h-14 rounded-xl" onClick={openBooking}>
+          Book Free Consultation
+        </Button>
+        <Link href="/cost-estimator">
+          <Button size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold h-14 rounded-xl flex items-center justify-center gap-2">
+            Estimate My Costs <ArrowRight size={18} />
+          </Button>
+        </Link>
+      </div>
+
+      <div className="text-center">
+        <button onClick={handleReset} className="text-sm text-muted-foreground hover:text-primary transition-colors underline">
+          Start over
+        </button>
+      </div>
+
+      <div className="mt-8 bg-[#25D366]/10 border border-[#25D366]/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4">
+        <MessageCircle size={28} className="text-[#25D366] shrink-0" />
+        <p className="text-sm text-muted-foreground flex-1">
+          Have questions about your results? Chat directly with Dr. Sandeep or Dr. Sangeeta on WhatsApp.
+        </p>
+        <a
+          href="https://wa.me/918310010112?text=Hi%20MediSpire!%20I%20just%20completed%20the%20eligibility%20checker%20and%20have%20some%20questions."
+          target="_blank"
+          rel="noreferrer"
+          className="shrink-0 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors"
+        >
+          Ask on WhatsApp
+        </a>
+      </div>
+    </motion.div>
+  ) : null;
+
   return (
     <div className="w-full">
+      <SEO 
+        title="Eligibility Checker" 
+        description="Answer 5 quick questions to find out your readiness and estimated pathway to practising in Germany." 
+      />
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Eligibility Checker</h1>
@@ -232,139 +287,18 @@ export default function EligibilityChecker() {
 
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
-          {!showResult && (
-            <>
-              <div className="flex items-center gap-2 mb-10">
-                {steps.map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-2 rounded-full flex-1 transition-all duration-300 ${i < currentStep ? "bg-accent" : i === currentStep ? "bg-primary" : "bg-border"}`}
-                  />
-                ))}
-              </div>
-
-              <div className="text-sm font-bold text-muted-foreground mb-3 uppercase tracking-widest">
-                Step {currentStep + 1} of {steps.length}
-              </div>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentStep}
-                  initial={{ opacity: 0, x: direction * 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -30 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h2 className="text-2xl font-bold text-primary mb-8">{step.question}</h2>
-
-                  <div className="space-y-3">
-                    {step.options.map((opt) => {
-                      const selected = answers[step.key] === opt.value;
-                      return (
-                        <button
-                          key={opt.value}
-                          onClick={() => handleSelect(opt.value)}
-                          className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
-                            selected
-                              ? "border-primary bg-primary/5 shadow-sm"
-                              : "border-border bg-white hover:border-primary/40 hover:bg-secondary/50"
-                          }`}
-                        >
-                          <div className={`w-5 h-5 rounded-full border-2 shrink-0 flex items-center justify-center transition-colors ${selected ? "border-primary bg-primary" : "border-muted-foreground"}`}>
-                            {selected && <div className="w-2 h-2 rounded-full bg-white" />}
-                          </div>
-                          <div>
-                            <div className={`font-semibold ${selected ? "text-primary" : "text-foreground"}`}>{opt.label}</div>
-                            {opt.desc && <div className="text-sm text-muted-foreground mt-0.5">{opt.desc}</div>}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              <div className="flex items-center justify-between mt-10">
-                {currentStep > 0 ? (
-                  <Button variant="ghost" onClick={handleBack} className="flex items-center gap-2 font-bold">
-                    <ChevronLeft size={18} /> Back
-                  </Button>
-                ) : <div />}
-                <Button
-                  onClick={handleNext}
-                  disabled={!isAnswered}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-3 rounded-full flex items-center gap-2 disabled:opacity-40"
-                >
-                  {currentStep < steps.length - 1 ? "Next" : "See My Results"}
-                  <ChevronRight size={18} />
-                </Button>
-              </div>
-            </>
-          )}
-
-          {showResult && result && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className={`${result.bgColor} border-2 rounded-2xl p-8 mb-8 text-center`}>
-                <div className={`text-5xl font-extrabold ${result.color} mb-2`}>{result.score}%</div>
-                <div className={`text-xl font-bold ${result.color} mb-1`}>{result.readiness}</div>
-                <div className="text-sm text-muted-foreground">Readiness Score</div>
-              </div>
-
-              <div className="bg-white border border-border rounded-2xl p-8 mb-6">
-                <h3 className="text-xl font-bold text-primary mb-2">{result.headline}</h3>
-                <div className="inline-block bg-accent/10 text-accent font-bold text-sm px-4 py-1.5 rounded-full mb-4">{result.timeline}</div>
-                <p className="text-muted-foreground leading-relaxed">{result.summary}</p>
-              </div>
-
-              <div className="bg-secondary rounded-2xl p-8 mb-8">
-                <h3 className="text-lg font-bold text-primary mb-4">Your Recommended Next Steps</h3>
-                <ul className="space-y-3">
-                  {result.nextSteps.map((s, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 size={20} className="text-accent shrink-0 mt-0.5" />
-                      <span className="text-sm text-foreground">{s}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold h-14 rounded-xl" onClick={openBooking}>
-                  Book Free Consultation
-                </Button>
-                <Link href="/cost-estimator">
-                  <Button size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold h-14 rounded-xl flex items-center justify-center gap-2">
-                    Estimate My Costs <ArrowRight size={18} />
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="text-center">
-                <button onClick={handleReset} className="text-sm text-muted-foreground hover:text-primary transition-colors underline">
-                  Start over
-                </button>
-              </div>
-
-              <div className="mt-8 bg-[#25D366]/10 border border-[#25D366]/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4">
-                <MessageCircle size={28} className="text-[#25D366] shrink-0" />
-                <p className="text-sm text-muted-foreground flex-1">
-                  Have questions about your results? Chat directly with Dr. Sandeep or Dr. Sangeeta on WhatsApp.
-                </p>
-                <a
-                  href="https://wa.me/918310010112?text=Hi%20MediSpire!%20I%20just%20completed%20the%20eligibility%20checker%20and%20have%20some%20questions."
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shrink-0 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors"
-                >
-                  Ask on WhatsApp
-                </a>
-              </div>
-            </motion.div>
-          )}
+          <QuizWizard
+            steps={steps}
+            currentStep={currentStep}
+            answers={answers}
+            direction={direction}
+            onSelect={handleSelect}
+            onNext={handleNext}
+            onBack={handleBack}
+            showResult={showResult}
+            resultView={resultView}
+            finalButtonText="See My Results"
+          />
         </div>
       </section>
     </div>

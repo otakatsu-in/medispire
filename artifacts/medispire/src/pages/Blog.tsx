@@ -10,24 +10,7 @@ const categories = [
   "Visa & Immigration", "Career & Salary", "Tips & Guides"
 ];
 
-const posts = [
-  { slug: "german-a1-to-c1-roadmap", title: "How to Learn German as a Doctor: The Complete A1 to C1 Roadmap", category: "German Language", author: "Dr. Sandeep Amin", date: "November 15, 2024", excerpt: "A structured approach to getting from zero (A1) to professional proficiency (C1) specifically tailored for medical professionals." },
-  { slug: "fsp-exam-guide", title: "What is FSP (Fachsprachprüfung) and How to Crack It", category: "FSP & Exams", author: "Dr. Sandeep Amin", date: "November 8, 2024", excerpt: "Breakdown of the medical language exam format, common pitfalls, and our top strategies to ace it on your first try." },
-  { slug: "approbation-vs-berufserlaubnis", title: "Approbation vs Berufserlaubnis: What Indian Doctors Need to Know", category: "Medical Licensing", author: "Dr. Sandeep Amin", date: "October 25, 2024", excerpt: "Understanding the crucial difference between a temporary license and permanent licensure for your career planning." },
-  { slug: "why-germany-over-uk-australia", title: "Top 10 Reasons Indian Doctors Are Choosing Germany Over UK, Australia, and Canada", category: "Life in Germany", author: "Dr. Sandeep Amin", date: "October 10, 2024", excerpt: "Why Germany has rapidly emerged as the preferred choice for medical graduates seeking a better life and career." },
-  { slug: "indian-nurse-move-to-germany", title: "Complete Step-by-Step Guide to Moving to Germany as an Indian Nurse", category: "For Nurses", author: "Dr. Sangeeta Pai", date: "September 28, 2024", excerpt: "Navigate the Anerkennungsverfahren process seamlessly with this comprehensive guide for nurses." },
-  { slug: "work-life-balance-doctors-germany", title: "The Truth About Work-Life Balance for Doctors in Germany", category: "Life in Germany", author: "Dr. Sandeep Amin", date: "September 15, 2024", excerpt: "German labor laws, strict limits on working hours, and how the system prevents doctor burnout." },
-  { slug: "doctor-salary-germany-2024", title: "How Much Do Indian Doctors Earn in Germany? Salary Breakdown 2024", category: "Career & Salary", author: "Dr. Sandeep Amin", date: "September 5, 2024", excerpt: "Transparent salary scales, from first-year Assistenzarzt to senior consultant levels." },
-  { slug: "what-is-hospitation", title: "What is Hospitation and Why It's Crucial for Your German Career", category: "Tips & Guides", author: "Dr. Sangeeta Pai", date: "August 22, 2024", excerpt: "Why a clinical observership is your best stepping stone into the German healthcare system." },
-  { slug: "dr-sangeeta-pai-journey", title: "Indian Dentist to German Specialist: Dr. Sangeeta Pai's Journey", category: "For Dentists", author: "Dr. Sangeeta Pai", date: "August 10, 2024", excerpt: "Personal insights on overcoming bureaucracy and achieving board certification in Germany." },
-  { slug: "apostille-translation-guide", title: "How to Get Your Medical Documents Apostilled and Translated for Germany", category: "Medical Licensing", author: "Dr. Sandeep Amin", date: "July 28, 2024", excerpt: "Avoid common mistakes with sworn translators and MEA apostilles that cause application delays." },
-  { slug: "visa-guide-indian-doctors", title: "Visa Guide for Indian Doctors: Job Seeker Visa vs Work Visa", category: "Visa & Immigration", author: "Dr. Sandeep Amin", date: "July 15, 2024", excerpt: "Choosing the right visa pathway based on your current application status and goals." },
-  { slug: "german-medical-terminology-50-words", title: "German Medical Terminology: 50 Must-Know Words Before Your FSP", category: "German Language", author: "Dr. Sangeeta Pai", date: "July 1, 2024", excerpt: "Essential vocabulary bridge between Latin medical terms and German laymen terms." },
-  { slug: "motivationsschreiben-guide", title: "How to Write a Perfect Motivationsschreiben for German Hospitals", category: "Career & Salary", author: "Dr. Sandeep Amin", date: "June 18, 2024", excerpt: "Crafting a cover letter that stands out to German Chief Physicians." },
-  { slug: "accommodation-germany-doctors", title: "Accommodation in Germany: Where to Live as a New Doctor", category: "Life in Germany", author: "Dr. Sangeeta Pai", date: "June 5, 2024", excerpt: "Staff housing, WG life, and navigating the competitive German rental market." },
-  { slug: "family-relocation-germany", title: "Family Relocation to Germany: What Indian Healthcare Professionals Need to Know", category: "Visa & Immigration", author: "Dr. Sandeep Amin", date: "May 22, 2024", excerpt: "Spouse visas, child benefits (Kindergeld), and ensuring a smooth transition for your family." }
-];
-
+import { blogPosts as posts } from "@/data/blogs";
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");
 

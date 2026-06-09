@@ -4,18 +4,9 @@ import { useBooking } from "./BookingContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Menu, X, Facebook, Instagram, Youtube, MessageCircle, Phone, Mail, ChevronDown } from "lucide-react";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { Menu, X, Facebook, Instagram, Youtube, MessageCircle, Phone, Mail, ChevronDown, BookOpen } from "lucide-react";
 
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
@@ -23,14 +14,9 @@ export function Layout({ children }: { children: ReactNode }) {
   const { toast } = useToast();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
-  const [showCookie, setShowCookie] = useState(false);
   const [showNewsletter, setShowNewsletter] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem("cookieConsent")) {
-      setShowCookie(true);
-    }
-    
     let timer: ReturnType<typeof setTimeout> | undefined;
     if (!localStorage.getItem("newsletterShown")) {
       timer = setTimeout(() => {
@@ -41,11 +27,6 @@ export function Layout({ children }: { children: ReactNode }) {
       if (timer) clearTimeout(timer);
     };
   }, []);
-
-  const acceptCookies = () => {
-    localStorage.setItem("cookieConsent", "accepted");
-    setShowCookie(false);
-  };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,16 +43,6 @@ export function Layout({ children }: { children: ReactNode }) {
     setShowNewsletter(false);
   };
 
-  const standaloneLinks = [
-    { label: "Home", path: "/" },
-    { label: "About Us", path: "/about-us" },
-    { label: "Why Germany", path: "/why-germany" },
-    { label: "Services", path: "/services" },
-    { label: "Blog", path: "/blog" },
-    { label: "Resources", path: "/resources" },
-    { label: "Contact Us", path: "/contact-us" },
-  ];
-
   const professionalLinks = [
     { label: "For Doctors", path: "/for-doctors", desc: "Pathways for MBBS/MD/MS graduates." },
     { label: "For Dentists", path: "/for-dentists", desc: "Opportunities for BDS/MDS professionals." },
@@ -81,14 +52,40 @@ export function Layout({ children }: { children: ReactNode }) {
 
   const toolLinks = [
     { label: "Eligibility Checker", path: "/eligibility-checker", desc: "Find out if you qualify to practise in Germany." },
+    { label: "Salary & Tax Calculator", path: "/tools/salary-calculator", desc: "Estimate your net take-home pay in Germany." },
     { label: "Cost & Timeline Estimator", path: "/cost-estimator", desc: "Estimate your costs and journey timeline." },
+    { label: "Document Checklist", path: "/tools/document-checklist", desc: "Generate your custom MEA verification checklist." },
+    { label: "State Comparison", path: "/tools/state-compare", desc: "Compare German states for rent and processing." },
+    { label: "Language Timeline", path: "/tools/language-timeline", desc: "Plan your roadmap to B2/C1 German." },
+    { label: "Readiness Checklist", path: "/tools/readiness-checklist", desc: "Track your progress towards your German dream." },
   ];
+
+  const resourceLinks = [
+    { label: "Our Blog", path: "/blog", desc: "Latest news, tips, and success stories." },
+    { label: "Resource Center", path: "/resources", desc: "Downloadable guides and checklists." },
+  ];
+
+  const companyLinks = [
+    { label: "About Us", path: "/about-us", desc: "Our story, mission, and the team." },
+    { label: "Why Germany?", path: "/why-germany", desc: "Benefits of living and working in Germany." },
+    { label: "Contact Us", path: "/contact-us", desc: "Get in touch with our expert consultants." },
+  ];
+
+  const DesktopDropdownItem = ({ item }: { item: { label: string, path: string, desc: string } }) => (
+    <Link 
+      href={item.path} 
+      className="block p-3 rounded-lg hover:bg-secondary/50 transition-colors group/item"
+    >
+      <div className="text-sm font-bold text-foreground group-hover/item:text-accent transition-colors">{item.label}</div>
+      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{item.desc}</p>
+    </Link>
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans relative pb-16 sm:pb-0">
       
       {/* Top bar */}
-      <div className="hidden lg:block bg-primary/95 border-b border-primary-foreground/10 text-primary-foreground/80 h-9">
+      <div className="hidden lg:block bg-primary/95 border-b border-primary-foreground/10 text-primary-foreground/80 h-9 z-50 relative">
         <div className="container mx-auto px-4 md:px-6 h-full flex items-center justify-between text-xs font-medium">
           <div className="flex items-center gap-2">
             <span className="font-bold tracking-widest text-primary-foreground/60 uppercase">MEDISPIRE CONSULTANCY</span>
@@ -114,72 +111,92 @@ export function Layout({ children }: { children: ReactNode }) {
       </div>
 
       {/* Main nav bar */}
-      <header className="sticky top-0 z-40 w-full bg-primary text-primary-foreground shadow-md h-20">
+      <header className="sticky top-0 z-40 w-full bg-primary text-primary-foreground shadow-md h-24">
         <div className="container mx-auto px-4 md:px-6 h-full flex items-center justify-between">
           
-          <Link href="/" className="flex items-center shrink-0 mr-8">
-            <img src="/logo.png" alt="MediSpire" className="h-16 w-auto" />
+          <Link href="/" className="flex items-center shrink-0 mr-4 xl:mr-8 z-50">
+            <img src="/logo.png" alt="MediSpire" className="h-20 w-auto" />
           </Link>
           
-          <div className="hidden lg:flex flex-1 justify-center">
-            <NavigationMenu>
-              <NavigationMenuList className="gap-1">
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} bg-transparent text-primary-foreground hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[active]:bg-white/10 ${location === '/' ? 'text-accent' : ''}`}>
-                    <Link href="/">Home</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-primary-foreground hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[state=open]:bg-white/10">
-                    For Professionals
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[520px] p-4 bg-white rounded-xl shadow-lg border border-border">
-                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground px-3 pb-2">By Profession</p>
-                      <ul className="grid grid-cols-2 gap-1 mb-3">
-                        {professionalLinks.map((item) => (
-                          <li key={item.path}>
-                            <NavigationMenuLink asChild className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground">
-                              <Link href={item.path}>
-                                <div className="text-sm font-bold leading-none text-foreground">{item.label}</div>
-                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">{item.desc}</p>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="border-t border-border pt-3 mt-1">
-                        <p className="text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground px-3 pb-2">Planning Tools</p>
-                        <ul className="grid grid-cols-2 gap-1">
-                          {toolLinks.map((item) => (
-                            <li key={item.path}>
-                              <NavigationMenuLink asChild className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent/10 hover:text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground">
-                                <Link href={item.path}>
-                                  <div className="text-sm font-bold leading-none text-accent">{item.label}</div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">{item.desc}</p>
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+          <nav className="hidden lg:flex flex-1 justify-center">
+            <ul className="flex items-center gap-1 xl:gap-2">
+              
+              {/* Home */}
+              <li>
+                <Link href="/" className={`px-3 xl:px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-white/10 hover:text-white ${location === '/' ? 'text-accent' : 'text-primary-foreground'}`}>
+                  Home
+                </Link>
+              </li>
+
+              {/* Professions */}
+              <li className="relative group">
+                <button className="flex items-center gap-1 px-3 xl:px-4 py-2 rounded-md text-sm font-medium text-primary-foreground transition-all hover:bg-white/10 hover:text-white group-hover:bg-white/10 group-hover:text-white">
+                  Professions <ChevronDown size={14} className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+                <div className="absolute left-0 top-full pt-2 w-[400px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                  <div className="p-2 bg-white rounded-xl shadow-2xl border border-border">
+                    <div className="grid grid-cols-1 gap-1">
+                      {professionalLinks.map((item) => <DesktopDropdownItem key={item.path} item={item} />)}
                     </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+                  </div>
+                </div>
+              </li>
 
-                {standaloneLinks.slice(1).map((item) => (
-                  <NavigationMenuItem key={item.path}>
-                    <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} bg-transparent text-primary-foreground hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white ${location === item.path ? 'text-accent' : ''}`}>
-                      <Link href={item.path}>{item.label}</Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+              {/* Free Tools */}
+              <li className="relative group">
+                <button className="flex items-center gap-1 px-3 xl:px-4 py-2 rounded-md text-sm font-medium text-primary-foreground transition-all hover:bg-white/10 hover:text-white group-hover:bg-white/10 group-hover:text-white">
+                  Free Tools <ChevronDown size={14} className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[350px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                  <div className="p-2 bg-white rounded-xl shadow-2xl border border-border">
+                    <div className="grid grid-cols-1 gap-1">
+                      {toolLinks.map((item) => <DesktopDropdownItem key={item.path} item={item} />)}
+                    </div>
+                  </div>
+                </div>
+              </li>
 
-          <div className="hidden lg:flex shrink-0 ml-8">
+              {/* Services */}
+              <li>
+                <Link href="/services" className={`px-3 xl:px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-white/10 hover:text-white ${location === '/services' ? 'text-accent' : 'text-primary-foreground'}`}>
+                  Services
+                </Link>
+              </li>
+
+              {/* Resources */}
+              <li className="relative group">
+                <button className="flex items-center gap-1 px-3 xl:px-4 py-2 rounded-md text-sm font-medium text-primary-foreground transition-all hover:bg-white/10 hover:text-white group-hover:bg-white/10 group-hover:text-white">
+                  Resources <ChevronDown size={14} className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+                {/* Aligned to right to prevent overflow on smaller screens */}
+                <div className="absolute right-0 lg:-right-12 xl:left-1/2 xl:-translate-x-1/2 xl:right-auto top-full pt-2 w-[300px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                  <div className="p-2 bg-white rounded-xl shadow-2xl border border-border relative before:content-[''] before:absolute before:-top-2 before:right-8 xl:before:left-1/2 xl:before:-translate-x-1/2 before:border-8 before:border-transparent before:border-b-white">
+                    <div className="grid grid-cols-1 gap-1">
+                      {resourceLinks.map((item) => <DesktopDropdownItem key={item.path} item={item} />)}
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              {/* Company */}
+              <li className="relative group">
+                <button className="flex items-center gap-1 px-3 xl:px-4 py-2 rounded-md text-sm font-medium text-primary-foreground transition-all hover:bg-white/10 hover:text-white group-hover:bg-white/10 group-hover:text-white">
+                  Company <ChevronDown size={14} className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+                {/* Strictly aligned right to never overflow */}
+                <div className="absolute right-0 top-full pt-2 w-[300px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                  <div className="p-2 bg-white rounded-xl shadow-2xl border border-border relative before:content-[''] before:absolute before:-top-2 before:right-6 before:border-8 before:border-transparent before:border-b-white">
+                    <div className="grid grid-cols-1 gap-1">
+                      {companyLinks.map((item) => <DesktopDropdownItem key={item.path} item={item} />)}
+                    </div>
+                  </div>
+                </div>
+              </li>
+              
+            </ul>
+          </nav>
+
+          <div className="hidden lg:flex shrink-0 ml-4 xl:ml-8 z-50">
             <Button 
               onClick={openBooking} 
               className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all ring-2 ring-transparent hover:ring-accent/30"
@@ -189,7 +206,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
 
           <button 
-            className="lg:hidden text-primary-foreground p-2"
+            className="lg:hidden text-primary-foreground p-2 z-50"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -199,9 +216,6 @@ export function Layout({ children }: { children: ReactNode }) {
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden absolute top-16 left-0 w-full bg-primary border-b border-white/10 shadow-2xl py-4 px-4 flex flex-col gap-2 z-50 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <div className="mb-2 px-3 pb-2 border-b border-white/10 text-xs font-semibold text-primary-foreground/50 uppercase tracking-wider">
-              Menu
-            </div>
             
             <Link 
               href="/"
@@ -211,19 +225,22 @@ export function Layout({ children }: { children: ReactNode }) {
               Home
             </Link>
 
-            <div className="px-3 py-2 mt-2 border-l-2 border-accent/50 ml-1 flex flex-col gap-2">
-              <span className="text-xs font-bold text-accent uppercase tracking-wider">For Professionals</span>
+            <div className="px-3 py-2 mt-1 border-l-2 border-white/20 ml-1 flex flex-col gap-2">
+              <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Professions</span>
               {professionalLinks.map((item) => (
                 <Link 
                   key={item.path} 
                   href={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`py-1.5 text-sm font-medium transition-colors ${location === item.path ? 'text-white' : 'text-primary-foreground/80 hover:text-white'}`}
+                  className={`py-1.5 text-sm font-medium transition-colors ${location === item.path ? 'text-accent' : 'text-primary-foreground/80 hover:text-white'}`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <span className="text-xs font-bold text-accent/70 uppercase tracking-wider mt-2">Planning Tools</span>
+            </div>
+
+            <div className="px-3 py-2 mt-1 border-l-2 border-accent/50 ml-1 flex flex-col gap-2">
+              <span className="text-[10px] font-bold text-accent uppercase tracking-widest">Free Tools</span>
               {toolLinks.map((item) => (
                 <Link
                   key={item.path}
@@ -236,18 +253,41 @@ export function Layout({ children }: { children: ReactNode }) {
               ))}
             </div>
 
-            <div className="my-2 border-t border-white/10"></div>
+            <Link 
+              href="/services"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${location === '/services' ? 'bg-white/10 text-accent' : 'text-primary-foreground hover:bg-white/5'}`}
+            >
+              Services
+            </Link>
 
-            {standaloneLinks.slice(1).map((item) => (
-              <Link 
-                key={item.path} 
-                href={item.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${location === item.path ? 'bg-white/10 text-accent' : 'text-primary-foreground hover:bg-white/5'}`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <div className="px-3 py-2 mt-1 border-l-2 border-white/20 ml-1 flex flex-col gap-2">
+              <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Resources</span>
+              {resourceLinks.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`py-1.5 text-sm font-medium transition-colors ${location === item.path ? 'text-accent' : 'text-primary-foreground/80 hover:text-white'}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="px-3 py-2 mt-1 border-l-2 border-white/20 ml-1 flex flex-col gap-2">
+              <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Company</span>
+              {companyLinks.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`py-1.5 text-sm font-medium transition-colors ${location === item.path ? 'text-accent' : 'text-primary-foreground/80 hover:text-white'}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
             
             <div className="mt-4 pt-4 border-t border-white/10">
               <Button onClick={() => { openBooking(); setMobileMenuOpen(false); }} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold py-6 text-base rounded-xl shadow-lg">
@@ -380,26 +420,6 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
       </a>
 
-      {/* Cookie Banner */}
-      {showCookie && (
-        <div className="fixed bottom-24 sm:bottom-6 left-0 right-0 sm:left-6 sm:right-auto sm:max-w-md bg-white border border-border p-6 rounded-t-2xl sm:rounded-2xl shadow-2xl z-50 animate-in slide-in-from-bottom-10 fade-in duration-500">
-          <div className="flex items-start gap-4 mb-5">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-              <ShieldCheck size={20} className="text-primary" />
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-1">Your Privacy Matters</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                We use cookies to improve your experience. By continuing, you agree to our use of cookies.
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <Button onClick={acceptCookies} className="flex-1 rounded-xl bg-primary text-primary-foreground font-bold">Accept All</Button>
-            <Button variant="outline" onClick={acceptCookies} className="flex-1 rounded-xl font-bold">Manage</Button>
-          </div>
-        </div>
-      )}
 
       {/* Newsletter Popup */}
       <Dialog open={showNewsletter} onOpenChange={(open) => !open && closeNewsletter()}>
@@ -435,6 +455,3 @@ export function Layout({ children }: { children: ReactNode }) {
     </div>
   );
 }
-
-// Add these to make the layout compile if missing in imports
-import { ShieldCheck, BookOpen } from "lucide-react";

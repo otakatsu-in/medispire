@@ -5,11 +5,47 @@ import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  Stethoscope, ShieldCheck, HeartPulse, GraduationCap, 
+  Stethoscope, ShieldCheck, HeartPulse, 
   Wallet, Scale, CalendarDays, TrendingUp, Hospital, 
-  Plane, BookOpen, Briefcase, FileCheck, ArrowRight, UserPlus,
-  Quote, CheckCircle2, MessageCircle, MapPin
+  Plane, BookOpen, FileCheck, ArrowRight,
+  Quote, CheckCircle2, MessageCircle, MapPin, GraduationCap, Award
 } from "lucide-react";
+
+const founders = [
+  {
+    name: "Dr. Sandeep Amin",
+    role: "Founder & CEO",
+    specialty: "Diagnostic & Interventional Radiologist",
+    photo: "/dr-sandeep.png",
+    bio: "MBBS from BLD Institute, India. Moved to Germany in 2013. Became the first Indian doctor to receive the European Scholarship from CIRSE Society for Interventional Radiology.",
+    credentials: [
+      "First Indian — European Scholarship, CIRSE Society",
+      "Board Certified — German & European Interventional Radiology Societies",
+      "Senior Consultant Radiologist, Germany (since 2013)",
+      "Keynote speaker & published researcher",
+    ],
+  },
+  {
+    name: "Dr. Sangeeta Pai",
+    role: "Co-Founder & COO",
+    specialty: "Oral Implantologist & Maxillofacial Surgeon",
+    photo: "/dr-sangeeta.png",
+    bio: "BDS from SDM University, PG in Maxillofacial Surgery. Moved to Germany in 2013. First doctor of Indian origin to receive board certification in Surgery and Implantology in Germany.",
+    credentials: [
+      "First Indian board-certified in Surgery & Implantology in Germany",
+      "\"Recommended Doctor\" — FOCUS Magazine Germany 2020",
+      "Fellow — Royal College of Surgeons of Edinburgh",
+      "Senior Consultant, Germany (since 2013)",
+    ],
+  },
+];
+
+const testimonials = [
+  { quote: "Speaking to Dr. Amin even before coming to Germany gave me a clear picture of what to expect. His firsthand guidance was invaluable.", name: "Dr. Harish Prabhu", loc: "Now in Germany" },
+  { quote: "Dr. Sangeeta Pai has had a great impact in my life. Her mentorship helped me navigate the German healthcare system with confidence.", name: "Dr. Akshaya Krishnamurthy", loc: "Now in Germany" },
+  { quote: "She has constantly helped and motivated me throughout my journey from India to Germany. Couldn't have done it without her.", name: "Dr. Shyam", loc: "Now in Germany" },
+  { quote: "I would highly recommend a career consultation with her to anyone planning to move to Germany. Absolutely life-changing advice.", name: "Dr. Renu Nain", loc: "Preparing from India" },
+];
 
 export default function Home() {
   const { openBooking } = useBooking();
@@ -18,415 +54,164 @@ export default function Home() {
     document.title = "MediSpire | Key to your practice in Germany";
   }, []);
 
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
+  const fadeUp = {
+    initial: { opacity: 0, y: 18 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  };
-
-  const stagger = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { staggerChildren: 0.15 }
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
   };
 
   return (
     <div className="flex flex-col w-full">
       
-      {/* 1. Hero */}
-      <section 
-        className="relative pt-32 pb-40 px-4 overflow-hidden text-white"
-        style={{
-          background: "linear-gradient(135deg, #1A2E4A 0%, #0f1e33 50%, #1a3555 100%)",
-        }}
+      {/* ── 1. HERO ───────────────────────────────────────────────────── */}
+      <section
+        className="relative pt-24 pb-28 px-4 overflow-hidden text-white"
+        style={{ background: "linear-gradient(135deg, #1A2E4A 0%, #0f1e33 50%, #1a3555 100%)" }}
       >
-        {/* Subtle geometric pattern overlay */}
-        <div 
+        <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)",
             backgroundSize: "32px 32px",
           }}
         />
-        
-        {/* Glow effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            
+          <div className="max-w-3xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-8 backdrop-blur-sm"
+              transition={{ duration: 0.45 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-6 backdrop-blur-sm"
             >
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Expert Consultation by German-Registered Doctors
+              Expert Guidance by German-Registered Doctors
             </motion.div>
 
-            <motion.h1 
-              className="text-5xl md:text-7xl font-extrabold mb-8 leading-[1.1] tracking-tight"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.h1
+              className="text-4xl md:text-6xl font-extrabold mb-5 leading-[1.1] tracking-tight"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
+              transition={{ duration: 0.55, delay: 0.1 }}
             >
-              Your Gateway to a Healthcare Career in <span className="text-accent relative inline-block">
+              Your Gateway to a Healthcare Career in{" "}
+              <span className="text-accent relative inline-block">
                 Germany
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-accent" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <svg className="absolute -bottom-1 left-0 w-full h-2.5 text-accent" viewBox="0 0 100 20" preserveAspectRatio="none">
                   <path d="M0,10 Q50,20 100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                 </svg>
               </span>
             </motion.h1>
 
-            <motion.p 
-              className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.p
+              className="text-base md:text-lg text-white/75 mb-10 max-w-xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.55, delay: 0.2 }}
             >
               Guidance from real German-registered doctors who've walked the same path. No agents. No hidden fees. No false promises.
             </motion.p>
 
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
+              transition={{ duration: 0.55, delay: 0.3 }}
             >
-              <Button 
-                size="lg" 
-                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground text-lg font-bold px-10 py-7 rounded-2xl shadow-[0_0_30px_rgba(234,179,8,0.25)] hover:shadow-[0_0_40px_rgba(234,179,8,0.4)] transition-all ring-2 ring-transparent hover:ring-accent/40"
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8 py-3 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.4)] transition-all"
                 onClick={openBooking}
               >
                 Book Free Consultation
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="w-full sm:w-auto border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white text-lg font-bold px-10 py-7 rounded-2xl backdrop-blur-sm"
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white font-bold px-8 py-3 rounded-full backdrop-blur-sm"
                 onClick={() => document.getElementById('professions')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Explore Pathways
               </Button>
             </motion.div>
 
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
+            {/* Stats */}
+            <motion.div
+              className="grid grid-cols-3 gap-4 max-w-lg mx-auto"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.55, delay: 0.4 }}
             >
-              <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 flex flex-col items-center">
-                <span className="text-4xl font-extrabold text-white mb-1">8+</span>
-                <span className="text-sm font-medium text-white/70 uppercase tracking-wider">Years Experience</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 flex flex-col items-center">
-                <span className="text-4xl font-extrabold text-white mb-1">500+</span>
-                <span className="text-sm font-medium text-white/70 uppercase tracking-wider">Professionals Guided</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 flex flex-col items-center">
-                <span className="text-4xl font-extrabold text-white mb-1">0</span>
-                <span className="text-sm font-medium text-white/70 uppercase tracking-wider">Hidden Fees / Agents</span>
-              </div>
+              {[
+                { val: "8+", label: "Years in Germany" },
+                { val: "500+", label: "Professionals Guided" },
+                { val: "0", label: "Hidden Fees" },
+              ].map((s) => (
+                <div key={s.label} className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-4 flex flex-col items-center">
+                  <span className="text-2xl md:text-3xl font-extrabold text-white mb-0.5">{s.val}</span>
+                  <span className="text-xs font-medium text-white/60 text-center uppercase tracking-wider">{s.label}</span>
+                </div>
+              ))}
             </motion.div>
-            
           </div>
         </div>
 
-        {/* Decorative Wave cutting into next section */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform translate-y-[1px]">
-          <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,123.6,192.27,109.81,236.4,99.88,278.4,80.1,321.39,56.44Z" fill="#F4F6F8"></path>
+        {/* Wave */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] translate-y-[1px]">
+          <svg className="relative block w-full h-[50px] md:h-[70px]" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,123.6,192.27,109.81,236.4,99.88,278.4,80.1,321.39,56.44Z" fill="#F4F6F8" />
           </svg>
         </div>
       </section>
 
-      {/* 2. Why Choose MediSpire */}
-      <section className="py-24 bg-[#F4F6F8] px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">WHY MEDISPIRE</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">The MediSpire Difference</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full"></div>
-          </div>
-          
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            variants={stagger}
-            initial="initial"
-            whileInView="whileInView"
-          >
-            {[
-              { icon: Stethoscope, title: "First-hand Experience", desc: "Direct guidance from registered German doctors who have successfully navigated the entire system themselves." },
-              { icon: MapPin, title: "End-to-End Guidance", desc: "Personalized support at every step—from language learning to job placement, visa, and relocation." },
-              { icon: ShieldCheck, title: "100% Transparent", desc: "No agents. No cuts. We believe in clear, honest advice without any hidden fees or false promises." }
-            ].map((feature, i) => (
-              <motion.div key={i} variants={fadeIn} className="relative group bg-white p-10 rounded-2xl shadow-sm hover:shadow-md border-l-4 border-l-transparent hover:border-l-accent transition-all duration-300 overflow-hidden">
-                <div className="absolute -right-4 -top-8 text-[120px] font-black text-primary/[0.03] select-none pointer-events-none">
-                  0{i + 1}
-                </div>
-                <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/10 transition-all">
-                  <feature.icon size={32} className="text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-primary relative z-10">{feature.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed relative z-10">{feature.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 3. Who We Help */}
-      <section id="professions" className="py-24 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">CAREER PATHWAYS</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">Who We Help</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Tailored pathways designed specifically for international healthcare professionals aiming to practice in Germany.</p>
-          </div>
-          
-          <motion.div 
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={stagger}
-            initial="initial"
-            whileInView="whileInView"
-          >
-            {[
-              { title: "Doctors", sub: "MBBS / MD / MS", path: "/for-doctors", icon: Stethoscope, color: "bg-blue-600" },
-              { title: "Dentists", sub: "BDS / MDS", path: "/for-dentists", icon: HeartPulse, color: "bg-teal-500" },
-              { title: "Nurses", sub: "GNM / BSc / MSc", path: "/for-nurses", icon: Hospital, color: "bg-purple-600" },
-              { title: "Allied Health", sub: "Radiographers, Pharmacists", path: "/for-nurses", icon: ShieldCheck, color: "bg-green-600" }
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeIn} className="h-full">
-                <Link href={item.path} className="block h-full">
-                  <Card className="group h-full rounded-2xl overflow-hidden border-border shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                    <div className={`${item.color} h-28 flex items-center justify-center relative overflow-hidden`}>
-                      <div className="absolute inset-0 bg-black/10"></div>
-                      <item.icon size={48} className="text-white relative z-10 group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                    <CardContent className="p-8 text-center bg-white flex flex-col h-[calc(100%-7rem)]">
-                      <h3 className="text-2xl font-bold mb-2 text-primary">{item.title}</h3>
-                      <p className="text-muted-foreground font-medium mb-6">{item.sub}</p>
-                      <div className="mt-auto inline-flex items-center justify-center gap-2 text-primary font-bold group-hover:text-accent transition-colors">
-                        View Pathway <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 4. Why Germany Grid */}
-      <section className="py-24 bg-[#F4F6F8] px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">DESTINATION</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">Why Choose Germany?</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">One of the world's best healthcare systems offering unparalleled career opportunities and lifestyle.</p>
-          </div>
-          
-          <motion.div 
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={stagger}
-            initial="initial"
-            whileInView="whileInView"
-          >
-            {[
-              { icon: Wallet, title: "Attractive Salary", desc: "€5,000–€10,000/month starting salary depending on specialty." },
-              { icon: Scale, title: "Work-Life Balance", desc: "Structured hours and strict labor laws prevent physician burnout." },
-              { icon: CalendarDays, title: "Paid Holidays", desc: "Approximately 30 Days of paid annual leave plus public holidays." },
-              { icon: TrendingUp, title: "High Demand", desc: "Current massive shortage of 50,000+ doctors across all states." },
-              { icon: Hospital, title: "World-Class System", desc: "Work with state-of-the-art medical facilities and advanced technology." },
-              { icon: ShieldCheck, title: "Social Security", desc: "Comprehensive health, unemployment, and pension insurance." },
-              { icon: Plane, title: "Travel Freedom", desc: "Blue Card gives you the freedom to travel across the Schengen zone." },
-              { icon: FileCheck, title: "Pathway to PR", desc: "Clear, accelerated route to Permanent Residency & German Citizenship." },
-              { icon: BookOpen, title: "CME Support", desc: "Paid time off and funding for Continuous Medical Education." }
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeIn} className="bg-white p-6 rounded-2xl shadow-sm border border-border/50 hover:shadow-md hover:border-primary transition-all duration-300 flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <item.icon size={24} className="text-primary group-hover:text-white" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-primary mb-2">{item.title}</h4>
-                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 5. Timeline Journey */}
-      <section className="py-24 px-4 bg-white overflow-hidden">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-20">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">ROADMAP</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">Your Journey Step-by-Step</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full"></div>
-          </div>
-          
-          <div className="relative">
-            {/* Desktop Center Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 border-r border-dashed border-primary/30 -translate-x-1/2"></div>
-            
-            <div className="space-y-12">
-              {[
-                { title: "Language Learning", desc: "Achieve German B2/C1 proficiency through intensive, medically-focused coaching." },
-                { title: "Document Preparation", desc: "Gather, translate, and notarize all necessary documents according to state requirements." },
-                { title: "Credential Evaluation", desc: "Apply for Approbation (Full License) or Berufserlaubnis (Temporary License)." },
-                { title: "FSP Exam Preparation", desc: "Specialized training for the Fachsprachprüfung (Medical Language Exam)." },
-                { title: "Hospitation", desc: "Secure an observership to gain insight into the German hospital system." },
-                { title: "Job Application", desc: "CV optimization, motivation letter writing, and interview preparation." },
-                { title: "Visa & Relocation", desc: "Guidance on Blue Card application, housing, and settling in Germany." }
-              ].map((step, i) => {
-                const isEven = i % 2 === 0;
-                return (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className={`relative flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}
-                  >
-                    {/* Number Circle for Mobile */}
-                    <div className="md:hidden w-16 h-16 shrink-0 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl shadow-lg border-4 border-white z-10">
-                      {i + 1}
-                    </div>
-
-                    {/* Content Card */}
-                    <div className={`w-full md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12 text-left md:text-right'}`}>
-                      <div className={`bg-white p-8 rounded-2xl shadow-md border border-border hover:shadow-lg transition-all duration-300 relative ${isEven ? 'md:text-left' : 'md:text-right'}`}>
-                        <h4 className="text-2xl font-bold text-primary mb-3">{step.title}</h4>
-                        <p className="text-muted-foreground text-lg">{step.desc}</p>
-                      </div>
-                    </div>
-
-                    {/* Number Circle for Desktop */}
-                    <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-accent text-accent-foreground items-center justify-center font-bold text-2xl shadow-[0_0_0_8px_rgba(255,255,255,1)] z-10">
-                      {i + 1}
-                    </div>
-                  </motion.div>
-                );
-              })}
+      {/* ── 2. MEET THE FOUNDERS (Trust anchor — moved to position #2) ── */}
+      <section className="py-14 bg-[#F4F6F8] px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+            <div>
+              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Who You're Speaking To</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Meet the Founders</h2>
+              <p className="text-sm text-muted-foreground mt-1 max-w-xl">Not agents. Not consultants who read about Germany. Indian doctors who moved there, got licensed, and built careers — and now guide you from the inside.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Testimonials (NEW) */}
-      <section className="py-24 bg-primary text-primary-foreground px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">SUCCESS STORIES</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">What Doctors Say About MediSpire</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full"></div>
+            <Link href="/about-us">
+              <Button variant="outline" className="shrink-0 rounded-full px-5 py-2 text-sm font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                Full Story <ArrowRight size={14} className="ml-1" />
+              </Button>
+            </Link>
           </div>
 
-          <motion.div 
-            className="grid md:grid-cols-2 gap-8"
-            variants={stagger}
-            initial="initial"
-            whileInView="whileInView"
-          >
-            {[
-              { quote: "Speaking to Dr. Amin even before coming to Germany gave me a clear picture of what to expect. His firsthand guidance was invaluable.", name: "Dr. Harish Prabhu", loc: "Germany" },
-              { quote: "Dr. Sangeeta Pai has had a great impact in my life. Her mentorship helped me navigate the German healthcare system with confidence.", name: "Dr. Akshaya Krishnamurthy", loc: "Germany" },
-              { quote: "She has constantly helped and motivated me throughout my journey from India to Germany. Couldn't have done it without her support.", name: "Dr. Shyam", loc: "Germany" },
-              { quote: "I would highly recommend a career consultation with her to anyone planning to move to Germany. Absolutely life-changing advice.", name: "Dr. Renu Nain", loc: "India" }
-            ].map((test, i) => (
-              <motion.div key={i} variants={fadeIn} className="bg-white/5 border border-white/10 p-10 rounded-3xl backdrop-blur-sm relative">
-                <Quote className="absolute top-8 left-8 text-accent/20 w-16 h-16" />
-                <div className="relative z-10">
-                  <p className="text-xl text-white/90 leading-relaxed italic mb-8">"{test.quote}"</p>
-                  <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-                    <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xl">
-                      {test.name.charAt(4)}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg">{test.name}</h4>
-                      <p className="text-white/60 text-sm">{test.loc}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 7. Founder Credentials */}
-      <section className="py-24 bg-white px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">WHO WE ARE</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">Meet the Founders</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">We are not agents or consultants who read about Germany from textbooks. We are Indian doctors who moved here, fought through every hurdle, and now guide you from the inside.</p>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full mt-6"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {[
-              {
-                name: "Dr. Sandeep Amin",
-                role: "Founder & CEO",
-                specialty: "Diagnostic & Interventional Radiologist",
-                photo: "/dr-sandeep.png",
-                bio: "MBBS from BLD Institute, India. Moved to Germany in 2013 on an exchange programme. Became the first Indian doctor to receive the European Scholarship from CIRSE Society for Interventional Radiology. Holds board certifications from both German and European Societies for Interventional Radiology. Currently Senior Consultant Radiologist at an 800-bed state-run hospital in Germany.",
-                credentials: [
-                  "First Indian — European Scholarship, CIRSE Society for Interventional Radiology",
-                  "Board Certified — German & European Societies (Interventional Radiology)",
-                  "Senior Consultant Radiologist, Germany (since 2013)",
-                  "Keynote speaker at international conferences",
-                  "Published researcher in peer-reviewed journals",
-                ],
-              },
-              {
-                name: "Dr. Sangeeta Pai",
-                role: "Co-Founder & COO",
-                specialty: "Oral Implantologist & Maxillofacial Surgeon",
-                photo: "/dr-sangeeta.png",
-                bio: "BDS from SDM University, PG in Maxillofacial Surgery. Moved to Germany in 2013. Became the first doctor of Indian origin to receive board certification in Surgery and Implantology in Germany. Recognised as a Recommended Doctor by FOCUS Magazine Germany 2020. Currently Senior Consultant at a private multispecialty clinic with 10+ years in Germany.",
-                credentials: [
-                  "First Indian-origin doctor with board certification in Surgery & Implantology in Germany",
-                  "\"Recommended Doctor in the Region\" — FOCUS Magazine Germany 2020",
-                  "Fellowship, International Congress of Oral Implantologists (USA)",
-                  "Fellow Affiliate, Royal College of Surgeons of Edinburgh",
-                  "Senior Consultant, Private Multispecialty Clinic, Germany (since 2013)",
-                ],
-              },
-            ].map((founder, i) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {founders.map((founder, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="bg-[#F4F6F8] rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow duration-300"
+                {...fadeUp}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="bg-white rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col sm:flex-row"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-primary/5">
-                  <img src={founder.photo} alt={founder.name} className="w-full h-full object-cover object-top" />
+                {/* Photo */}
+                <div className="sm:w-40 shrink-0 bg-[#F4F6F8] flex items-center justify-center p-4">
+                  <img
+                    src={founder.photo}
+                    alt={founder.name}
+                    className="w-28 h-28 sm:w-full sm:h-auto object-contain rounded-xl"
+                  />
                 </div>
-                <div className="p-8">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-primary">{founder.name}</h3>
-                    <p className="text-accent font-bold text-sm">{founder.role}</p>
-                    <p className="text-muted-foreground text-sm">{founder.specialty}</p>
+
+                {/* Details */}
+                <div className="p-5 flex-1">
+                  <div className="mb-3">
+                    <h3 className="text-lg font-bold text-primary">{founder.name}</h3>
+                    <p className="text-accent text-xs font-bold uppercase tracking-widest">{founder.role}</p>
+                    <p className="text-muted-foreground text-xs mt-0.5">{founder.specialty}</p>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">{founder.bio}</p>
-                  <ul className="space-y-2">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{founder.bio}</p>
+                  <ul className="space-y-1.5">
                     {founder.credentials.map((c, ci) => (
-                      <li key={ci} className="flex items-start gap-2.5 text-sm">
-                        <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
-                        <span className="text-foreground">{c}</span>
+                      <li key={ci} className="flex items-start gap-2 text-xs">
+                        <CheckCircle2 size={13} className="text-accent shrink-0 mt-0.5" />
+                        <span className="text-foreground font-medium">{c}</span>
                       </li>
                     ))}
                   </ul>
@@ -434,145 +219,232 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <Link href="/about-us">
-              <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                Full Story on About Us
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* 8. Services Strip */}
-      <section className="py-24 bg-[#F4F6F8] px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">OUR EXPERTISE</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">Comprehensive Services</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full"></div>
+      {/* ── 3. WHY MEDISPIRE ─────────────────────────────────────────── */}
+      <section className="py-14 bg-white px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-10">
+            <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Why MediSpire</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-primary">The MediSpire Difference</h2>
           </div>
 
-          <motion.div 
-            className="flex flex-wrap justify-center gap-4"
-            variants={stagger}
-            initial="initial"
-            whileInView="whileInView"
-          >
+          <div className="grid md:grid-cols-3 gap-5">
             {[
-              "Online German Language", "Medical/Dental License", "Job Application", 
-              "FSP Training", "Translation of Documents", "Document Analysis", 
-              "Motivation Letter", "Hospitation", "Visa Assistance", 
-              "Defizitbescheid", "Accommodation", "Bridging Courses", "Job Opportunities"
-            ].map((service, i) => (
-              <motion.div key={i} variants={fadeIn} className="bg-white px-6 py-4 rounded-xl border border-border shadow-sm hover:shadow-md hover:border-accent hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 cursor-default">
-                <CheckCircle2 size={18} className="text-accent" />
-                <span className="font-bold text-primary">{service}</span>
+              { icon: Stethoscope, title: "First-Hand Experience", desc: "Guidance from registered German doctors who personally navigated the MBBS → Approbation system and are still practising in Germany today." },
+              { icon: MapPin,      title: "End-to-End Support",    desc: "Personalised roadmaps at every step — from language learning to job placement, FSP prep, visa, and settling in Germany." },
+              { icon: ShieldCheck, title: "100% Transparent",      desc: "No agents. No hidden fees. No false promises. We earn your trust with honest, direct guidance from doctors, not salespeople." },
+            ].map((f, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className="group bg-[#F8FAFC] p-7 rounded-2xl border border-border hover:border-accent/40 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              >
+                <div className="absolute -right-3 -top-6 text-[90px] font-black text-primary/[0.03] select-none pointer-events-none">0{i+1}</div>
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-5 shadow-sm border border-border group-hover:bg-primary group-hover:border-primary transition-colors">
+                  <f.icon size={22} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-base font-bold mb-2 text-primary">{f.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
-          </motion.div>
-
-          <div className="text-center mt-12">
-            <Link href="/services">
-              <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                View All Services Details
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* 8. Blog Preview (NEW) */}
-      <section className="py-24 bg-white px-4">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">INSIGHTS</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">Latest from our Blog</h2>
-              <div className="w-16 h-1 bg-accent rounded-full"></div>
-            </div>
-            <Link href="/blog">
-              <Button variant="ghost" className="font-bold text-primary hover:text-accent">
-                Read All Articles <ArrowRight size={16} className="ml-2" />
-              </Button>
-            </Link>
+      {/* ── 4. WHO WE HELP ───────────────────────────────────────────── */}
+      <section id="professions" className="py-14 px-4 bg-[#F4F6F8]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-10">
+            <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Career Pathways</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Who We Help</h2>
+            <p className="text-sm text-muted-foreground mt-1 max-w-xl mx-auto">Tailored pathways for every Indian healthcare professional aiming to practice in Germany.</p>
           </div>
 
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            variants={stagger}
-            initial="initial"
-            whileInView="whileInView"
-          >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { cat: "For Doctors", title: "How to Learn German as a Doctor: The Complete A1 to C1 Roadmap", color: "bg-blue-100 text-blue-700" },
-              { cat: "FSP & Exams", title: "What is FSP (Fachsprachprüfung) and How to Crack It", color: "bg-purple-100 text-purple-700" },
-              { cat: "Medical Licensing", title: "Approbation vs Berufserlaubnis: What Indian Doctors Need to Know", color: "bg-teal-100 text-teal-700" }
-            ].map((post, i) => (
-              <motion.div key={i} variants={fadeIn}>
-                <Link href="/blog">
-                  <Card className="h-full rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-border cursor-pointer group">
-                    <div className="h-48 bg-secondary flex items-center justify-center">
-                      <BookOpen size={48} className="text-primary/20" />
+              { title: "Doctors",      sub: "MBBS / MD / MS",            path: "/for-doctors",      icon: Stethoscope, color: "bg-[#1A2E4A]" },
+              { title: "Dentists",     sub: "BDS / MDS",                  path: "/for-dentists",     icon: HeartPulse,  color: "bg-teal-700" },
+              { title: "Nurses",       sub: "GNM / BSc / MSc Nursing",    path: "/for-nurses",       icon: Hospital,    color: "bg-blue-700" },
+              { title: "Allied Health",sub: "Radiographers, Pharmacists", path: "/for-allied-health",icon: ShieldCheck, color: "bg-green-700" },
+            ].map((item, i) => (
+              <motion.div key={i} {...fadeUp} transition={{ duration: 0.45, delay: i * 0.08 }}>
+                <Link href={item.path} className="block h-full">
+                  <Card className="group h-full rounded-2xl overflow-hidden border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div className={`${item.color} h-24 flex items-center justify-center relative overflow-hidden`}>
+                      <div className="absolute inset-0 bg-black/10" />
+                      <item.icon size={40} className="text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <CardContent className="p-8">
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${post.color}`}>
-                        {post.cat}
-                      </span>
-                      <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-accent transition-colors line-clamp-2">
-                        {post.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-6 line-clamp-2">
-                        Discover the essential steps and requirements for this crucial stage of your journey to practicing in Germany.
-                      </p>
-                      <span className="text-primary font-bold flex items-center gap-2 group-hover:text-accent transition-colors">
-                        Read More <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                      </span>
+                    <CardContent className="p-5 text-center bg-white">
+                      <h3 className="text-base font-bold mb-1 text-primary">{item.title}</h3>
+                      <p className="text-muted-foreground text-xs mb-4">{item.sub}</p>
+                      <div className="inline-flex items-center gap-1 text-primary text-sm font-bold group-hover:text-accent transition-colors">
+                        View Pathway <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                      </div>
                     </CardContent>
                   </Card>
                 </Link>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. TESTIMONIALS ──────────────────────────────────────────── */}
+      <section className="py-14 bg-primary text-primary-foreground px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Success Stories</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold">What Doctors Say About MediSpire</h2>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm relative"
+              >
+                <Quote className="absolute top-5 left-5 text-accent/20 w-10 h-10" />
+                <div className="relative z-10">
+                  <p className="text-sm text-white/85 leading-relaxed italic mb-5">"{t.quote}"</p>
+                  <div className="flex items-center gap-3 border-t border-white/10 pt-4">
+                    <div className="w-9 h-9 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-sm shrink-0">
+                      {t.name.charAt(3)}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-sm">{t.name}</h4>
+                      <p className="text-white/50 text-xs">{t.loc}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. WHY GERMANY — compact stat strip ──────────────────────── */}
+      <section className="py-14 bg-[#F4F6F8] px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Destination</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Why Choose Germany?</h2>
+              <p className="text-sm text-muted-foreground mt-1">One of the world's best systems — and it urgently needs Indian healthcare professionals.</p>
+            </div>
+            <Link href="/why-germany">
+              <Button variant="outline" className="shrink-0 rounded-full px-5 py-2 text-sm font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                Learn More <ArrowRight size={14} className="ml-1" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { icon: Wallet,      title: "€5,000–€10,000/mo",   desc: "Starting doctor salary. Regulated by union tariffs — identical for all nationalities." },
+              { icon: Scale,       title: "40-Hour Work Week",    desc: "Strict labor laws. Overtime paid or compensated with extra rest days." },
+              { icon: CalendarDays,title: "30 Days Paid Leave",   desc: "Legally mandated annual leave plus all public holidays." },
+              { icon: TrendingUp,  title: "50,000+ Vacancies",   desc: "Current doctor shortage across Germany. Job security from day one." },
+              { icon: FileCheck,   title: "Path to PR",           desc: "Clear, accelerated route to Permanent Residency and German Citizenship." },
+              { icon: ShieldCheck, title: "Full Social Security", desc: "Health, unemployment, and pension insurance — all covered from your first day." },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="bg-white p-5 rounded-2xl border border-border hover:shadow-md hover:border-primary/30 transition-all duration-200 flex items-start gap-4 group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                  <item.icon size={18} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary text-sm mb-1">{item.title}</h4>
+                  <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. SERVICES STRIP ────────────────────────────────────────── */}
+      <section className="py-14 bg-white px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Our Expertise</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Comprehensive Services</h2>
+              <p className="text-sm text-muted-foreground mt-1">Everything you need from India to working in Germany — under one roof.</p>
+            </div>
+            <Link href="/services">
+              <Button variant="outline" className="shrink-0 rounded-full px-5 py-2 text-sm font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                View All Services
+              </Button>
+            </Link>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {[
+              "German Language Coaching", "Medical / Dental License (Approbation)", "Job Application Support",
+              "FSP Exam Preparation", "Document Translation", "Document Analysis",
+              "Motivation Letter Writing", "Hospitation Placement", "Visa Assistance",
+              "Defizitbescheid Response", "Accommodation Support", "Bridging Courses",
+              "Job Opportunity Matching",
+            ].map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.03 }}
+                className="bg-[#F4F6F8] px-4 py-2 rounded-xl border border-border hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2 cursor-default"
+              >
+                <CheckCircle2 size={14} className="text-accent shrink-0" />
+                <span className="font-semibold text-primary text-sm">{service}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. FINAL CTA ─────────────────────────────────────────────── */}
+      <section className="py-20 px-4 bg-[#1A2E4A] text-white">
+        <div className="container mx-auto max-w-3xl text-center">
+          <motion.div {...fadeUp}>
+            <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-4">Ready to Begin?</span>
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-4 leading-tight">
+              Take the First Step Towards Your German Medical Career
+            </h2>
+            <p className="text-white/70 text-base mb-10 max-w-xl mx-auto">
+              Book a free 1-on-1 consultation with our expert team in India to get a personalised roadmap within 48 hours. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin and Dr. Sangeeta Pai.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-3 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.4)] transition-all"
+                onClick={openBooking}
+              >
+                Book Free Consultation
+              </Button>
+              <a
+                href="https://wa.me/918310010112"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+              >
+                Or message us on <MessageCircle size={16} className="text-[#25D366]" /> WhatsApp
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 9. Final CTA */}
-      <section className="relative py-32 px-4 text-center overflow-hidden bg-[#1A2E4A] text-white">
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-20"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, #243B5E 25%, transparent 25%, transparent 75%, #243B5E 75%, #243B5E), repeating-linear-gradient(45deg, #243B5E 25%, transparent 25%, transparent 75%, #243B5E 75%, #243B5E)",
-            backgroundPosition: "0 0, 20px 20px",
-            backgroundSize: "40px 40px"
-          }}
-        />
-        
-        <div className="container mx-auto max-w-4xl relative z-10 bg-primary/40 backdrop-blur-md border border-white/10 p-12 md:p-20 rounded-3xl">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">Ready to Start Your Journey to Germany?</h2>
-          <p className="text-xl text-white/80 mb-12">Take the first step towards a rewarding medical career in Europe.</p>
-          
-          <div className="flex flex-col items-center gap-6">
-            <Button 
-              size="lg" 
-              className="bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-bold px-12 py-8 rounded-2xl shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_40px_rgba(234,179,8,0.5)] transition-all ring-4 ring-transparent hover:ring-accent/30 w-full sm:w-auto" 
-              onClick={openBooking}
-            >
-              Book Free Consultation
-            </Button>
-            
-            <a 
-              href="https://wa.me/918310010112" 
-              target="_blank" 
-              rel="noreferrer"
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-            >
-              Or message us directly on <MessageCircle size={20} className="text-[#25D366]" /> WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

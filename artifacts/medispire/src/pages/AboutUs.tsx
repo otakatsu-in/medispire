@@ -30,8 +30,8 @@ export default function AboutUs() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="aspect-square max-w-md mx-auto rounded-2xl overflow-hidden bg-muted">
-                <img src="/dr-sandeep.png" alt="Dr. Sandeep Amin" className="w-full h-full object-cover" />
+              <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-muted shadow-xl border border-border">
+                <img src="/dr-sandeep.png" alt="Dr. Sandeep Amin" className="w-full h-auto" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sandeep Amin</h3>
@@ -48,8 +48,8 @@ export default function AboutUs() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="aspect-square max-w-md mx-auto rounded-2xl overflow-hidden bg-muted">
-                <img src="/dr-sangeeta.png" alt="Dr. Sangeeta Pai" className="w-full h-full object-cover" />
+              <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-muted shadow-xl border border-border">
+                <img src="/dr-sangeeta.png" alt="Dr. Sangeeta Pai" className="w-full h-auto" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sangeeta Pai</h3>
