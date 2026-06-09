@@ -19,7 +19,7 @@ export default function DocumentChecklist() {
       <SEO 
         title="Document Checklist Generator | MediSpire"
         description="Generate a personalized checklist of documents required for German Approbation, customized for Indian doctors, dentists, and nurses."
-        canonicalUrl="/tools/document-checklist"
+        canonical="/tools/document-checklist"
       />
 
       <section className="bg-primary text-primary-foreground py-16 px-4 print:hidden">

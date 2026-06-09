@@ -101,7 +101,7 @@ export default function ReadinessChecklist() {
       <SEO 
         title="Am I Ready? Pre-Application Checklist | MediSpire"
         description="Track your progress to Germany. A gamified checklist covering language, documents, approbation, and visas."
-        canonicalUrl="/tools/readiness-checklist"
+        canonical="/tools/readiness-checklist"
       />
 
       <section className="bg-primary text-primary-foreground py-16 px-4">

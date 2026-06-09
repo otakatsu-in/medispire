@@ -121,7 +121,7 @@ export default function Resources() {
       <SEO
         title="Resources & FAQ | MediSpire"
         description="Free guides, glossary of German medical terms, and comprehensive FAQ for Indian doctors, dentists, and nurses planning to move to Germany."
-        canonicalUrl="/resources"
+        canonical="/resources"
       />
 
       <PageHero

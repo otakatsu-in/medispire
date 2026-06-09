@@ -63,7 +63,7 @@ export default function LanguageTimeline() {
       <SEO 
         title="German Language Timeline Planner | MediSpire"
         description="Plan your exact roadmap to reach B2/C1 German based on Goethe-Institut standards and your personal study schedule."
-        canonicalUrl="/tools/language-timeline"
+        canonical="/tools/language-timeline"
       />
 
       <section className="bg-primary text-primary-foreground py-16 px-4">

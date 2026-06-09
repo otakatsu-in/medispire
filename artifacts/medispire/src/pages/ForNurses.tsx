@@ -44,7 +44,7 @@ export default function ForNurses() {
       <SEO
         title="For Nurses | GNM & BSc Pathway to Germany | MediSpire"
         description="Germany has 200,000+ nursing vacancies. Learn the exact Anerkennung pathway for Indian GNM and BSc nurses to work, earn, and settle in Germany."
-        canonicalUrl="/for-nurses"
+        canonical="/for-nurses"
       />
 
       <PageHero

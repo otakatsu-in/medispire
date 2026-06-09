@@ -106,7 +106,7 @@ export default function ForAlliedHealth() {
       <SEO 
         title="For Allied Health Professionals | MediSpire"
         description="Recognition pathways for Dental Assistants, Radiographers, and Pharmacists moving from India to Germany."
-        canonicalUrl="/for-allied-health"
+        canonical="/for-allied-health"
       />
 
       <PageHero

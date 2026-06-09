@@ -61,7 +61,7 @@ export default function SalaryCalculator() {
       <SEO 
         title="German Salary & Tax Calculator | MediSpire"
         description="Estimate your net take-home salary as a doctor, dentist, or nurse in Germany. See exact deductions for taxes and social security in EUR and INR."
-        canonicalUrl="/tools/salary-calculator"
+        canonical="/tools/salary-calculator"
       />
 
       <section className="bg-primary text-primary-foreground py-16 px-4">

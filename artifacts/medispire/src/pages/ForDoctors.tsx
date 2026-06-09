@@ -49,7 +49,7 @@ export default function ForDoctors() {
       <SEO 
         title="For Doctors | MBBS & MD/MS Pathway to Germany | MediSpire"
         description="The ultimate guide for Indian doctors. Learn the exact steps to get your German Approbation, pass the FSP & KP exams, and secure a high-paying residency."
-        canonicalUrl="/for-doctors"
+        canonical="/for-doctors"
       />
 
       <PageHero

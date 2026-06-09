@@ -45,7 +45,7 @@ export default function ForDentists() {
       <SEO
         title="For Dentists | BDS & MDS Pathway to Germany | MediSpire"
         description="Escape the high competition in India. Learn the exact steps to get your German Dental Approbation, open your own clinic, and secure your future."
-        canonicalUrl="/for-dentists"
+        canonical="/for-dentists"
       />
 
       <PageHero

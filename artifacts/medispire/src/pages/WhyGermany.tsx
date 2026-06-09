@@ -73,7 +73,7 @@ export default function WhyGermany() {
       <SEO 
         title="Why Germany for Medical Professionals? | MediSpire"
         description="Discover why Germany is the top destination for Indian doctors, dentists, and nurses. Enjoy attractive salaries, 30 days paid leave, and world-class healthcare."
-        canonicalUrl="/why-germany"
+        canonical="/why-germany"
       />
 
       <PageHero

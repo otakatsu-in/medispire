@@ -51,7 +51,7 @@ export default function StateComparison() {
       <SEO 
         title="German State Comparison Tool | MediSpire"
         description="Compare German states for doctors. View rent, cost of living, approbation difficulty, and hospital density side-by-side."
-        canonicalUrl="/tools/state-compare"
+        canonical="/tools/state-compare"
       />
 
       <section className="bg-primary text-primary-foreground py-16 px-4">
