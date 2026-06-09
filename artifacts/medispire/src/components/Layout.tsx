@@ -75,7 +75,13 @@ export function Layout({ children }: { children: ReactNode }) {
   const professionalLinks = [
     { label: "For Doctors", path: "/for-doctors", desc: "Pathways for MBBS/MD/MS graduates." },
     { label: "For Dentists", path: "/for-dentists", desc: "Opportunities for BDS/MDS professionals." },
-    { label: "For Nurses & Allied", path: "/for-nurses", desc: "Nursing, pharmacy, and allied health roles." },
+    { label: "For Nurses", path: "/for-nurses", desc: "Nursing and midwifery pathways." },
+    { label: "For Allied Health", path: "/for-allied-health", desc: "Radiographers, pharmacists, dental assistants." },
+  ];
+
+  const toolLinks = [
+    { label: "Eligibility Checker", path: "/eligibility-checker", desc: "Find out if you qualify to practise in Germany." },
+    { label: "Cost & Timeline Estimator", path: "/cost-estimator", desc: "Estimate your costs and journey timeline." },
   ];
 
   return (
@@ -129,20 +135,36 @@ export function Layout({ children }: { children: ReactNode }) {
                     For Professionals
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white rounded-xl shadow-lg border-border">
-                      {professionalLinks.map((item) => (
-                        <li key={item.path}>
-                          <NavigationMenuLink asChild className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground">
-                            <Link href={item.path}>
-                              <div className="text-sm font-bold leading-none text-foreground">{item.label}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">
-                                {item.desc}
-                              </p>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="w-[520px] p-4 bg-white rounded-xl shadow-lg border border-border">
+                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground px-3 pb-2">By Profession</p>
+                      <ul className="grid grid-cols-2 gap-1 mb-3">
+                        {professionalLinks.map((item) => (
+                          <li key={item.path}>
+                            <NavigationMenuLink asChild className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground">
+                              <Link href={item.path}>
+                                <div className="text-sm font-bold leading-none text-foreground">{item.label}</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">{item.desc}</p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="border-t border-border pt-3 mt-1">
+                        <p className="text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground px-3 pb-2">Planning Tools</p>
+                        <ul className="grid grid-cols-2 gap-1">
+                          {toolLinks.map((item) => (
+                            <li key={item.path}>
+                              <NavigationMenuLink asChild className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent/10 hover:text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground">
+                                <Link href={item.path}>
+                                  <div className="text-sm font-bold leading-none text-accent">{item.label}</div>
+                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">{item.desc}</p>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
@@ -194,6 +216,17 @@ export function Layout({ children }: { children: ReactNode }) {
               {professionalLinks.map((item) => (
                 <Link 
                   key={item.path} 
+                  href={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`py-1.5 text-sm font-medium transition-colors ${location === item.path ? 'text-white' : 'text-primary-foreground/80 hover:text-white'}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <span className="text-xs font-bold text-accent/70 uppercase tracking-wider mt-2">Planning Tools</span>
+              {toolLinks.map((item) => (
+                <Link
+                  key={item.path}
                   href={item.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`py-1.5 text-sm font-medium transition-colors ${location === item.path ? 'text-white' : 'text-primary-foreground/80 hover:text-white'}`}
@@ -254,7 +287,9 @@ export function Layout({ children }: { children: ReactNode }) {
               <li><Link href="/why-germany" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Why Germany</Link></li>
               <li><Link href="/for-doctors" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> For Doctors</Link></li>
               <li><Link href="/for-dentists" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> For Dentists</Link></li>
-              <li><Link href="/for-nurses" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> For Nurses & Allied</Link></li>
+              <li><Link href="/for-nurses" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> For Nurses</Link></li>
+              <li><Link href="/for-allied-health" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> For Allied Health</Link></li>
+              <li><Link href="/eligibility-checker" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Eligibility Checker</Link></li>
             </ul>
           </div>
           
@@ -326,15 +361,23 @@ export function Layout({ children }: { children: ReactNode }) {
       </div>
 
       {/* Floating WhatsApp Button */}
-      <a 
+      <a
         href="https://wa.me/918310010112?text=Hi%20MediSpire!%20I%20need%20guidance%20about%20moving%20to%20Germany%20as%20a%20healthcare%20professional."
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-xl hover:bg-[#20bd5a] hover:scale-110 transition-all duration-300"
+        className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 group flex items-center justify-end gap-0 h-14 rounded-full bg-[#25D366] text-white shadow-xl hover:bg-[#20bd5a] transition-all duration-300 pr-4 overflow-hidden"
+        style={{ width: "3.5rem" }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.width = "185px"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.width = "3.5rem"; }}
         title="Chat with us on WhatsApp"
       >
-        <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75 duration-1000"></div>
-        <MessageCircle size={28} className="relative z-10" />
+        <span className="text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2 pl-4">
+          Chat with us
+        </span>
+        <div className="relative shrink-0 w-6 h-6 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full bg-white/30 animate-ping opacity-75"></div>
+          <MessageCircle size={24} className="relative z-10" />
+        </div>
       </a>
 
       {/* Cookie Banner */}

@@ -12,6 +12,9 @@ import WhyGermany from "@/pages/WhyGermany";
 import ForDoctors from "@/pages/ForDoctors";
 import ForDentists from "@/pages/ForDentists";
 import ForNurses from "@/pages/ForNurses";
+import ForAlliedHealth from "@/pages/ForAlliedHealth";
+import EligibilityChecker from "@/pages/EligibilityChecker";
+import CostEstimator from "@/pages/CostEstimator";
 import Services from "@/pages/Services";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
@@ -46,6 +49,9 @@ function Router() {
         <Route path="/for-doctors" component={ForDoctors} />
         <Route path="/for-dentists" component={ForDentists} />
         <Route path="/for-nurses" component={ForNurses} />
+        <Route path="/for-allied-health" component={ForAlliedHealth} />
+        <Route path="/eligibility-checker" component={EligibilityChecker} />
+        <Route path="/cost-estimator" component={CostEstimator} />
         <Route path="/services" component={Services} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />

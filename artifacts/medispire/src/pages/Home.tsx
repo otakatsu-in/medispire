@@ -363,7 +363,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Services Strip (NEW) */}
+      {/* 7. Founder Credentials */}
+      <section className="py-24 bg-white px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-accent font-bold text-sm tracking-widest uppercase mb-3 block">WHO WE ARE</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">Meet the Founders</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">We are not agents or consultants who read about Germany from textbooks. We are Indian doctors who moved here, fought through every hurdle, and now guide you from the inside.</p>
+            <div className="w-16 h-1 bg-accent mx-auto rounded-full mt-6"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            {[
+              {
+                name: "Dr. Sandeep Amin",
+                role: "Founder & CEO",
+                specialty: "Diagnostic & Interventional Radiologist",
+                photo: "/dr-sandeep.png",
+                bio: "MBBS from BLD Institute, India. Moved to Germany in 2013 on an exchange programme. Became the first Indian doctor to receive the European Scholarship from CIRSE Society for Interventional Radiology. Holds board certifications from both German and European Societies for Interventional Radiology. Currently Senior Consultant Radiologist at an 800-bed state-run hospital in Germany.",
+                credentials: [
+                  "First Indian — European Scholarship, CIRSE Society for Interventional Radiology",
+                  "Board Certified — German & European Societies (Interventional Radiology)",
+                  "Senior Consultant Radiologist, Germany (since 2013)",
+                  "Keynote speaker at international conferences",
+                  "Published researcher in peer-reviewed journals",
+                ],
+              },
+              {
+                name: "Dr. Sangeeta Pai",
+                role: "Co-Founder & COO",
+                specialty: "Oral Implantologist & Maxillofacial Surgeon",
+                photo: "/dr-sangeeta.png",
+                bio: "BDS from SDM University, PG in Maxillofacial Surgery. Moved to Germany in 2013. Became the first doctor of Indian origin to receive board certification in Surgery and Implantology in Germany. Recognised as a Recommended Doctor by FOCUS Magazine Germany 2020. Currently Senior Consultant at a private multispecialty clinic with 10+ years in Germany.",
+                credentials: [
+                  "First Indian-origin doctor with board certification in Surgery & Implantology in Germany",
+                  "\"Recommended Doctor in the Region\" — FOCUS Magazine Germany 2020",
+                  "Fellowship, International Congress of Oral Implantologists (USA)",
+                  "Fellow Affiliate, Royal College of Surgeons of Edinburgh",
+                  "Senior Consultant, Private Multispecialty Clinic, Germany (since 2013)",
+                ],
+              },
+            ].map((founder, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="bg-[#F4F6F8] rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-primary/5">
+                  <img src={founder.photo} alt={founder.name} className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="p-8">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold text-primary">{founder.name}</h3>
+                    <p className="text-accent font-bold text-sm">{founder.role}</p>
+                    <p className="text-muted-foreground text-sm">{founder.specialty}</p>
+                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">{founder.bio}</p>
+                  <ul className="space-y-2">
+                    {founder.credentials.map((c, ci) => (
+                      <li key={ci} className="flex items-start gap-2.5 text-sm">
+                        <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
+                        <span className="text-foreground">{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/about-us">
+              <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                Full Story on About Us
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Services Strip */}
       <section className="py-24 bg-[#F4F6F8] px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
