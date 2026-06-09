@@ -176,8 +176,11 @@ function buildEstimate(answers: Answers): { phases: Phase[]; totalLow: number; t
   return { phases, totalLow, totalHigh, totalTimeline };
 }
 
+const EUR_TO_INR = 90;
+
 function fmt(n: number) {
-  return "€" + n.toLocaleString("en-DE");
+  const inr = Math.round(n * EUR_TO_INR / 1000) * 1000;
+  return "₹" + inr.toLocaleString("en-IN");
 }
 
 export default function CostEstimator() {
@@ -316,7 +319,7 @@ export default function CostEstimator() {
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 flex items-start gap-3">
                 <Info size={18} className="text-amber-600 shrink-0 mt-0.5" />
                 <p className="text-sm text-amber-800">
-                  These are estimates based on average market rates as of 2025. Actual costs vary by location, employer, and individual circumstances. MediSpire consultation can help you plan precisely.
+                  Amounts shown in INR at approx. ₹90/€ for easy planning from India. These are estimates based on average market rates as of 2025. Actual costs vary by location, employer, and individual circumstances. MediSpire consultation can help you plan precisely.
                 </p>
               </div>
 
