@@ -31,12 +31,15 @@ export function Layout({ children }: { children: ReactNode }) {
       setShowCookie(true);
     }
     
+    let timer: ReturnType<typeof setTimeout> | undefined;
     if (!localStorage.getItem("newsletterShown")) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setShowNewsletter(true);
       }, 30000);
-      return () => clearTimeout(timer);
     }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   const acceptCookies = () => {
