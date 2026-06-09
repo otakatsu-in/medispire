@@ -1,35 +1,12 @@
 import { useEffect } from "react";
+import { Link } from "wouter";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { CheckCircle2, Stethoscope, Pill, Scan, SmilePlus, MessageCircle } from "lucide-react";
+import { Pill, Scan, SmilePlus, MessageCircle, ArrowRight, Stethoscope } from "lucide-react";
 
 const professions = [
-  {
-    id: "nurses",
-    icon: Stethoscope,
-    title: "Nurses & Care Professionals",
-    german: "Pflegefachkraft / Gesundheits- und Krankenpfleger/in",
-    color: "bg-blue-50 border-blue-200",
-    accent: "text-blue-700",
-    intro: "Germany faces a critical shortage of qualified nurses — over 35,000 vacancies. Indian BSc Nursing graduates are in high demand, especially in elderly care and hospitals.",
-    steps: [
-      { t: "German Language (B2)", d: "B2 is the minimum for nursing recognition. C1 strongly recommended for clinical communication. Timeline: 12–18 months." },
-      { t: "Degree Evaluation", d: "Apply to the state nursing authority (Landesamt). Your BSc Nursing degree from India will be evaluated for equivalence to the German 3-year nursing qualification." },
-      { t: "Document Apostille & Translation", d: "Nursing degree, transcripts, registration certificate from Indian Nursing Council, experience letters, passport, police clearance — all must be certified and translated." },
-      { t: "Anerkennungsberatung (Recognition Counselling)", d: "Free advice service in Germany (e.g. IQ Netzwerk) helps guide you through the process. MediSpire connects you before you arrive." },
-      { t: "Deficiency Assessment", d: "The authority may identify gaps between your Indian training and the German standard. You may need to complete an adaptation course (Anpassungslehrgang) or exam." },
-      { t: "Visa & Job Search", d: "Use the Recognition Partnership Visa (Anerkennungsvisum) or find a German employer willing to support your recognition process while you work." },
-      { t: "Full Recognition & Career Growth", d: "Once recognised, you can work independently. Career paths include ward nurse, ICU, care home management, and further specialisation." },
-    ],
-    salary: [
-      { role: "Pflegefachkraft (Nurse)", range: "€2,800 – €3,800" },
-      { role: "Fachpflegekraft (Specialist Nurse)", range: "€3,500 – €4,500" },
-      { role: "Stationsleitung (Ward Manager)", range: "€4,200 – €5,500" },
-      { role: "Pflegedienstleitung (Care Director)", range: "€5,000 – €7,000" },
-    ],
-  },
   {
     id: "dental",
     icon: SmilePlus,
@@ -97,8 +74,7 @@ const professions = [
 ];
 
 const faqs = [
-  { q: "Do Indian nursing degrees qualify for recognition in Germany?", a: "Yes, Indian BSc Nursing degrees can be recognised, but the process involves an equivalence assessment by the state nursing authority. Gaps may require an adaptation course. MediSpire helps you understand and navigate this process from India." },
-  { q: "What German language level do I need as an allied health professional?", a: "B2 is the minimum for most allied health roles. Pharmacists require C1. MediSpire recommends aiming for C1 for better clinical integration and faster career progression." },
+  { q: "What German language level do I need as an allied health professional?", a: "B2 is the minimum for most allied health roles (ZFA, MTRA). Pharmacists require C1. MediSpire recommends aiming for C1 for better clinical integration and faster career progression." },
   { q: "Can I work in Germany while my recognition is being processed?", a: "Yes, Germany's Recognition Partnership Visa (§16d AufenthG) allows allied health professionals to enter Germany and work while completing their recognition process. Some states have fast-track programmes. MediSpire advises on state-specific strategies." },
   { q: "How long does the recognition process take?", a: "Recognition typically takes 3–12 months from submitting a complete application. Delays usually come from incomplete documentation. MediSpire helps you prepare a complete, correct application package from the start." },
   { q: "Is my work experience from India considered?", a: "Yes. Clinical work experience counts toward the equivalence assessment and can sometimes compensate for minor qualification gaps. The more documented your experience, the stronger your application." },
@@ -117,13 +93,22 @@ export default function ForAlliedHealth() {
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Allied Health Professionals in Germany</h1>
-          <p className="text-xl text-primary-foreground/80">Recognition pathways for Nurses, Dental Assistants, Radiographers, and Pharmacists from India.</p>
+          <p className="text-xl text-primary-foreground/80">Recognition pathways for Dental Assistants, Radiographers, and Pharmacists from India.</p>
         </div>
       </section>
 
       <section className="py-14 px-4 bg-secondary">
         <div className="container mx-auto max-w-5xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Nurses card — links to dedicated page */}
+            <Link href="/for-nurses">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center hover:-translate-y-1 transition-transform duration-200 cursor-pointer">
+                <Stethoscope size={28} className="text-blue-700 mx-auto mb-2" />
+                <p className="font-bold text-sm text-blue-700">Nurses</p>
+                <p className="text-[11px] text-blue-500 mt-1">See full guide</p>
+              </div>
+            </Link>
+
             {professions.map((p) => (
               <a key={p.id} href={`#${p.id}`} className={`${p.color} border rounded-xl p-4 text-center hover:-translate-y-1 transition-transform duration-200 cursor-pointer`}>
                 <p.icon size={28} className={`${p.accent} mx-auto mb-2`} />
@@ -136,6 +121,23 @@ export default function ForAlliedHealth() {
 
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl space-y-24">
+
+          {/* Nurses referral card */}
+          <div id="nurses" className="bg-blue-50 border border-blue-200 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center">
+              <Stethoscope size={32} className="text-blue-700" />
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-xl font-bold text-primary mb-1">Nurses & Care Professionals</h2>
+              <p className="text-sm font-medium text-blue-700 mb-2">Pflegefachkraft / Gesundheits- und Krankenpfleger/in</p>
+              <p className="text-muted-foreground text-sm">MediSpire has a dedicated, in-depth guide for Indian nursing professionals — covering BSc Nursing recognition, the Anerkennungsberatung process, the Recognition Partnership Visa, salary expectations, and more.</p>
+            </div>
+            <Link href="/for-nurses" className="shrink-0">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-full flex items-center gap-2 whitespace-nowrap">
+                Full Nursing Guide <ArrowRight size={16} />
+              </Button>
+            </Link>
+          </div>
 
           {professions.map((p) => (
             <div key={p.id} id={p.id}>
