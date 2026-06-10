@@ -2258,7 +2258,7 @@ Writing a perfect *Motivationsschreiben for German hospitals* is a critical mile
 Navigating the German medical job market, language exams, and recognition process (*Anerkennungsverfahren*) can be challenging. We specialize in helping Indian doctors make a smooth transition to Germany, from document preparation to job placement.
 
 **Ready to start your medical career in Germany?**
-[Book a free 1-on-1 consultation with our relocation experts today](https://medispire.de/consultation) to review your profile and build your personalized roadmap.
+[Book a free 1-on-1 consultation with our relocation experts today](https://medispire.in/book-appointment) to review your profile and build your personalized roadmap.
 `
   },
   {

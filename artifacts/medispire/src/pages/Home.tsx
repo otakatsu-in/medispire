@@ -21,7 +21,7 @@ const founders = [
     credentials: [
       "First Indian — European Scholarship, CIRSE Society",
       "Board Certified — German & European Interventional Radiology Societies",
-      "Senior Consultant Radiologist, Germany (since 2013)",
+      "First Indian radiologist to establish a private practice in Germany",
       "Keynote speaker & published researcher",
     ],
   },

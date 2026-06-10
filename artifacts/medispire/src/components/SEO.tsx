@@ -5,6 +5,7 @@ interface SEOProps {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  schema?: string;
 }
 
 export function SEO({
@@ -12,6 +13,7 @@ export function SEO({
   description = "MediSpire — Premium guidance and placement portal for healthcare professionals moving to Germany.",
   canonical,
   ogImage = "/logo.png",
+  schema,
 }: SEOProps) {
   const fullTitle = title === "MediSpire" ? title : `${title} | MediSpire`;
   
@@ -27,6 +29,7 @@ export function SEO({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       {canonical && <link rel="canonical" href={canonical} />}
+      {schema && <script type="application/ld+json">{schema}</script>}
     </Helmet>
   );
 }

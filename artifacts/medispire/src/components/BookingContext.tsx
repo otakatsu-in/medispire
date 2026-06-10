@@ -30,18 +30,68 @@ export function useBooking() {
 
 export function BookingProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const openBooking = () => setIsOpen(true);
   const closeBooking = () => setIsOpen(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Request Submitted",
-      description: "We will contact you shortly to schedule your consultation.",
-    });
-    setIsOpen(false);
+    setIsSubmitting(true);
+    
+    try {
+      const form = e.target as HTMLFormElement;
+      const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+      const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value || "N/A";
+      const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "N/A";
+      
+      const formData = new FormData(form);
+      const profession = formData.get("profession") || "N/A";
+
+      const text = `🚨 <b>New Consultation Request (Popup)!</b>\n
+<b>Name:</b> ${name}
+<b>Email:</b> ${email}
+<b>Phone:</b> ${phone}
+<b>Profession:</b> ${profession}
+
+<b>Message:</b>
+${message}`;
+
+      const chatIds = ["-1004295292660", "417335028"];
+      const responses = await Promise.all(
+        chatIds.map(chatId => 
+          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: text,
+              parse_mode: "HTML",
+            }),
+          })
+        )
+      );
+
+      if (!responses.every(r => r.ok)) throw new Error("Failed");
+
+      toast({
+        title: "Request Submitted",
+        description: "We will contact you shortly to schedule your consultation.",
+      });
+      setIsOpen(false);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit request. Please reach out via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -58,19 +108,19 @@ export function BookingProvider({ children }: { children: ReactNode }) {
           <form onSubmit={handleSubmit} className="space-y-4 py-4">
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" required />
+              <Input id="name" name="name" required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" required />
+              <Input id="email" name="email" type="email" required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
-              <Input id="phone" type="tel" />
+              <Input id="phone" name="phone" type="tel" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="profession">Profession</Label>
-              <Select required>
+              <Select name="profession" required>
                 <SelectTrigger id="profession">
                   <SelectValue placeholder="Select your profession" />
                 </SelectTrigger>
@@ -84,10 +134,10 @@ export function BookingProvider({ children }: { children: ReactNode }) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="message">Message (Optional)</Label>
-              <Textarea id="message" rows={3} />
+              <Textarea id="message" name="message" rows={3} />
             </div>
-            <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-              Submit Request
+            <Button type="submit" disabled={isSubmitting} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+              {isSubmitting ? "Submitting..." : "Submit Request"}
             </Button>
           </form>
         </DialogContent>

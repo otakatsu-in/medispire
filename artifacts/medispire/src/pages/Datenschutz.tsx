@@ -43,7 +43,7 @@ export default function Datenschutz() {
             The data processing controller on this website is:<br />
             Medispire UG<br />
             Emsdettener Str. 10, 48268 Greven, Germany<br />
-            Email: medispire.de@gmail.com
+            Email: info.medispire@gmail.com
           </p>
 
           <h2>3. Data recording on this website</h2>

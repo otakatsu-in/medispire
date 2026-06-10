@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url>
+    <loc>https://medispire.in/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/for-doctors</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/for-dentists</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/for-nurses</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/for-allied-health</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/about-us</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/book-appointment</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Tools -->
+  <url>
+    <loc>https://medispire.in/tools/salary-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/tools/state-comparison</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/tools/language-timeline</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/tools/document-checklist</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/tools/readiness-checker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Legal -->
+  <url>
+    <loc>https://medispire.in/impressum</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Blog Posts -->
+  <url><loc>https://medispire.in/blog/german-a1-to-c1-roadmap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/fsp-exam-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/approbation-vs-berufserlaubnis</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/why-germany-over-uk-australia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/indian-nurse-move-to-germany</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/work-life-balance-doctors-germany</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/doctor-salary-germany-2024</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/what-is-hospitation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/dr-sangeeta-pai-journey</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/apostille-translation-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/visa-guide-indian-doctors</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/german-medical-terminology-50-words</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/motivationsschreiben-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/accommodation-germany-doctors</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://medispire.in/blog/family-relocation-germany</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

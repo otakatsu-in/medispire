@@ -37,7 +37,7 @@ export default function AboutUs() {
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sandeep Amin</h3>
                 <p className="text-accent font-medium mb-4">Founder & CEO</p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Dr. Sandeep Amin completed his MBBS from BLD Institute, India, and his postgraduate in Diagnostic Radiology. He moved to Germany in 2013 on an exchange program and became the first Indian to be awarded the European Scholarship from CIRSE Society for Interventional Radiology. He equalized his degree, passed his specialist exam, and holds board certifications in Interventional Radiology from both German and European Societies. He is a keynote speaker at international conferences, published researcher, and currently works as Senior Consultant Radiologist at an 800-bed state-run multispecialty hospital in Germany.
+                  Dr. Sandeep Amin completed his MBBS from BLD Institute, India, and his postgraduate in Diagnostic Radiology. He moved to Germany in 2013 on an exchange program and became the first Indian to be awarded the European Scholarship from CIRSE Society for Interventional Radiology. He equalized his degree, passed his specialist exam, and holds board certifications in Interventional Radiology from both German and European Societies. He is a keynote speaker at international conferences, published researcher, and is the first Indian radiologist to set up his own private radiology practice in Germany.
                 </p>
               </div>
             </motion.div>

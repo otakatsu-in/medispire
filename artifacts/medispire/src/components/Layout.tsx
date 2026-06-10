@@ -14,34 +14,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const { toast } = useToast();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
-  const [showNewsletter, setShowNewsletter] = useState(false);
 
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    if (!localStorage.getItem("newsletterShown")) {
-      timer = setTimeout(() => {
-        setShowNewsletter(true);
-      }, 30000);
-    }
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, []);
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Thank you!",
-      description: "Check your email for the free guide.",
-    });
-    localStorage.setItem("newsletterShown", "true");
-    setShowNewsletter(false);
-  };
-
-  const closeNewsletter = () => {
-    localStorage.setItem("newsletterShown", "true");
-    setShowNewsletter(false);
-  };
 
   const professionalLinks = [
     { label: "For Doctors", path: "/for-doctors", desc: "Pathways for MBBS/MD/MS graduates." },
@@ -98,8 +71,8 @@ export function Layout({ children }: { children: ReactNode }) {
             <a href="tel:+918310010112" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <Phone size={12} /> +91 83100 10112
             </a>
-            <a href="mailto:medispire.de@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-              <Mail size={12} /> medispire.de@gmail.com
+            <a href="mailto:info.medispire@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+              <Mail size={12} /> info.medispire@gmail.com
             </a>
             <div className="flex items-center gap-3 ml-2 border-l border-primary-foreground/20 pl-4">
               <a href="https://www.facebook.com/profile.php?id=61589388965018" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors"><Facebook size={14} /></a>
@@ -352,9 +325,9 @@ export function Layout({ children }: { children: ReactNode }) {
             </h4>
             <ul className="space-y-4 text-sm text-primary-foreground/80">
               <li>
-                <a href="mailto:medispire.de@gmail.com" className="group flex items-start gap-3 hover:text-white transition-colors">
+                <a href="mailto:info.medispire@gmail.com" className="group flex items-start gap-3 hover:text-white transition-colors">
                   <Mail size={18} className="mt-0.5 text-accent group-hover:text-white transition-colors" />
-                  <span>medispire.de@gmail.com</span>
+                  <span>info.medispire@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -421,37 +394,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </a>
 
 
-      {/* Newsletter Popup */}
-      <Dialog open={showNewsletter} onOpenChange={(open) => !open && closeNewsletter()}>
-        <DialogContent className="sm:max-w-md rounded-2xl overflow-hidden p-0 border-0">
-          <div className="bg-primary p-8 text-center text-primary-foreground relative">
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:250px_250px] animate-[shimmer_3s_linear_infinite]"></div>
-            <div className="w-16 h-16 mx-auto bg-accent text-accent-foreground rounded-full flex items-center justify-center mb-4 relative z-10 shadow-lg">
-              <BookOpen size={28} />
-            </div>
-            <DialogTitle className="text-2xl md:text-3xl font-bold text-white relative z-10">Free Career Guide</DialogTitle>
-            <DialogDescription className="text-primary-foreground/90 mt-2 relative z-10 text-base">
-              Join 500+ healthcare professionals who've downloaded our comprehensive guide to Germany.
-            </DialogDescription>
-          </div>
-          <div className="p-8 bg-white">
-            <form onSubmit={handleNewsletterSubmit} className="space-y-5">
-              <div className="space-y-2.5">
-                <Label htmlFor="nl-name" className="text-sm font-bold text-foreground">Full Name</Label>
-                <Input id="nl-name" required placeholder="Dr. John Doe" className="h-12 rounded-xl bg-secondary/50" />
-              </div>
-              <div className="space-y-2.5">
-                <Label htmlFor="nl-email" className="text-sm font-bold text-foreground">Email Address</Label>
-                <Input id="nl-email" type="email" required placeholder="john@example.com" className="h-12 rounded-xl bg-secondary/50" />
-              </div>
-              <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg h-14 mt-4 rounded-xl shadow-lg ring-2 ring-transparent hover:ring-accent/30 transition-all">
-                Send Me the Guide
-              </Button>
-              <p className="text-xs text-center text-muted-foreground mt-4">We respect your privacy. No spam.</p>
-            </form>
-          </div>
-        </DialogContent>
-      </Dialog>
+
     </div>
   );
 }

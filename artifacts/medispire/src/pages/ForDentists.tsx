@@ -15,7 +15,7 @@ const pathwaySteps = [
   { icon: BookOpen,      title: "Fachsprachenprüfung (FSP)", badge: "Dental Language Exam", desc: "Simulate a dentist-patient consultation, write a treatment plan, and discuss it with a senior dentist. Passing grants your Berufserlaubnis." },
   { icon: Briefcase,     title: "Vorbereitungsassistent",    badge: "Earn from Day 1", desc: "With your Berufserlaubnis, work full-time as an Assistant Dentist under supervision, treating patients, while preparing for your final exam." },
   { icon: CheckCircle2,  title: "Kenntnisprüfung (KP)",      badge: "Equivalence Exam", desc: "Oral, practical and theoretical dental exam proving your knowledge meets German university standards. Required for full Approbation." },
-  { icon: Landmark,      title: "Approbation & Own Clinic",  badge: "Permanent License", desc: "Full Approbation granted. After 2 years as employed dentist you gain Kassenzulassung — the right to open or buy your own private practice." },
+  { icon: Landmark,      title: "Approbation, Fachzahnarzt, & Own Clinic",  badge: "Permanent License", desc: "Full Approbation granted. After 2 years as employed dentist you gain Kassenzulassung — the right to open or buy your own private practice." },
 ];
 
 const salaries = [
@@ -36,16 +36,28 @@ const faqs = [
 export default function ForDentists() {
   const { openBooking } = useBooking();
 
-  useEffect(() => {
-    document.title = "For Dentists | BDS/MDS Pathway to Germany | MediSpire";
-  }, []);
+  // Title handled by SEO component
+
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  });
 
   return (
     <div className="w-full bg-[#F8FAFC]">
       <SEO
         title="For Dentists | BDS & MDS Pathway to Germany | MediSpire"
         description="Escape the high competition in India. Learn the exact steps to get your German Dental Approbation, open your own clinic, and secure your future."
-        canonical="/for-dentists"
+        canonical="https://medispire.in/for-dentists"
+        schema={faqSchema}
       />
 
       <PageHero

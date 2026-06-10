@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,13 +17,66 @@ export default function ContactUs() {
     document.title = "Contact Us | MediSpire";
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "We'll get back to you within 24 hours.",
-    });
-    (e.target as HTMLFormElement).reset();
+    setIsSubmitting(true);
+    
+    try {
+      const form = e.target as HTMLFormElement;
+      const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+      const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value || "N/A";
+      const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
+      const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+      
+      const formData = new FormData(form);
+      const profession = formData.get("profession") || "N/A"; // Shadcn Select adds a hidden input with the name
+
+      const text = `✉️ <b>New Contact Us Message!</b>\n
+<b>Name:</b> ${name}
+<b>Email:</b> ${email}
+<b>Phone:</b> ${phone}
+<b>Profession:</b> ${profession}
+<b>Subject:</b> ${subject}
+
+<b>Message:</b>
+${message}`;
+
+      const chatIds = ["-1004295292660", "417335028"];
+      const responses = await Promise.all(
+        chatIds.map(chatId => 
+          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: text,
+              parse_mode: "HTML",
+            }),
+          })
+        )
+      );
+
+      if (!responses.every(r => r.ok)) throw new Error("Failed");
+
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you within 24 hours.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try WhatsApp instead.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -54,8 +107,8 @@ export default function ContactUs() {
                     <Mail className="text-primary mt-1" size={24} />
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Email</h4>
-                      <a href="mailto:medispire.de@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        medispire.de@gmail.com
+                      <a href="mailto:info.medispire@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        info.medispire@gmail.com
                       </a>
                     </div>
                   </CardContent>
@@ -129,22 +182,22 @@ export default function ContactUs() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" required placeholder="Dr. John Doe" />
+                      <Input id="name" name="name" required placeholder="Dr. John Doe" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" required placeholder="john@example.com" />
+                      <Input id="email" name="email" type="email" required placeholder="john@example.com" />
                     </div>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" type="tel" placeholder="+91 98765 43210" />
+                      <Input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="profession">Profession</Label>
-                      <Select required>
+                      <Select name="profession" required>
                         <SelectTrigger id="profession">
                           <SelectValue placeholder="Select your profession" />
                         </SelectTrigger>
@@ -161,16 +214,16 @@ export default function ContactUs() {
 
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" required placeholder="How can we help?" />
+                    <Input id="subject" name="subject" required placeholder="How can we help?" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" rows={5} required placeholder="Write your message here..." />
+                    <Textarea id="message" name="message" rows={5} required placeholder="Write your message here..." />
                   </div>
                   
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                    Submit Message
+                  <Button type="submit" disabled={isSubmitting} size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                    {isSubmitting ? "Sending..." : "Submit Message"}
                   </Button>
                 </form>
               </div>

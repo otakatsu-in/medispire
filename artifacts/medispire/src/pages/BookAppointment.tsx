@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,6 +27,7 @@ const bookingSchema = z.object({
 
 export default function BookAppointment() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     document.title = "Book an Appointment | MediSpire";
@@ -48,13 +49,59 @@ export default function BookAppointment() {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof bookingSchema>) => {
-    console.log("Booking data:", data);
-    toast({
-      title: "Booking Confirmed!",
-      description: "We'll contact you within 24 hours to confirm your appointment.",
-    });
-    form.reset();
+  const onSubmit = async (data: z.infer<typeof bookingSchema>) => {
+    setIsSubmitting(true);
+    try {
+      const text = `🚨 <b>New Consultation Request!</b>\n
+<b>Name:</b> ${data.fullName}
+<b>Email:</b> ${data.email}
+<b>WhatsApp:</b> ${data.whatsapp}
+<b>Profession:</b> ${data.profession}
+<b>Qualification:</b> ${data.qualification}
+<b>Experience:</b> ${data.experience || "N/A"} years
+<b>German Level:</b> ${data.languageLevel}
+<b>Consultation Type:</b> ${data.consultationType}
+<b>Source:</b> ${data.source || "N/A"}
+
+<b>Message:</b>
+${data.message || "No message provided."}`;
+
+      const chatIds = ["-1004295292660", "417335028"];
+      const responses = await Promise.all(
+        chatIds.map(chatId => 
+          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: text,
+              parse_mode: "HTML",
+            }),
+          })
+        )
+      );
+
+      const allOk = responses.every(r => r.ok);
+      if (allOk) {
+        toast({
+          title: "Booking Confirmed!",
+          description: "We'll contact you within 24 hours to confirm your appointment.",
+        });
+        form.reset();
+      } else {
+        throw new Error("Failed to submit form to all destinations");
+      }
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your request. Please try again or contact us on WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -264,8 +311,8 @@ export default function BookAppointment() {
                   )}
                 />
 
-                <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg h-14">
-                  Book Appointment
+                <Button type="submit" disabled={isSubmitting} size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg h-14">
+                  {isSubmitting ? "Submitting..." : "Book Appointment"}
                 </Button>
               </form>
             </Form>

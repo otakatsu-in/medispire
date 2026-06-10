@@ -10,6 +10,7 @@ import { Facebook, Instagram, Youtube, MessageCircle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { blogPosts } from "@/data/blogs";
+import { SEO } from "@/components/SEO";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -41,23 +42,79 @@ export default function BlogPost() {
     relatedPosts.push(...blogPosts.filter(p => p.slug !== post.slug).slice(0, 3));
   }
 
-  const handleNewsletter = (e: React.FormEvent) => {
+  const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Subscribed!",
-      description: "Thank you for subscribing to our newsletter.",
-    });
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    
+    try {
+      const text = `📰 <b>New Newsletter Subscriber!</b>\n\n<b>Name:</b> ${name}\n<b>Email:</b> ${email}`;
+      
+      const chatIds = ["-1004295292660", "417335028"];
+      const responses = await Promise.all(
+        chatIds.map(chatId => 
+          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: text,
+              parse_mode: "HTML",
+            }),
+          })
+        )
+      );
+
+      if (!responses.every(r => r.ok)) throw new Error("Failed to subscribe");
+
+      toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to our newsletter.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | MediSpire Blog`;
-    }
-  }, [post]);
+  const articleSchema = post ? JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "image": "https://medispire.in/opengraph.jpg",
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MediSpire",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://medispire.in/logo.png"
+      }
+    },
+    "datePublished": post.date,
+    "description": post.excerpt
+  }) : undefined;
 
   return (
     <div className="w-full">
+      {post && (
+        <SEO 
+          title={post.title} 
+          description={post.excerpt} 
+          canonical={`https://medispire.in/blog/${post.slug}`}
+          schema={articleSchema}
+        />
+      )}
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="mb-4">
@@ -124,8 +181,8 @@ export default function BlogPost() {
                 Get the latest updates on German medical licensing directly to your inbox.
               </p>
               <form onSubmit={handleNewsletter} className="space-y-3">
-                <Input required placeholder="Your Name" />
-                <Input type="email" required placeholder="Email Address" />
+                <Input name="name" required placeholder="Your Name" />
+                <Input name="email" type="email" required placeholder="Email Address" />
                 <Button type="submit" className="w-full">Subscribe</Button>
               </form>
             </div>

@@ -104,16 +104,55 @@ export default function Resources() {
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
   const [selectedResource, setSelectedResource] = useState("");
 
-  useEffect(() => {
-    document.title = "Resources & FAQ | MediSpire";
-  }, []);
+  // Title handled by SEO component
 
-  const handleDownloadSubmit = (e: React.FormEvent) => {
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqCategories.flatMap(cat => cat.faqs).map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  });
+
+  const handleDownloadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const email = formData.get("email");
-    toast({ title: "Guide sent!", description: `Check your inbox at ${email}` });
-    setDownloadModalOpen(false);
+    const email = formData.get("email") as string;
+    
+    try {
+      const text = `📚 <b>New Resource Download!</b>\n
+<b>Email:</b> ${email}
+<b>Resource:</b> ${selectedResource}`;
+
+      const chatIds = ["-1004295292660", "417335028"];
+      const responses = await Promise.all(
+        chatIds.map(chatId => 
+          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: text,
+              parse_mode: "HTML",
+            }),
+          })
+        )
+      );
+
+      if (!responses.every(r => r.ok)) throw new Error("Failed");
+      
+      toast({ title: "Guide sent!", description: `Check your inbox at ${email}` });
+      setDownloadModalOpen(false);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to process request. Please try again.", variant: "destructive" });
+    }
   };
 
   return (
@@ -121,7 +160,8 @@ export default function Resources() {
       <SEO
         title="Resources & FAQ | MediSpire"
         description="Free guides, glossary of German medical terms, and comprehensive FAQ for Indian doctors, dentists, and nurses planning to move to Germany."
-        canonical="/resources"
+        canonical="https://medispire.in/resources"
+        schema={faqSchema}
       />
 
       <PageHero
