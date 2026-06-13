@@ -8,7 +8,8 @@ import {
   Stethoscope, ShieldCheck, HeartPulse, 
   Wallet, Scale, CalendarDays, TrendingUp, Hospital, 
   Plane, BookOpen, FileCheck, ArrowRight,
-  Quote, CheckCircle2, MessageCircle, MapPin, GraduationCap, Award
+  Quote, CheckCircle2, MessageCircle, MapPin, GraduationCap, Award,
+  Languages, FileBadge, ChevronRight
 } from "lucide-react";
 
 const founders = [
@@ -374,41 +375,55 @@ export default function Home() {
       </section>
 
       {/* ── 7. SERVICES STRIP ────────────────────────────────────────── */}
-      <section className="py-14 bg-white px-4">
+      <section className="py-16 bg-[#F8FAFC] px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div>
-              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Our Expertise</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Comprehensive Services</h2>
-              <p className="text-sm text-muted-foreground mt-1">Everything you need from India to working in Germany — under one roof.</p>
+              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Our Services</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Choose Your Pathway</h2>
+              <p className="text-sm text-muted-foreground mt-1">We've simplified our services into two specialized areas.</p>
             </div>
             <Link href="/services">
               <Button variant="outline" className="shrink-0 rounded-full px-5 py-2 text-sm font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                View All Services
+                View Pricing & Details
               </Button>
             </Link>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            {[
-              "German Language Coaching", "Medical / Dental License (Approbation)", "Job Application Support",
-              "FSP Exam Preparation", "Document Translation", "Document Analysis",
-              "Motivation Letter Writing", "Hospitation Placement", "Visa Assistance",
-              "Defizitbescheid Response", "Accommodation Support", "Bridging Courses",
-              "Job Opportunity Matching",
-            ].map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.03 }}
-                className="bg-[#F4F6F8] px-4 py-2 rounded-xl border border-border hover:border-accent hover:bg-accent/5 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2 cursor-default"
-              >
-                <CheckCircle2 size={14} className="text-accent shrink-0" />
-                <span className="font-semibold text-primary text-sm">{service}</span>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/services#preparation" className="block group">
+              <Card className="h-full border-2 border-transparent hover:border-accent/50 transition-all shadow-sm group-hover:shadow-md bg-white">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                    <FileBadge size={28} className="text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Documentation & Prep</h3>
+                  <p className="text-muted-foreground mb-6">
+                    From ₹499 document checking to a full ₹25,000 done-for-you concierge service. Get the exact help you need.
+                  </p>
+                  <span className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Explore Preparation Services <ChevronRight size={16} />
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link href="/services#language" className="block group">
+              <Card className="h-full border-2 border-transparent hover:border-accent/50 transition-all shadow-sm group-hover:shadow-md bg-white">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                    <Languages size={28} className="text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Language Learning</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Connect with authorized German tutors and enroll in our specialized C1 Medical German course for doctors.
+                  </p>
+                  <span className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Explore Language Services <ChevronRight size={16} />
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>

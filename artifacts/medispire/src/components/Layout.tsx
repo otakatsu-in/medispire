@@ -311,11 +311,10 @@ export function Layout({ children }: { children: ReactNode }) {
               <div className="w-2 h-2 rounded-full bg-accent"></div> Top Services
             </h4>
             <ul className="space-y-3 text-sm text-primary-foreground/80">
-              <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Approbation / License</Link></li>
-              <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Language Coaching</Link></li>
-              <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Job Application Support</Link></li>
-              <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> FSP Training</Link></li>
-              <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Visa Assistance</Link></li>
+              <li><Link href="/services#language" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Authorized Tutors</Link></li>
+              <li><Link href="/services#language" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> German for Doctors</Link></li>
+              <li><Link href="/services#preparation" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Document Checking</Link></li>
+              <li><Link href="/services#preparation" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Preparation Courses</Link></li>
             </ul>
           </div>
 
