@@ -146,7 +146,7 @@ export default function Home() {
               transition={{ duration: 0.55, delay: 0.4 }}
             >
               {[
-                { val: "8+", label: "Years in Germany" },
+                { val: "10+", label: "Years in Germany" },
                 { val: "500+", label: "Professionals Guided" },
                 { val: "0", label: "Hidden Fees" },
               ].map((s) => (
