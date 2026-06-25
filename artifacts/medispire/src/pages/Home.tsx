@@ -9,7 +9,7 @@ import {
   Wallet, Scale, CalendarDays, TrendingUp, Hospital, 
   Plane, BookOpen, FileCheck, ArrowRight,
   Quote, CheckCircle2, MessageCircle, MapPin, GraduationCap, Award,
-  Languages, FileBadge, ChevronRight
+  Languages, ChevronRight
 } from "lucide-react";
 
 const founders = [
@@ -126,7 +126,7 @@ export default function Home() {
                 className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-8 py-3 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.4)] transition-all"
                 onClick={openBooking}
               >
-                Book Free Consultation
+                Join Free Webinar
               </Button>
               <Button
                 size="lg"
@@ -379,47 +379,47 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div>
-              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Our Services</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">Choose Your Pathway</h2>
-              <p className="text-sm text-muted-foreground mt-1">We've simplified our services into two specialized areas.</p>
+              <span className="text-accent font-bold text-xs tracking-widest uppercase block mb-1">Our Offerings</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary">The Course & Tutor Matching</h2>
+              <p className="text-sm text-muted-foreground mt-1">Everything you need to reach Germany — in one place.</p>
             </div>
             <Link href="/services">
               <Button variant="outline" className="shrink-0 rounded-full px-5 py-2 text-sm font-bold border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                View Pricing & Details
+                View Full Details
               </Button>
             </Link>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/services#preparation" className="block group">
+            <Link href="/services" className="block group">
               <Card className="h-full border-2 border-transparent hover:border-accent/50 transition-all shadow-sm group-hover:shadow-md bg-white">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
-                    <FileBadge size={28} className="text-primary" />
+                    <GraduationCap size={28} className="text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">Documentation & Prep</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Germany Ready Blueprint</h3>
                   <p className="text-muted-foreground mb-6">
-                    From ₹499 document checking to a full ₹25,000 done-for-you concierge service. Get the exact help you need.
+                    The only A-Z course taught by practicing Indian-origin doctors in Germany. 10 modules, 12+ hours, 3 tiers starting at ₹4,999.
                   </p>
                   <span className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Explore Preparation Services <ChevronRight size={16} />
+                    View Curriculum & Enroll <ChevronRight size={16} />
                   </span>
                 </CardContent>
               </Card>
             </Link>
 
-            <Link href="/services#language" className="block group">
+            <Link href="/services#tutors" className="block group">
               <Card className="h-full border-2 border-transparent hover:border-accent/50 transition-all shadow-sm group-hover:shadow-md bg-white">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
                     <Languages size={28} className="text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">Language Learning</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Authorized Tutor Matching</h3>
                   <p className="text-muted-foreground mb-6">
-                    Connect with authorized German tutors and enroll in our specialized C1 Medical German course for doctors.
+                    Get matched with a hand-picked, verified German tutor suited to your exact level — A1 beginner to C1 FSP prep. Custom pricing.
                   </p>
                   <span className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Explore Language Services <ChevronRight size={16} />
+                    Find a Tutor <ChevronRight size={16} />
                   </span>
                 </CardContent>
               </Card>
@@ -437,7 +437,7 @@ export default function Home() {
               Take the First Step Towards Your German Medical Career
             </h2>
             <p className="text-white/70 text-base mb-10 max-w-xl mx-auto">
-              Book a free 1-on-1 consultation with our expert team in India to get a personalised roadmap within 48 hours. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin and Dr. Sangeeta Pai.
+              Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a personalized roadmap. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin and Dr. Sangeeta Pai.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
@@ -445,7 +445,7 @@ export default function Home() {
                 className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-3 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.4)] transition-all"
                 onClick={openBooking}
               >
-                Book Free Consultation
+                Join Free Webinar
               </Button>
               <a
                 href="https://wa.me/918310010112"

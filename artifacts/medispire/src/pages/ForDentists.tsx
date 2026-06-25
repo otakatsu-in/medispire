@@ -30,7 +30,7 @@ const faqs = [
   { q: "Is the competition as fierce as in India?", a: "No! Germany is facing a massive wave of retiring clinic owners, creating very high demand for young, skilled dentists. There are no cut-throat entrance exams for specialty training." },
   { q: "What is the Zahnärztekammer?", a: "Unlike some countries where dentistry is under medicine, in Germany dentistry is fully independent. The Zahnärztekammer (State Dental Chamber) governs all dentists separately from the Ärztekammer that covers medical doctors." },
   { q: "Can I open my own clinic after passing the exams?", a: "After gaining Approbation, you must work as an employed dentist for at least 2 years (Assistenzzeit). This qualifies you for Kassenzulassung — the right to treat publicly insured patients and open or buy your own practice." },
-  { q: "How much does the entire process cost?", a: "Expect to invest €8,000–€12,000 over 1.5–2 years. This includes language courses, translations, embassy fees, exam fees, flights, and initial living expenses. We can help you plan a detailed budget in your consultation." },
+  { q: "How much does the entire process cost?", a: "Expect to invest €8,000–€12,000 over 1.5–2 years. This includes language courses, translations, embassy fees, exam fees, flights, and initial living expenses. We can help you plan a detailed budget in our free webinar." },
 ];
 
 export default function ForDentists() {
@@ -137,7 +137,7 @@ export default function ForDentists() {
                 <p className="text-white/70 text-sm leading-relaxed">Get a personalised plan from Dr. Sangeeta Pai who went through this exact process.</p>
               </div>
               <Button onClick={openBooking} className="mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-xl w-full text-sm">
-                Free Consultation
+                Join Free Webinar
               </Button>
             </motion.div>
           </div>
@@ -210,9 +210,9 @@ export default function ForDentists() {
       <section className="py-16 px-4 bg-white text-center">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Your Dental Career Deserves Better.</h2>
-          <p className="text-sm text-muted-foreground mb-8">Book a free consultation with our expert team in India to assess your BDS/MDS and get a realistic roadmap. Once enrolled, you'll receive direct mentorship from Dr. Sangeeta Pai.</p>
+          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a realistic roadmap.</p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
-            Book Your Free Consultation <ChevronRight className="ml-1 w-5 h-5" />
+            Join Free Webinar <ChevronRight className="ml-1 w-5 h-5" />
           </Button>
         </div>
       </section>

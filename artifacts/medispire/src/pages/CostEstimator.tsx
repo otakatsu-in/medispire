@@ -223,7 +223,7 @@ export default function CostEstimator() {
       <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 flex items-start gap-3">
         <Info size={18} className="text-amber-600 shrink-0 mt-0.5" />
         <p className="text-sm text-amber-800">
-          Amounts shown in INR at approx. ₹90/€ for easy planning from India. These are estimates based on average market rates as of 2025. Actual costs vary by location, employer, and individual circumstances. MediSpire consultation can help you plan precisely.
+          Amounts shown in INR at approx. ₹90/€ for easy planning from India. These are estimates based on average market rates as of 2025. Actual costs vary by location, employer, and individual circumstances. Joining our free webinar can help you plan precisely.
         </p>
       </div>
 
@@ -261,7 +261,7 @@ export default function CostEstimator() {
 
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
         <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold h-14 rounded-xl" onClick={openBooking}>
-          Book Free Consultation
+          Join Free Webinar
         </Button>
         <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white font-bold h-14 rounded-xl" onClick={handleReset}>
           Recalculate

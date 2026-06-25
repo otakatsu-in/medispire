@@ -107,8 +107,8 @@ ${message}`;
                     <Mail className="text-primary mt-1" size={24} />
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Email</h4>
-                      <a href="mailto:info.medispire@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        info.medispire@gmail.com
+                      <a href="mailto:medispire.de@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        medispire.de@gmail.com
                       </a>
                     </div>
                   </CardContent>

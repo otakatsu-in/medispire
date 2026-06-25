@@ -170,7 +170,7 @@ export default function BlogPost() {
                   Speak directly with {post.author} about your career goals in Germany.
                 </p>
                 <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" onClick={openBooking}>
-                  Book a Free Consultation
+                  Join Free Webinar
                 </Button>
               </CardContent>
             </Card>

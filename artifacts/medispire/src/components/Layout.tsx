@@ -71,8 +71,8 @@ export function Layout({ children }: { children: ReactNode }) {
             <a href="tel:+918310010112" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <Phone size={12} /> +91 83100 10112
             </a>
-            <a href="mailto:info.medispire@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-              <Mail size={12} /> info.medispire@gmail.com
+            <a href="mailto:medispire.de@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+              <Mail size={12} /> medispire.de@gmail.com
             </a>
             <div className="flex items-center gap-3 ml-2 border-l border-primary-foreground/20 pl-4">
               <a href="https://www.facebook.com/profile.php?id=61589388965018" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors"><Facebook size={14} /></a>
@@ -129,10 +129,10 @@ export function Layout({ children }: { children: ReactNode }) {
                 </div>
               </li>
 
-              {/* Services */}
+              {/* The Course */}
               <li>
                 <Link href="/services" className={`px-3 xl:px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-white/10 hover:text-white ${location === '/services' ? 'text-accent' : 'text-primary-foreground'}`}>
-                  Services
+                  The Course
                 </Link>
               </li>
 
@@ -174,7 +174,7 @@ export function Layout({ children }: { children: ReactNode }) {
               onClick={openBooking} 
               className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all ring-2 ring-transparent hover:ring-accent/30"
             >
-              Book Free Consultation
+              Join Free Webinar (Sunday 12-2 PM)
             </Button>
           </div>
 
@@ -231,7 +231,7 @@ export function Layout({ children }: { children: ReactNode }) {
               onClick={() => setMobileMenuOpen(false)}
               className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${location === '/services' ? 'bg-white/10 text-accent' : 'text-primary-foreground hover:bg-white/5'}`}
             >
-              Services
+              The Course
             </Link>
 
             <div className="px-3 py-2 mt-1 border-l-2 border-white/20 ml-1 flex flex-col gap-2">
@@ -263,8 +263,8 @@ export function Layout({ children }: { children: ReactNode }) {
             </div>
             
             <div className="mt-4 pt-4 border-t border-white/10">
-              <Button onClick={() => { openBooking(); setMobileMenuOpen(false); }} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold py-6 text-base rounded-xl shadow-lg">
-                Book Free Consultation
+              <Button onClick={() => { openBooking(); setMobileMenuOpen(false); }} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold py-6 text-base rounded-xl shadow-lg leading-tight">
+                Join Free Webinar<br/><span className="text-xs opacity-90">Sunday 12-2 PM</span>
               </Button>
             </div>
           </div>
@@ -308,13 +308,11 @@ export function Layout({ children }: { children: ReactNode }) {
           
           <div>
             <h4 className="font-bold text-lg mb-6 text-white flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent"></div> Top Services
+              <div className="w-2 h-2 rounded-full bg-accent"></div> The Course
             </h4>
             <ul className="space-y-3 text-sm text-primary-foreground/80">
-              <li><Link href="/services#language" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Authorized Tutors</Link></li>
-              <li><Link href="/services#language" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> German for Doctors</Link></li>
-              <li><Link href="/services#preparation" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Document Checking</Link></li>
-              <li><Link href="/services#preparation" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Preparation Courses</Link></li>
+              <li><Link href="/services#tutors" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Authorized Tutors</Link></li>
+              <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Blueprint Course</Link></li>
             </ul>
           </div>
 
@@ -324,9 +322,9 @@ export function Layout({ children }: { children: ReactNode }) {
             </h4>
             <ul className="space-y-4 text-sm text-primary-foreground/80">
               <li>
-                <a href="mailto:info.medispire@gmail.com" className="group flex items-start gap-3 hover:text-white transition-colors">
-                  <Mail size={18} className="mt-0.5 text-accent group-hover:text-white transition-colors" />
-                  <span>info.medispire@gmail.com</span>
+                <a href="mailto:medispire.de@gmail.com" className="group flex items-start gap-3 hover:text-white transition-colors">
+                  <Mail className="text-accent mt-1 group-hover:text-white transition-colors" size={20} />
+                  <span>medispire.de@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -368,7 +366,7 @@ export function Layout({ children }: { children: ReactNode }) {
       {/* Sticky Mobile CTA */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 p-3 bg-background border-t border-border z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex items-center justify-between pb-safe">
         <Button onClick={openBooking} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-base h-12 rounded-xl shadow-md">
-          Book Free Consultation
+          Join Free Webinar (Sunday 12-2 PM)
         </Button>
       </div>
 

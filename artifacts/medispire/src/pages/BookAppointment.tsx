@@ -257,7 +257,7 @@ ${data.message || "No message provided."}`;
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="free_30">Free 30-min Career Overview</SelectItem>
+                            <SelectItem value="free_webinar">Join Free Webinar (Sunday 12-2 PM)</SelectItem>
                             <SelectItem value="paid_60">Paid 60-min Detailed Consultation (€50)</SelectItem>
                             <SelectItem value="document_review">Document Review Package</SelectItem>
                             <SelectItem value="fsp_training">FSP Training Package</SelectItem>
@@ -340,9 +340,9 @@ ${data.message || "No message provided."}`;
             <h2 className="text-2xl font-bold mb-6">Our Consultation Types Explained</h2>
             <Accordion type="single" collapsible className="w-full bg-card border border-border rounded-xl px-6">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left font-medium">Free 30-min Career Overview Call</AccordionTrigger>
+                <AccordionTrigger className="text-left font-medium">Free Weekly Webinar (Sunday 12-2 PM)</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  A complimentary introductory call to understand your current situation and get a high-level roadmap. Perfect for those just starting to explore.
+                  Join Dr. Sangeeta Pai live every Sunday. Learn about the complete roadmap and ask your questions directly during the Q&A session. 100% Free.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">

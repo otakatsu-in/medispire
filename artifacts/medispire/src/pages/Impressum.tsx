@@ -33,7 +33,7 @@ export default function Impressum() {
             Emsdettener Str. 10<br />
             48268 Greven<br />
             Telefon: <a href="tel:+491626498523">+49 1626498523</a><br />
-            E-Mail: <a href="mailto:info.medispire@gmail.com">info.medispire@gmail.com</a>
+            E-Mail: <a href="mailto:medispire.de@gmail.com">medispire.de@gmail.com</a>
           </p>
 
           <p>

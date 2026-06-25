@@ -34,7 +34,7 @@ const faqs = [
   { q: "Do I have to repeat my MD/MS in Germany?", a: "Germany does not recognize an Indian MDS/MS as a Facharzt. However, your Indian clinical experience is often credited towards the 5–6 year German specialty training, shortening your overall path significantly." },
   { q: "What is the difference between Berufserlaubnis and Approbation?", a: "Berufserlaubnis is a temporary, supervised license (up to 2 years) allowing you to work and earn a salary while preparing for exams. Approbation is the permanent, unrestricted medical license granted after passing the KP." },
   { q: "Can I choose my medical specialty?", a: "Yes! Unlike NEET-PG, in Germany you apply directly to hospitals for a residency in your desired specialty. Internal Medicine, Surgery, and Anaesthesia have very high vacancy rates." },
-  { q: "How much does the entire process cost?", a: "Expect to invest €8,000–€12,000 over 1.5–2 years (language courses, translations, embassy fees, exam fees, flights, initial living expenses). We can help you budget this in your consultation." },
+  { q: "How much does the entire process cost?", a: "Expect to invest €8,000–€12,000 over 1.5–2 years (language courses, translations, embassy fees, exam fees, flights, initial living expenses). We can help you budget this in our free webinar." },
 ];
 
 export default function ForDoctors() {
@@ -122,7 +122,7 @@ export default function ForDoctors() {
                 onClick={openBooking}
                 className="mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-xl w-full text-sm"
               >
-                Free Consultation
+                Join Free Webinar
               </Button>
             </motion.div>
           </div>
@@ -195,9 +195,9 @@ export default function ForDoctors() {
       <section className="py-16 px-4 bg-white text-center">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Stop reading generic advice.<br />Speak to a Doctor who did it.</h2>
-          <p className="text-sm text-muted-foreground mb-8">Book a free consultation with our expert team in India to assess your clinical experience and get a personalized roadmap. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin.</p>
+          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a personalized roadmap.</p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
-            Book Your Free Consultation <ChevronRight className="ml-1 w-5 h-5" />
+            Join Free Webinar <ChevronRight className="ml-1 w-5 h-5" />
           </Button>
         </div>
       </section>

@@ -166,9 +166,9 @@ function getResult(answers: Answers) {
     nextSteps.push("Begin document apostille and certified translation process now — takes 2–4 months");
   }
   if (profession === "doctor" || profession === "dentist") {
-    nextSteps.push("Book a MediSpire consultation to understand FSP preparation and Ärztekammer strategy");
+    nextSteps.push("Join a free MediSpire webinar to understand FSP preparation and Ärztekammer strategy");
   } else {
-    nextSteps.push("Book a MediSpire consultation to identify the right state authority and fast-track your application");
+    nextSteps.push("Join a free MediSpire webinar to identify the right state authority and fast-track your application");
   }
   nextSteps.push("Use our Cost & Timeline Estimator to plan your budget");
 
@@ -240,7 +240,7 @@ export default function EligibilityChecker() {
 
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
         <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold h-14 rounded-xl" onClick={openBooking}>
-          Book Free Consultation
+          Join Free Webinar
         </Button>
         <Link href="/cost-estimator">
           <Button size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold h-14 rounded-xl flex items-center justify-center gap-2">

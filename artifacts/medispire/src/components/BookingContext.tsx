@@ -50,13 +50,13 @@ export function BookingProvider({ children }: { children: ReactNode }) {
       const formData = new FormData(form);
       const profession = formData.get("profession") || "N/A";
 
-      const text = `🚨 <b>New Consultation Request (Popup)!</b>\n
+      const text = `🚨 <b>New Webinar Registration (Popup)!</b>\n
 <b>Name:</b> ${name}
 <b>Email:</b> ${email}
 <b>Phone:</b> ${phone}
 <b>Profession:</b> ${profession}
 
-<b>Message:</b>
+<b>Message / Question for Dr. Sangeeta:</b>
 ${message}`;
 
       const chatIds = ["-1004295292660", "417335028"];
@@ -79,8 +79,8 @@ ${message}`;
       if (!responses.every(r => r.ok)) throw new Error("Failed");
 
       toast({
-        title: "Request Submitted",
-        description: "We will contact you shortly to schedule your consultation.",
+        title: "Registration Successful",
+        description: "We will send you the webinar link via WhatsApp/Email shortly.",
       });
       setIsOpen(false);
     } catch (error) {
@@ -100,9 +100,9 @@ ${message}`;
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-xl text-primary">Book Free Consultation</DialogTitle>
+            <DialogTitle className="text-xl text-primary">Join Free Webinar with Dr. Sangeeta</DialogTitle>
             <DialogDescription>
-              Fill out the form below and we'll get back to you to arrange a time.
+              Sunday 12-2 PM. Fill out the form below to register and ask your questions directly.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4 py-4">
@@ -133,11 +133,11 @@ ${message}`;
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="message">Message (Optional)</Label>
-              <Textarea id="message" name="message" rows={3} />
+              <Label htmlFor="message">Question for Dr. Sangeeta (Optional)</Label>
+              <Textarea id="message" name="message" rows={3} placeholder="What would you like to ask?" />
             </div>
             <Button type="submit" disabled={isSubmitting} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-              {isSubmitting ? "Submitting..." : "Submit Request"}
+              {isSubmitting ? "Registering..." : "Register for Webinar"}
             </Button>
           </form>
         </DialogContent>

@@ -150,7 +150,7 @@ export default function ForNurses() {
                 <p className="text-white/70 text-sm leading-relaxed">We'll review your nursing degree and explain exactly how fast you can be working in a German hospital.</p>
               </div>
               <Button onClick={openBooking} className="mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-xl w-full text-sm">
-                Free Consultation
+                Join Free Webinar
               </Button>
             </motion.div>
           </div>
@@ -223,9 +223,9 @@ export default function ForNurses() {
       <section className="py-16 px-4 bg-white text-center">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Ready to start your journey?</h2>
-          <p className="text-sm text-muted-foreground mb-8">Book a free consultation. We'll review your nursing degree and explain exactly how fast you can be working in a German hospital.</p>
+          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a realistic roadmap.</p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
-            Book Your Free Assessment <ChevronRight className="ml-1 w-5 h-5" />
+            Join Free Webinar <ChevronRight className="ml-1 w-5 h-5" />
           </Button>
         </div>
       </section>

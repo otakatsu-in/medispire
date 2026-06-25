@@ -179,7 +179,7 @@ export default function WhyGermany() {
           <h2 className="text-4xl font-extrabold mb-6 text-white">Start Your Journey Today</h2>
           <p className="text-primary-foreground/80 mb-10 text-xl font-light">Let our experienced doctors guide you through the exact process of moving your career to Germany.</p>
           <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-6 text-lg font-bold rounded-full shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all hover:-translate-y-1" onClick={openBooking}>
-            Book Your Free Consultation
+            Join Free Webinar
           </Button>
         </div>
       </section>

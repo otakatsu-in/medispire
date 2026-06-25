@@ -42,8 +42,8 @@ export function ProfessionPathwayTemplate({
   salaries,
   faqs,
   ctaTitle = "Ready to Begin?",
-  ctaSubtitle = "Book a 1-on-1 Consultation with Dr. Sandeep Amin to chart out your personalized career roadmap.",
-  ctaButtonText = "Book a 1-on-1 Consultation with Dr. Sandeep Amin",
+  ctaSubtitle = "Join our Free Weekly Webinar on Sunday (12-2 PM) with Dr. Sangeeta to chart out your personalized career roadmap.",
+  ctaButtonText = "Join Free Webinar",
   children
 }: ProfessionPathwayProps) {
   const { openBooking } = useBooking();
