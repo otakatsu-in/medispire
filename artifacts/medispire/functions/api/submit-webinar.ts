@@ -56,7 +56,7 @@ export async function onRequestPost({ request, env }: any) {
         htmlContent: `<html><body>
           <h2>Hi ${name},</h2>
           <p>Your registration for the Free Sunday Webinar with Dr. Sangeeta is confirmed.</p>
-          <p><strong>When:</strong> Sunday, 12:00 PM - 2:00 PM (IST)</p>
+          <p><strong>When:</strong> Sunday, 19th July from 12:00 PM - 2:00 PM (IST)</p>
           <p>We will send you the joining link shortly before the webinar begins.</p>
           <br/>
           <p>Best regards,<br/>The MediSpire Team</p>
