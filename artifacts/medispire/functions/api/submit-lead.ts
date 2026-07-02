@@ -44,7 +44,8 @@ export async function onRequestPost({ request, env }: any) {
     !ALLOWED_ORIGINS.includes(origin) && 
     !origin.endsWith(".pages.dev") &&
     !origin.endsWith(".medispire.pages.dev") &&
-    origin !== "https://medispire.pages.dev"
+    origin !== "https://medispire.pages.dev" &&
+    origin !== "http://localhost:8788"
   ) {
     return new Response(JSON.stringify({ success: false, error: "Forbidden", origin }), {
       status: 403,
