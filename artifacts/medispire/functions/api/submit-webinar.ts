@@ -39,8 +39,14 @@ const webinarSchema = z.object({
 export async function onRequestPost({ request, env }: any) {
   // 0. CSRF — block requests from unknown origins
   const origin = request.headers.get("Origin");
-  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
-    return new Response(JSON.stringify({ success: false, error: "Forbidden" }), {
+  if (
+    origin && 
+    !ALLOWED_ORIGINS.includes(origin) && 
+    !origin.endsWith(".pages.dev") &&
+    !origin.endsWith(".medispire.pages.dev") &&
+    origin !== "https://medispire.pages.dev"
+  ) {
+    return new Response(JSON.stringify({ success: false, error: "Forbidden", origin }), {
       status: 403,
       headers: { "Content-Type": "application/json" },
     });
