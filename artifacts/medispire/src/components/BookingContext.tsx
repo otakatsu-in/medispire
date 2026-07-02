@@ -50,33 +50,20 @@ export function BookingProvider({ children }: { children: ReactNode }) {
       const formData = new FormData(form);
       const profession = formData.get("profession") || "N/A";
 
-      const text = `🚨 <b>New Webinar Registration (Popup)!</b>\n
-<b>Name:</b> ${name}
-<b>Email:</b> ${email}
-<b>Phone:</b> ${phone}
-<b>Profession:</b> ${profession}
+      const response = await fetch("/api/submit-webinar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          profession,
+          question: message,
+          source: "Popup",
+        }),
+      });
 
-<b>Message / Question for Dr. Sangeeta:</b>
-${message}`;
-
-      const chatIds = ["-1004295292660", "417335028"];
-      const responses = await Promise.all(
-        chatIds.map(chatId => 
-          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: text,
-              parse_mode: "HTML",
-            }),
-          })
-        )
-      );
-
-      if (!responses.every(r => r.ok)) throw new Error("Failed");
+      if (!response.ok) throw new Error("Failed");
 
       toast({
         title: "Registration Successful",

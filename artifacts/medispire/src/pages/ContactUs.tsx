@@ -34,34 +34,21 @@ export default function ContactUs() {
       const formData = new FormData(form);
       const profession = formData.get("profession") || "N/A"; // Shadcn Select adds a hidden input with the name
 
-      const text = `✉️ <b>New Contact Us Message!</b>\n
-<b>Name:</b> ${name}
-<b>Email:</b> ${email}
-<b>Phone:</b> ${phone}
-<b>Profession:</b> ${profession}
-<b>Subject:</b> ${subject}
+      const response = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          profession,
+          subject,
+          message,
+          source: "Contact Us Page",
+        }),
+      });
 
-<b>Message:</b>
-${message}`;
-
-      const chatIds = ["-1004295292660", "417335028"];
-      const responses = await Promise.all(
-        chatIds.map(chatId => 
-          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: text,
-              parse_mode: "HTML",
-            }),
-          })
-        )
-      );
-
-      if (!responses.every(r => r.ok)) throw new Error("Failed");
+      if (!response.ok) throw new Error("Failed");
 
       toast({
         title: "Message Sent",

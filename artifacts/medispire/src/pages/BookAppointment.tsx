@@ -52,39 +52,21 @@ export default function BookAppointment() {
   const onSubmit = async (data: z.infer<typeof bookingSchema>) => {
     setIsSubmitting(true);
     try {
-      const text = `🚨 <b>New Consultation Request!</b>\n
-<b>Name:</b> ${data.fullName}
-<b>Email:</b> ${data.email}
-<b>WhatsApp:</b> ${data.whatsapp}
-<b>Profession:</b> ${data.profession}
-<b>Qualification:</b> ${data.qualification}
-<b>Experience:</b> ${data.experience || "N/A"} years
-<b>German Level:</b> ${data.languageLevel}
-<b>Consultation Type:</b> ${data.consultationType}
-<b>Source:</b> ${data.source || "N/A"}
+      const response = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.fullName,
+          email: data.email,
+          phone: data.whatsapp,
+          profession: data.profession,
+          subject: `Consultation: ${data.consultationType} (Qual: ${data.qualification})`,
+          message: data.message,
+          source: data.source,
+        }),
+      });
 
-<b>Message:</b>
-${data.message || "No message provided."}`;
-
-      const chatIds = ["-1004295292660", "417335028"];
-      const responses = await Promise.all(
-        chatIds.map(chatId => 
-          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: text,
-              parse_mode: "HTML",
-            }),
-          })
-        )
-      );
-
-      const allOk = responses.every(r => r.ok);
-      if (allOk) {
+      if (response.ok) {
         toast({
           title: "Booking Confirmed!",
           description: "We'll contact you within 24 hours to confirm your appointment.",
