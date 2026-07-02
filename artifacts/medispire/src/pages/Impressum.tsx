@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
+import { useEffect } from "react";
 
 export default function Impressum() {
   return (

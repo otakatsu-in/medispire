@@ -1,7 +1,7 @@
+import { SEO } from "@/components/SEO";
 import { useState } from "react";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
-import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -77,7 +77,7 @@ export default function CoursePage() {
 
   return (
     <div className="w-full bg-white">
-      <SEO title="The Germany Ready Course | MediSpire" description="The complete A-Z career relocation blueprint for Indian healthcare professionals, taught by Dr. Sangeeta Pai & Dr. Sandeep — practicing doctors in Germany." canonical="https://medispire.in/course"/>
+      <SEO title="The Germany Ready Course | MediSpire" description="The complete A-Z career relocation blueprint for Indian healthcare professionals, taught by Dr. Sangeeta Pai & Dr. Sandeep — practicing doctors in Germany." canonical="/services"/>
 
       {/* HERO */}
       <section className="relative bg-primary overflow-hidden pt-28 pb-24 px-4">

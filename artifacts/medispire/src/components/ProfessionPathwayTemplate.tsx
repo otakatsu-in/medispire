@@ -1,6 +1,7 @@
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { WEBINAR_DATE } from "@/config/webinar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { SEO } from "@/components/SEO";
 
@@ -42,7 +43,7 @@ export function ProfessionPathwayTemplate({
   salaries,
   faqs,
   ctaTitle = "Ready to Begin?",
-  ctaSubtitle = "Join our Free Weekly Webinar on Sunday (12-2 PM) with Dr. Sangeeta to chart out your personalized career roadmap.",
+  ctaSubtitle = `Join our Free Weekly Webinar on ${WEBINAR_DATE} with Dr. Sangeeta to chart out your personalized career roadmap.`,
   ctaButtonText = "Join Free Webinar",
   children
 }: ProfessionPathwayProps) {

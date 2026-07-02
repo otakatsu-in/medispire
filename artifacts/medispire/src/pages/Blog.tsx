@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,9 +15,7 @@ import { blogPosts as posts } from "@/data/blogs";
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  useEffect(() => {
-    document.title = "Blog & Insights | MediSpire";
-  }, []);
+  
 
   const filteredPosts = activeCategory === "All" 
     ? posts 
@@ -24,6 +23,7 @@ export default function Blog() {
 
   return (
     <div className="w-full">
+      <SEO title="Blog & Insights | MediSpire" description="Premium guidance and placement portal for healthcare professionals moving to Germany." />
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog & Insights</h1>

@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { WEBINAR_DATE } from "@/config/webinar";
 
 interface BookingContextType {
   openBooking: () => void;
@@ -60,6 +61,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
           profession,
           question: message,
           source: "Popup",
+          webinarDate: WEBINAR_DATE,
         }),
       });
 
@@ -89,7 +91,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
           <DialogHeader>
             <DialogTitle className="text-xl text-primary">Join Free Webinar with Dr. Sangeeta</DialogTitle>
             <DialogDescription>
-              Sunday 12-2 PM. Fill out the form below to register and ask your questions directly.
+              {WEBINAR_DATE}. Fill out the form below to register and ask your questions directly.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4 py-4">

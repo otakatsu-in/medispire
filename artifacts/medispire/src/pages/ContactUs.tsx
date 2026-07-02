@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { useEffect, useState } from "react";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
@@ -13,9 +14,7 @@ export default function ContactUs() {
   const { openBooking } = useBooking();
   const { toast } = useToast();
 
-  useEffect(() => {
-    document.title = "Contact Us | MediSpire";
-  }, []);
+  
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -68,6 +67,7 @@ export default function ContactUs() {
 
   return (
     <div className="w-full">
+      <SEO title="Contact Us | MediSpire" description="Premium guidance and placement portal for healthcare professionals moving to Germany." />
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>

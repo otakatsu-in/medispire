@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { SEO } from "@/components/SEO";
+import { useState, useEffect } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";

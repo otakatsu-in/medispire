@@ -1,9 +1,9 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useBooking } from "@/components/BookingContext";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { HeartPulse, Scale, Palmtree, TrendingUp, Stethoscope, ShieldCheck, Plane, Landmark, BookOpen, CheckCircle2, XCircle } from "lucide-react";

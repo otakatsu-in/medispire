@@ -1,10 +1,10 @@
+import { SEO } from "@/components/SEO";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Info } from "lucide-react";
 import { QuizWizard, QuizStep, Answers } from "@/components/QuizWizard";
-import { SEO } from "@/components/SEO";
 import { formatCurrencyINR } from "@/lib/currency";
 
 const quizSteps: QuizStep[] = [

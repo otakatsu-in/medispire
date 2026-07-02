@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <!-- Core Pages -->
   <url>
     <loc>https://medispire.in/</loc>
@@ -27,7 +28,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://medispire.in/services</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://medispire.in/about-us</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/why-germany</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,24 +48,34 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://medispire.in/resources</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/contact-us</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://medispire.in/book-appointment</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <!-- Tools -->
   <url>
+    <loc>https://medispire.in/eligibility-checker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/cost-estimator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://medispire.in/tools/salary-calculator</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://medispire.in/tools/state-comparison</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://medispire.in/tools/language-timeline</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -64,16 +85,36 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medispire.in/tools/readiness-checker</loc>
+    <loc>https://medispire.in/tools/state-compare</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/tools/language-timeline</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/tools/readiness-checklist</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
-  <!-- Legal -->
+  <!-- Legal (noindex in app, but kept for crawling reference) -->
   <url>
     <loc>https://medispire.in/impressum</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/datenschutz</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://medispire.in/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 
   <!-- Blog Posts -->
@@ -90,6 +131,6 @@
   <url><loc>https://medispire.in/blog/visa-guide-indian-doctors</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://medispire.in/blog/german-medical-terminology-50-words</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://medispire.in/blog/motivationsschreiben-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://medispire.in/blog/accommodation-germany-doctors</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://medispire.in/blog/family-relocation-germany</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
 </urlset>

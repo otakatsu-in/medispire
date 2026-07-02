@@ -1,12 +1,12 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 
 export default function Datenschutz() {
-  useEffect(() => {
-    document.title = "Datenschutzerklärung — Privacy Policy | MediSpire";
-  }, []);
+  
 
   return (
     <div className="w-full">
+      <SEO title="Datenschutzerklärung — Privacy Policy | MediSpire" description="Premium guidance and placement portal for healthcare professionals moving to Germany." />
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Datenschutzerklärung</h1>

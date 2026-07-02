@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { MessageCircle } from "lucide-react";
+import { CheckCircle2, ChevronRight, Stethoscope, Video, Scale, Wallet, FileText, UploadCloud, GraduationCap, MapPin, Building, Activity, Plane, Lightbulb, Users, Calendar, HelpCircle, ArrowRight, MessageCircle } from "lucide-react";
+import { WEBINAR_DATE } from "@/config/webinar";
 
 const bookingSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,9 +31,7 @@ export default function BookAppointment() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    document.title = "Book an Appointment | MediSpire";
-  }, []);
+  
 
   const form = useForm<z.infer<typeof bookingSchema>>({
     resolver: zodResolver(bookingSchema),
@@ -88,6 +88,7 @@ export default function BookAppointment() {
 
   return (
     <div className="w-full">
+      <SEO title="Book an Appointment | MediSpire" description="Premium guidance and placement portal for healthcare professionals moving to Germany." />
       <section className="bg-primary text-primary-foreground py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Book Your Consultation</h1>
@@ -239,7 +240,7 @@ export default function BookAppointment() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="free_webinar">Join Free Webinar (Sunday 12-2 PM)</SelectItem>
+                            <SelectItem value="free_webinar">Join Free Webinar ({WEBINAR_DATE})</SelectItem>
                             <SelectItem value="paid_60">Paid 60-min Detailed Consultation (€50)</SelectItem>
                             <SelectItem value="document_review">Document Review Package</SelectItem>
                             <SelectItem value="fsp_training">FSP Training Package</SelectItem>
@@ -322,7 +323,7 @@ export default function BookAppointment() {
             <h2 className="text-2xl font-bold mb-6">Our Consultation Types Explained</h2>
             <Accordion type="single" collapsible className="w-full bg-card border border-border rounded-xl px-6">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left font-medium">Free Weekly Webinar (Sunday 12-2 PM)</AccordionTrigger>
+                <AccordionTrigger className="text-left font-medium">Free Weekly Webinar ({WEBINAR_DATE})</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
                   Join Dr. Sangeeta Pai live every Sunday. Learn about the complete roadmap and ask your questions directly during the Q&A session. 100% Free.
                 </AccordionContent>

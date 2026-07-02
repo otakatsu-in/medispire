@@ -1,10 +1,11 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useBooking } from "@/components/BookingContext";
-import { SEO } from "@/components/SEO";
 import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
+import { WEBINAR_DATE } from "@/config/webinar";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { HeartPulse, FileCheck, Globe2, Building2, Stethoscope, CheckCircle2, ChevronRight, Calculator, TrendingUp, AlertCircle } from "lucide-react";
 
@@ -35,12 +36,11 @@ const faqs = [
 export default function ForNurses() {
   const { openBooking } = useBooking();
 
-  useEffect(() => {
-    document.title = "For Nurses | GNM & BSc Pathway to Germany | MediSpire";
-  }, []);
+  
 
   return (
     <div className="w-full bg-[#F8FAFC]">
+      <SEO title="For Nurses | GNM & BSc Pathway to Germany | MediSpire" description="Premium guidance and placement portal for healthcare professionals moving to Germany." />
       <SEO
         title="For Nurses | GNM & BSc Pathway to Germany | MediSpire"
         description="Germany has 200,000+ nursing vacancies. Learn the exact Anerkennung pathway for Indian GNM and BSc nurses to work, earn, and settle in Germany."
@@ -223,7 +223,7 @@ export default function ForNurses() {
       <section className="py-16 px-4 bg-white text-center">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Ready to start your journey?</h2>
-          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a realistic roadmap.</p>
+          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on {WEBINAR_DATE} to ask your questions directly to Dr. Sangeeta and get a realistic roadmap.</p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
             Join Free Webinar <ChevronRight className="ml-1 w-5 h-5" />
           </Button>

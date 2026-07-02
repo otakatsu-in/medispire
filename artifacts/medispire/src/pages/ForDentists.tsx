@@ -1,12 +1,13 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useBooking } from "@/components/BookingContext";
-import { SEO } from "@/components/SEO";
 import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SmilePlus, FileCheck, Globe2, Building2, BookOpen, CheckCircle2, Landmark, Briefcase, ChevronRight, Calculator, TrendingUp, Quote } from "lucide-react";
+import { WEBINAR_DATE } from "@/config/webinar";
 
 const pathwaySteps = [
   { icon: Globe2,        title: "Language Mastery",          badge: "B2 + C1 Dental", desc: "Pass Goethe/TELC B2, then master C1 Dental German for patient consultations, treatment planning, and clinical documentation." },
@@ -38,7 +39,7 @@ export default function ForDentists() {
 
   // Title handled by SEO component
 
-  const faqSchema = JSON.stringify({
+  const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqs.map(f => ({
@@ -49,14 +50,14 @@ export default function ForDentists() {
         "text": f.a
       }
     }))
-  });
+  };
 
   return (
     <div className="w-full bg-[#F8FAFC]">
       <SEO
         title="For Dentists | BDS & MDS Pathway to Germany | MediSpire"
         description="Escape the high competition in India. Learn the exact steps to get your German Dental Approbation, open your own clinic, and secure your future."
-        canonical="https://medispire.in/for-dentists"
+        canonical="/for-dentists"
         schema={faqSchema}
       />
 
@@ -210,7 +211,7 @@ export default function ForDentists() {
       <section className="py-16 px-4 bg-white text-center">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Your Dental Career Deserves Better.</h2>
-          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a realistic roadmap.</p>
+          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on {WEBINAR_DATE} to ask your questions directly to Dr. Sangeeta and get a realistic roadmap.</p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
             Join Free Webinar <ChevronRight className="ml-1 w-5 h-5" />
           </Button>

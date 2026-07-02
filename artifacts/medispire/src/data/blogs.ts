@@ -1,3 +1,5 @@
+import { WEBINAR_DATE } from "@/config/webinar";
+
 export const blogPosts = [
   {
     slug: "german-a1-to-c1-roadmap",
@@ -112,7 +114,7 @@ No, the FSP strictly evaluates your language and communication skills. Your medi
 
 Mastering the **German language for doctors** is a marathon, not a sprint. While the journey from A1 to C1 might seem daunting, thousands of international doctors successfully navigate this path every year. By building a strong B2 grammatical foundation, understanding the bilingual nature of German medical terminology, and practicing rigorous FSP role-plays, you will secure your Berufserlaubnis and begin a rewarding medical career in Germany.
 
-Are you ready to start your journey to Germany? Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
+Are you ready to start your journey to Germany? Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
 `
   },
   {
@@ -246,7 +248,7 @@ No. If you suspect the wrong diagnosis but document and discuss it with perfect 
 
 Cracking the Fachsprachenprüfung (FSP) is not about proving you are the most knowledgeable doctor in the room; it is about proving you are a safe, empathetic, and professional communicator within the German healthcare system.
 
-**Want to accelerate your journey to Germany?** Don't navigate the complex German licensing system alone. Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let's make your dream of practicing in Germany a reality.
+**Want to accelerate your journey to Germany?** Don't navigate the complex German licensing system alone. Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let's make your dream of practicing in Germany a reality.
 `
   },
   {
@@ -389,7 +391,7 @@ Deciding between focusing solely on the Approbation or taking the transitional r
 
 Navigating the paperwork, translating syllabi, and matching timelines with German immigration laws can be overwhelming. We specialize in helping Indian medical professionals streamline this process. 
 
-**Ready to start your journey?** Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
+**Ready to start your journey?** Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
 `
   },
   {
@@ -551,7 +553,7 @@ Choosing where to spend your medical career is a monumental decision. While the 
 
 By investing 12 to 15 months in mastering the German language, you unlock a highly predictable, legally protected, and financially rewarding medical career with guaranteed specialty training.
 
-**Ready to start your journey to Germany?** Don't navigate the complex German bureaucracy alone. **Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let’s make your dream of practicing in Germany a reality.
+**Ready to start your journey to Germany?** Don't navigate the complex German bureaucracy alone. **Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let’s make your dream of practicing in Germany a reality.
 `
   },
   {
@@ -705,7 +707,7 @@ Yes. Once you have secure employment, a stable income, and suitable housing in G
 
 Relocating to Germany as an Indian nurse is a highly structured but immensely rewarding path. By mastering the German language, systematically organizing your documentation, and preparing for the professional recognition process, you can build a stable and prosperous career in one of Europe’s premier healthcare systems.
 
-**Ready to take the first step towards your career in Germany?** Avoid the confusion of navigating complex bureaucratic procedures alone. Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
+**Ready to take the first step towards your career in Germany?** Avoid the confusion of navigating complex bureaucratic procedures alone. Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
 `,
   },
   {
@@ -850,7 +852,7 @@ The truth about work-life balance for doctors in Germany is that it requires adj
 
 Success in navigating this system depends on your preparation—particularly your German language fluency and your understanding of German hospital structures. 
 
-**Want to start your journey to a balanced medical career in Germany?** Don't navigate this life-changing transition alone. Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let us help you build a personalized language, licensing, and relocation roadmap to make your dream a reality.
+**Want to start your journey to a balanced medical career in Germany?** Don't navigate this life-changing transition alone. Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let us help you build a personalized language, licensing, and relocation roadmap to make your dream a reality.
 `
   },
   {
@@ -1072,7 +1074,7 @@ However, translating your Indian MBBS or MD/MS degree, passing the C1 *Fachsprac
 
 **Are you ready to take the next step toward a medical career in Germany?** 
 
-Don't navigate this complex transition alone. **Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We will evaluate your profile, build your personalized language and licensing roadmap, and help you transition seamlessly to a high-paying clinical career in Germany.
+Don't navigate this complex transition alone. **Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We will evaluate your profile, build your personalized language and licensing roadmap, and help you transition seamlessly to a high-paying clinical career in Germany.
 `
   },
   {
@@ -1216,7 +1218,7 @@ Yes, clinical liability insurance (*Berufshaftpflichtversicherung*) is mandatory
 ### Conclusion: Launch Your German Medical Career
 A Hospitation is the bridge that turns your dream of practicing medicine in Germany into a reality. By offering firsthand exposure to the daily hospital workflow, an environment to practice clinical German, and networking opportunities, it is an invaluable phase for any Indian doctor. 
 
-Planning your journey, applying to hospitals, and arranging documents can be complex. **Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
+Planning your journey, applying to hospitals, and arranging documents can be complex. **Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap.
 `
   },
   {
@@ -1372,7 +1374,7 @@ A *Zahnarzt* is a general dentist who holds the Approbation and can practice gen
 
 Relocating to Germany as a dentist is a major step that requires structured planning, language dedication, and resilience. While the regulatory hurdles may seem demanding, breaking down the process into clear phases—from language mastery to clinical practice under the Berufserlaubnis—makes the journey highly manageable. By avoiding common pitfalls and using structured preparation strategies, you can successfully secure your dental Approbation and build a thriving career in Germany.
 
-**Are you ready to start your journey?** Let us help you navigate the process. Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let's make your dream of practicing dentistry in Germany a reality.
+**Are you ready to start your journey?** Let us help you navigate the process. Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let's make your dream of practicing dentistry in Germany a reality.
 `
   },
   {
@@ -1571,7 +1573,7 @@ A sworn translation carries total legal force, validating your documents word-fo
 
 Securing your MEA apostille and obtaining sworn translations is the administrative foundation of your journey to practicing medicine in Germany. By following a structured approach, obtaining HRD attestation first, securing the MEA apostille, and using a registered German sworn translator, you can prevent delays and set yourself up for a successful application.
 
-Do not let paperwork stall your medical career in Germany. **Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let's work together to make your German medical career a reality.
+Do not let paperwork stall your medical career in Germany. **Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let's work together to make your German medical career a reality.
 `
   },
   {
@@ -1708,7 +1710,7 @@ Choosing between the Job Seeker Visa and a direct Work Visa depends heavily on w
 Navigating German immigration and medical bureaucracy is complex, and errors can result in years of delay. 
 
 **Ready to start your medical career in Germany?** 
-Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We will assess your eligibility, guide you through the document recognition process, and help you select the ideal visa pathway.
+Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We will assess your eligibility, guide you through the document recognition process, and help you select the ideal visa pathway.
 `
   },
   {
@@ -2040,7 +2042,7 @@ Mastering **German medical terminology** is the key that unlocks your clinical c
 
 Are you ready to take your German medical vocabulary to the next level and prepare for your FSP? 
 
-**Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We offer specialized FSP coaching, customized language roadmaps, and complete licensing support to help Indian doctors successfully transition to a rewarding medical career in Germany. Let's make your dream a reality!
+**Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We offer specialized FSP coaching, customized language roadmaps, and complete licensing support to help Indian doctors successfully transition to a rewarding medical career in Germany. Let's make your dream a reality!
 `
   },
   {
@@ -2258,7 +2260,7 @@ Writing a perfect *Motivationsschreiben for German hospitals* is a critical mile
 Navigating the German medical job market, language exams, and recognition process (*Anerkennungsverfahren*) can be challenging. We specialize in helping Indian doctors make a smooth transition to Germany, from document preparation to job placement.
 
 **Ready to start your medical career in Germany?**
-[Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta](#what-is-doctor-housing-in-germany-definition-and-legal-context)
+[Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta](#what-is-doctor-housing-in-germany-definition-and-legal-context)
 - [Types of Accommodation: A Detailed Breakdown](#types-of-accommodation-a-detailed-breakdown)
   - [1. Hospital Staff Residences (Personalwohnheim)](#1-hospital-staff-residences-personalwohnheim)
   - [2. Temporary Furnished Apartments (Zwischenmiete & Portals)](#2-temporary-furnished-apartments-zwischenmiete--portals)
@@ -2467,7 +2469,7 @@ Finding **accommodation in Germany for doctors** requires careful preparation, c
 
 Navigating the logistics of a transnational move, aligning visa timelines, and communicating with German employers can be challenging. We specialize in helping Indian doctors manage this transition seamlessly.
 
-**Ready to start your medical career in Germany?** Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let us handle the bureaucracy while you focus on medicine. Let’s make your dream a reality!
+**Ready to start your medical career in Germany?** Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. Let us handle the bureaucracy while you focus on medicine. Let’s make your dream a reality!
 `
   },
   {
@@ -2648,7 +2650,7 @@ No, minor children do not need to prove German language skills to get a family r
 
 Successfully executing a **family relocation Germany healthcare** plan requires patience, meticulous document organization, and a clear understanding of German immigration law. By preparing your documents early, choosing a staggered relocation strategy, and helping your family prepare linguistically, you can establish a secure, high-quality life in Germany. 
 
-Navigating this process while working demanding hospital shifts can be challenging. If you want to ensure your family's visa paperwork is flawless and your relocation is stress-free, **Join our free weekly webinar on coming Sunday (12-2 PM) with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We specialize in helping Indian medical professionals build their careers and lives in Germany.
+Navigating this process while working demanding hospital shifts can be challenging. If you want to ensure your family's visa paperwork is flawless and your relocation is stress-free, **Join our free weekly webinar on coming ${WEBINAR_DATE} with Dr. Sangeeta to ask your questions directly and build your personalized roadmap. We specialize in helping Indian medical professionals build their careers and lives in Germany.
 
 ---
 *About the Author: Dr. Sandeep Amin is a senior medical consultant and mentor helping international healthcare professionals successfully transition to careers in the German medical system.*

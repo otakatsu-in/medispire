@@ -1,11 +1,12 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useBooking } from "@/components/BookingContext";
-import { SEO } from "@/components/SEO";
 import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { WEBINAR_DATE } from "@/config/webinar";
 import { 
   Stethoscope, GraduationCap, FileCheck, 
   Globe2, Building2, BookOpen,
@@ -40,12 +41,11 @@ const faqs = [
 export default function ForDoctors() {
   const { openBooking } = useBooking();
 
-  useEffect(() => {
-    document.title = "For Doctors | MBBS/MD/MS Pathway to Germany | MediSpire";
-  }, []);
+  
 
   return (
     <div className="w-full bg-[#F8FAFC]">
+      <SEO title="For Doctors | MBBS/MD/MS Pathway to Germany | MediSpire" description="Premium guidance and placement portal for healthcare professionals moving to Germany." />
       <SEO 
         title="For Doctors | MBBS & MD/MS Pathway to Germany | MediSpire"
         description="The ultimate guide for Indian doctors. Learn the exact steps to get your German Approbation, pass the FSP & KP exams, and secure a high-paying residency."
@@ -195,7 +195,7 @@ export default function ForDoctors() {
       <section className="py-16 px-4 bg-white text-center">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Stop reading generic advice.<br />Speak to a Doctor who did it.</h2>
-          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a personalized roadmap.</p>
+          <p className="text-sm text-muted-foreground mb-8">Join our Free Weekly Webinar on {WEBINAR_DATE} to ask your questions directly to Dr. Sangeeta and get a personalized roadmap.</p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:-translate-y-0.5" onClick={openBooking}>
             Join Free Webinar <ChevronRight className="ml-1 w-5 h-5" />
           </Button>

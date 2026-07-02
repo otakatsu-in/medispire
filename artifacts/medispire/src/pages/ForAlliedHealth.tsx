@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { useBooking } from "@/components/BookingContext";
@@ -7,7 +8,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pill, Scan, SmilePlus, MessageCircle, ArrowRight, Stethoscope, ChevronRight, Euro } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SEO } from "@/components/SEO";
 
 const professions = [
   {

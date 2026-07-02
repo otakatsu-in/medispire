@@ -1,5 +1,7 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { Link } from "wouter";
+import { WEBINAR_DATE } from "@/config/webinar";
 import { motion } from "framer-motion";
 import { useBooking } from "@/components/BookingContext";
 import { Button } from "@/components/ui/button";
@@ -51,9 +53,7 @@ const testimonials = [
 export default function Home() {
   const { openBooking } = useBooking();
 
-  useEffect(() => {
-    document.title = "MediSpire | Key to your practice in Germany";
-  }, []);
+  
 
   const fadeUp = {
     initial: { opacity: 0, y: 18 },
@@ -64,6 +64,23 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
+      <SEO 
+        title="MediSpire | Key to your practice in Germany" 
+        description="Premium guidance and placement portal for healthcare professionals moving to Germany." 
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "MedicalOrganization",
+          "name": "MediSpire",
+          "url": "https://medispire.in",
+          "logo": "https://medispire.in/logo.png",
+          "description": "Premium guidance and placement portal for healthcare professionals moving to Germany.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Greven",
+            "addressCountry": "DE"
+          }
+        }}
+      />
       
       {/* ── 1. HERO ───────────────────────────────────────────────────── */}
       <section
@@ -196,6 +213,7 @@ export default function Home() {
                   <img
                     src={founder.photo}
                     alt={founder.name}
+                    loading="lazy"
                     className="w-28 h-28 sm:w-full sm:h-auto object-contain rounded-xl"
                   />
                 </div>
@@ -437,7 +455,7 @@ export default function Home() {
               Take the First Step Towards Your German Medical Career
             </h2>
             <p className="text-white/70 text-base mb-10 max-w-xl mx-auto">
-              Join our Free Weekly Webinar on Sunday (12-2 PM) to ask your questions directly to Dr. Sangeeta and get a personalized roadmap. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin and Dr. Sangeeta Pai.
+              Join our Free Weekly Webinar on {WEBINAR_DATE} to ask your questions directly to Dr. Sangeeta and get a personalized roadmap. Once enrolled, you'll receive direct mentorship from Dr. Sandeep Amin and Dr. Sangeeta Pai.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button

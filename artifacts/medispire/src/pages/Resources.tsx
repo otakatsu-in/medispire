@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -7,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import { PageHero } from "@/components/PageHero";
-import { SEO } from "@/components/SEO";
 import { FileText, Download, BookOpen, HelpCircle } from "lucide-react";
 
 const leadMagnets = [
@@ -106,7 +106,7 @@ export default function Resources() {
 
   // Title handled by SEO component
 
-  const faqSchema = JSON.stringify({
+  const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqCategories.flatMap(cat => cat.faqs).map(f => ({
@@ -117,7 +117,7 @@ export default function Resources() {
         "text": f.a
       }
     }))
-  });
+  };
 
   const handleDownloadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,28 +125,21 @@ export default function Resources() {
     const email = formData.get("email") as string;
     
     try {
-      const text = `📚 <b>New Resource Download!</b>\n
-<b>Email:</b> ${email}
-<b>Resource:</b> ${selectedResource}`;
+      const response = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "",
+          email,
+          phone: "",
+          profession: "",
+          subject: "Resource Download",
+          message: `Requested resource: ${selectedResource}`,
+          source: "Resources Page Download",
+        }),
+      });
 
-      const chatIds = ["-1004295292660", "417335028"];
-      const responses = await Promise.all(
-        chatIds.map(chatId => 
-          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: text,
-              parse_mode: "HTML",
-            }),
-          })
-        )
-      );
-
-      if (!responses.every(r => r.ok)) throw new Error("Failed");
+      if (!response.ok) throw new Error("Failed");
       
       toast({ title: "Guide sent!", description: `Check your inbox at ${email}` });
       setDownloadModalOpen(false);
@@ -160,7 +153,7 @@ export default function Resources() {
       <SEO
         title="Resources & FAQ | MediSpire"
         description="Free guides, glossary of German medical terms, and comprehensive FAQ for Indian doctors, dentists, and nurses planning to move to Germany."
-        canonical="https://medispire.in/resources"
+        canonical="/resources"
         schema={faqSchema}
       />
 

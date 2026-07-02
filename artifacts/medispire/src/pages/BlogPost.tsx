@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { useBooking } from "@/components/BookingContext";
@@ -10,7 +11,6 @@ import { Facebook, Instagram, Youtube, MessageCircle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { blogPosts } from "@/data/blogs";
-import { SEO } from "@/components/SEO";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -49,26 +49,21 @@ export default function BlogPost() {
     const email = (form.elements.namedItem("email") as HTMLInputElement).value;
     
     try {
-      const text = `📰 <b>New Newsletter Subscriber!</b>\n\n<b>Name:</b> ${name}\n<b>Email:</b> ${email}`;
-      
-      const chatIds = ["-1004295292660", "417335028"];
-      const responses = await Promise.all(
-        chatIds.map(chatId => 
-          fetch("https://api.telegram.org/bot8077312072:AAEx94EiWIV4D0KaND_9UciGeANqRVUrkiY/sendMessage", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: text,
-              parse_mode: "HTML",
-            }),
-          })
-        )
-      );
+      const response = await fetch("/api/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: "",
+          profession: "",
+          subject: "Newsletter Subscription",
+          message: `Newsletter subscriber from blog post: ${post?.title ?? "Blog"}`,
+          source: "Blog Newsletter Sidebar",
+        }),
+      });
 
-      if (!responses.every(r => r.ok)) throw new Error("Failed to subscribe");
+      if (!response.ok) throw new Error("Failed to subscribe");
 
       toast({
         title: "Subscribed!",
@@ -84,7 +79,7 @@ export default function BlogPost() {
     }
   };
 
-  const articleSchema = post ? JSON.stringify({
+  const articleSchema = post ? {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
@@ -103,7 +98,7 @@ export default function BlogPost() {
     },
     "datePublished": post.date,
     "description": post.excerpt
-  }) : undefined;
+  } : undefined;
 
   return (
     <div className="w-full">
@@ -111,7 +106,7 @@ export default function BlogPost() {
         <SEO 
           title={post.title} 
           description={post.excerpt} 
-          canonical={`https://medispire.in/blog/${post.slug}`}
+          canonical={`/blog/${post.slug}`}
           schema={articleSchema}
         />
       )}

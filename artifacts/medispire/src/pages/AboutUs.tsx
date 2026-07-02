@@ -1,15 +1,42 @@
+import { SEO } from "@/components/SEO";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Eye, Users, FileX } from "lucide-react";
 
 export default function AboutUs() {
-  useEffect(() => {
-    document.title = "About Us | MediSpire";
-  }, []);
+  
 
   return (
     <div className="w-full">
+      <SEO 
+        title="About Us | MediSpire" 
+        description="Learn about Dr. Sandeep Amin and Dr. Sangeeta Pai, the founders of MediSpire, and how they help healthcare professionals move to Germany." 
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "mainEntity": [
+            {
+              "@type": "Person",
+              "name": "Dr. Sandeep Amin",
+              "jobTitle": "Founder & CEO",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "MediSpire"
+              }
+            },
+            {
+              "@type": "Person",
+              "name": "Dr. Sangeeta Pai",
+              "jobTitle": "Co-Founder & COO",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "MediSpire"
+              }
+            }
+          ]
+        }}
+      />
       {/* Header */}
       <section className="bg-secondary py-16 px-4">
         <div className="container mx-auto text-center max-w-3xl">
@@ -31,7 +58,7 @@ export default function AboutUs() {
               className="space-y-6"
             >
               <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-muted shadow-xl border border-border">
-                <img src="/dr-sandeep.png" alt="Dr. Sandeep Amin" className="w-full h-auto" />
+                <img src="/dr-sandeep.png" alt="Dr. Sandeep Amin" loading="lazy" className="w-full h-auto" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sandeep Amin</h3>
@@ -49,7 +76,7 @@ export default function AboutUs() {
               className="space-y-6"
             >
               <div className="max-w-md mx-auto rounded-2xl overflow-hidden bg-muted shadow-xl border border-border">
-                <img src="/dr-sangeeta.png" alt="Dr. Sangeeta Pai" className="w-full h-auto" />
+                <img src="/dr-sangeeta.png" alt="Dr. Sangeeta Pai" loading="lazy" className="w-full h-auto" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Dr. Sangeeta Pai</h3>
