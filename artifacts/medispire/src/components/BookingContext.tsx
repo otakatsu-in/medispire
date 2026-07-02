@@ -103,7 +103,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
-              <Input id="phone" name="phone" type="tel" />
+              <Input id="phone" name="phone" type="tel" required minLength={8} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="profession">Profession</Label>
