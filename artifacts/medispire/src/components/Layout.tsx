@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Menu, X, Facebook, Instagram, Youtube, MessageCircle, Phone, Mail, ChevronDown, BookOpen } from "lucide-react";
+import { WEBINAR_DATE } from "@/config/webinar";
 
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
@@ -174,7 +175,7 @@ export function Layout({ children }: { children: ReactNode }) {
               onClick={openBooking} 
               className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all ring-2 ring-transparent hover:ring-accent/30"
             >
-              Join Free Webinar (Sunday 12-2 PM)
+              Join Free Webinar
             </Button>
           </div>
 
@@ -264,13 +265,11 @@ export function Layout({ children }: { children: ReactNode }) {
             
             <div className="mt-4 pt-4 border-t border-white/10">
               <Button onClick={() => { openBooking(); setMobileMenuOpen(false); }} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold py-6 text-base rounded-xl shadow-lg leading-tight">
-                Join Free Webinar<br/><span className="text-xs opacity-90">Sunday 12-2 PM</span>
+                Join Free Webinar
               </Button>
             </div>
           </div>
         )}
-      </header>
-
       <main className="flex-1">
         {children}
       </main>
@@ -366,7 +365,7 @@ export function Layout({ children }: { children: ReactNode }) {
       {/* Sticky Mobile CTA */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 p-3 bg-background border-t border-border z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex items-center justify-between pb-safe">
         <Button onClick={openBooking} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-base h-12 rounded-xl shadow-md">
-          Join Free Webinar (Sunday 12-2 PM)
+          Join Free Webinar
         </Button>
       </div>
 
