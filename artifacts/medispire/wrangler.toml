@@ -1,0 +1,24 @@
+# Cloudflare Pages project configuration
+# Used for local dev via: npx wrangler pages dev ./dist --compatibility-date=2024-12-01
+#
+# ⚠️  SECRETS must be set in the Cloudflare Dashboard:
+#     Pages → medispire → Settings → Environment Variables
+#     Do NOT put real secret values in this file.
+#
+# Required environment variables:
+#
+#   TELEGRAM_BOT_TOKEN   — Bot token from @BotFather (Secret)
+#   TELEGRAM_CHAT_ID     — Personal DM chat ID (comma-separated if multiple)
+#   TELEGRAM_GROUP_ID    — Group/channel chat ID (optional)
+#   DATABASE_URL         — Neon PostgreSQL connection string (Secret)
+#   BREVO_API_KEY        — Brevo transactional email API key (Secret, optional)
+
+name = "medispire"
+pages_build_output_dir = "dist/public"
+compatibility_date = "2024-12-01"
+
+# ── Local dev placeholder vars (non-secret only) ──────────────────────────────
+# Real secrets must still be set in the dashboard or via `wrangler secret put`
+[vars]
+TELEGRAM_CHAT_ID  = "417335028"
+TELEGRAM_GROUP_ID = "-1004295292660"
