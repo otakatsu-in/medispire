@@ -60,10 +60,18 @@ export default function ReadinessChecklist() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("medispire_readiness");
+    const saved = localStorage.getItem("medispire_readiness_v2");
     if (saved) {
       try {
-        setChecklist(JSON.parse(saved));
+        const checkedTaskIds = JSON.parse(saved) as Record<string, boolean>;
+        const mergedChecklist = defaultChecklist.map(cat => ({
+          ...cat,
+          tasks: cat.tasks.map(t => ({
+            ...t,
+            checked: checkedTaskIds[t.id] ?? t.checked
+          }))
+        }));
+        setChecklist(mergedChecklist);
       } catch (e) {
         console.error("Failed to parse saved checklist");
       }
@@ -73,7 +81,15 @@ export default function ReadinessChecklist() {
 
   const saveChecklist = (newChecklist: Category[]) => {
     setChecklist(newChecklist);
-    localStorage.setItem("medispire_readiness", JSON.stringify(newChecklist));
+    
+    const checkedTaskIds: Record<string, boolean> = {};
+    newChecklist.forEach(cat => {
+      cat.tasks.forEach(t => {
+        if (t.checked) checkedTaskIds[t.id] = true;
+      });
+    });
+    
+    localStorage.setItem("medispire_readiness_v2", JSON.stringify(checkedTaskIds));
   };
 
   const toggleTask = (catId: string, taskId: string) => {
