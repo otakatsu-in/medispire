@@ -13,16 +13,24 @@ import {
 } from "lucide-react";
 
 const courseModules = [
-  { title: "Why Germany?", duration: "1 hr", icon: "globe", lessons: ["Why Germany needs Indian healthcare professionals right now","Healthcare system overview (public vs. private, Krankenhäuser vs. Praxis)","Realistic salary expectations by profession and city","Life in Germany: culture, cost of living, community, pros and cons","Dr. Sangeeta's and Dr. Sandeep's personal stories"] },
-  { title: "Are You Eligible?", duration: "45 mins", icon: "check", lessons: ["Eligibility by profession: doctors, dentists, nurses, radiographers, physios","Degree recognition overview: what Germany checks and why","Common misconceptions (\"my degree won't be valid\" vs. reality)","Self-assessment checklist: where are you right now?"] },
-  { title: "The German Language Roadmap", duration: "1.5 hrs", icon: "languages", lessons: ["Why German is non-negotiable (B2 minimum requirement for most healthcare roles)","A1 → A2 → B1 → B2 → C1: what each level means practically","Medical German vs. general German — the FSP difference","Best institutes, apps, and methods to learn German in India","How long it realistically takes (8–18 months for A1 to B2/C1)"] },
-  { title: "The FSP Explained", duration: "1.5 hrs", icon: "stethoscope", lessons: ["What is the Fachsprachprüfung (FSP) and why it matters","FSP exam structure: patient history, clinical documentation, colleague communication","Common mistakes and how to avoid them","How to prepare specifically for FSP (not just general B2)","FSP timelines and booking slots by state"] },
-  { title: "Documents: The Make-or-Break Stage", duration: "1.5 hrs", icon: "file", lessons: ["Complete document checklist for MBBS doctors, BDS, nurses, and allied health","Apostille process in India: step-by-step","Certified German translations: what's needed, what it costs, where to get it","Documents from Indian universities and medical councils","Police Clearance Certificate, Good Standing Certificate, Health Certificate","Organizing your file: the \"complete application\" method"] },
-  { title: "Choosing the Right German State", duration: "1 hr", icon: "shield", lessons: ["Why the state you apply to matters enormously","State authority (Landesprüfungsamt) differences","How to match your profile to the right state","Berufserlaubnis: what it is and when to use it"] },
-  { title: "Approbation: Your Permanent License", duration: "1.5 hrs", icon: "award", lessons: ["What is Approbation and why it's your ultimate goal","The equivalence assessment process","Kenntnisprüfung (KP): who needs it, what it covers, how to prepare","Defizitbescheid: what happens if your degree isn't fully equivalent","Realistic timeline: 12–30 months from start to Approbation"] },
-  { title: "Securing Your Job in Germany", duration: "1.5 hrs", icon: "banknote", lessons: ["How to write a German-style medical CV (completely different from Indian CV)","Cover letter strategy for hospitals and clinics","Where to find jobs: job portals, hospital websites, agencies","How to apply as a dentist vs. doctor vs. nurse","Interview preparation in German","Assistenzarzt pathway for doctors; ward nurse roles for nurses"] },
-  { title: "Visa & Relocation", duration: "1 hr", icon: "zap", lessons: ["German employment visa requirements","EU Blue Card: eligibility and benefits","Blocked account (Sperrkonto) explained","Health insurance requirements before arrival","What to pack, what to sort before leaving India","First 30 days in Germany: practical checklist"] },
-  { title: "Life After You Land", duration: "45 mins", icon: "star", lessons: ["Opening a bank account, getting a tax ID, registering at Einwohnermeldeamt","Finding accommodation in Germany","Indian community, cultural adaptation","What Dr. Sangeeta wishes she had known before moving","Dr. Sandeep's perspective from interventional radiology"] },
+  { title: "Module 1: Why Germany?", duration: "1 hr", icon: "globe", lessons: ["Universal: Why Germany needs Indian healthcare professionals", "Universal: Healthcare system overview", "Universal: Realistic salary expectations", "Universal: Dr. Sangeeta's and Dr. Sandeep's personal stories"] },
+  { title: "Module 2: Are You Eligible?", duration: "1 hr", icon: "check", lessons: ["Universal: How eligibility assessment works", "For Doctors (MBBS)", "For Dentists (BDS)", "For Nurses (GNM / B.Sc / M.Sc Nursing)", "For Radiographers / MTRA", "For Physiotherapists & Allied Health", "Universal: Self-assessment checklist walkthrough"] },
+  { title: "Module 3: The German Language Roadmap", duration: "1.5 hrs", icon: "languages", lessons: ["Universal: A1–C1 levels explained", "Universal: Realistic timelines and how to learn", "Universal: Medical German vs General German", "Doctor/Dentist-specific language needs (FSP-oriented)", "Nurse/Radiographer/Physio-specific language needs"] },
+  { title: "Module 4: Clinical & Language Exams", duration: "1.5 hrs", icon: "stethoscope", lessons: ["Universal: Why every profession has a language/knowledge checkpoint", "For Doctors: FSP — structure, prep, booking, state timelines", "For Dentists: FSP for dentistry", "For Nurses: Anerkennung exam / adaptation period", "For Radiographers & Physios: Profession-specific exams"] },
+  { title: "Module 5: Documents — The Make-or-Break Stage", duration: "1.5 hrs", icon: "file", lessons: ["Universal: Apostille, translation, general document rules", "For Doctors: MCI/NMC documents, internship, Good Standing", "For Dentists: DCI-specific documents", "For Nurses: INC/state nursing council documents", "For Radiographers & Allied Health: Council-specific documents", "Universal: The \"complete application\" checklist method"] },
+  { title: "Module 6: Choosing the Right German State", duration: "1 hr", icon: "shield", lessons: ["Universal: Why state selection matters, Landesprüfungsamt differences", "Doctor/Dentist-specific: State-wise FSP/KP waiting times", "Nurse/Allied-specific: State-wise Anerkennung processing speed"] },
+  { title: "Module 7: Licensing Pathways", duration: "1.5 hrs", icon: "award", lessons: ["Universal: Temporary vs permanent licenses explained", "For Doctors: Approbation, Defizitbescheid, Kenntnisprüfung, Berufserlaubnis", "For Dentists: Approbation pathway", "For Nurses: Anerkennung, Full vs Partial Recognition, §16d Visa", "For Radiographers & Physios: Recognition notice (Anerkennungsbescheid)"] },
+  { title: "Module 8: Securing a Job in Germany", duration: "1.5 hrs", icon: "banknote", lessons: ["Universal: German-style CV and cover letter", "Universal: Where to find jobs", "For Doctors: Assistenzarzt pathway, interviews", "For Dentists: Zahnarztpraxis applications", "For Nurses: Ward nurse roles, ICU/surgical, working during Anerkennungsphase", "For Radiographers & Physios: MTRA and rehab clinic applications"] },
+  { title: "Module 9: Visa & Work Authorization", duration: "1 hr", icon: "zap", lessons: ["Universal: Employment visa checklist, EU Blue Card", "Universal: Blocked account, health insurance basics", "Doctor/Dentist-specific visa nuances", "Nurse-specific: §16d Recognition Visa details"] },
+  { title: "Module 10: Before You Pack Your Bags", duration: "45 mins", icon: "star", lessons: ["What to bring vs buy locally", "Documents to carry physically", "Packing checklist", "Money to carry"] },
+  { title: "Module 11: Apartment Hunting in Germany", duration: "45 mins", icon: "globe", lessons: ["WG-Gesucht, ImmobilienScout24", "Kaltmiete vs Warmmiete, Kaution", "Schufa score", "Viewing etiquette, scams to avoid"] },
+  { title: "Module 12: German Bureaucracy 101", duration: "45 mins", icon: "fileText", lessons: ["Anmeldung", "Bürgeramt", "Ausländerbehörde", "Steuer-ID", "Appointment culture (Terminvereinbarung)"] },
+  { title: "Module 13: Banking, Money & Taxes", duration: "45 mins", icon: "banknote", lessons: ["N26/DKB vs traditional banks", "Tax basics", "Church tax", "Sending money home"] },
+  { title: "Module 14: The German Healthcare System", duration: "45 mins", icon: "stethoscope", lessons: ["Public vs private insurance", "Finding a Hausarzt", "Apotheke culture", "Emergency numbers"] },
+  { title: "Module 15: Police, Safety & Legal Basics", duration: "30 mins", icon: "shield", lessons: ["Address registration", "Safety norms", "Legal differences from India", "Emergency contacts"] },
+  { title: "Module 16: German Culture & Etiquette", duration: "45 mins", icon: "users", lessons: ["Punctuality", "Directness", "Mülltrennung (Waste sorting)", "Ruhezeit (Quiet hours)", "Small talk, tipping"] },
+  { title: "Module 17: Daily Life & Practical Living", duration: "45 mins", icon: "calendar", lessons: ["Grocery shopping", "Sunday closing laws", "Transport, SIM/internet", "Seasonal clothing", "Cost of living by city"] },
+  { title: "Module 18: Life After You Move", duration: "45 mins", icon: "star", lessons: ["Homesickness", "Social circle", "Indian community", "Mental health", "Family relocation"] },
 ];
 
 const freebies = [
@@ -35,9 +43,49 @@ const freebies = [
 ];
 
 const pricingTiers = [
-  { name: "Basic", price: "₹4,999", euro: "~€47", features: ["All 10 course video modules", "Standard PDF downloads"], cta: "Enroll Basic", msg: "Hi! I'm interested in the Basic tier (₹4,999) of the MediSpire Blueprint Course.", highlighted: false },
-  { name: "Standard", price: "₹9,999", euro: "~€93", badge: "Most Popular", features: ["Everything in Basic", "All 6 Freebie Templates & Checklists", "Exclusive Community Access", "1 Q&A Live Webinar per month"], cta: "Enroll Standard", msg: "Hi! I'm interested in the Standard tier (₹9,999) of the MediSpire Blueprint Course.", highlighted: true },
-  { name: "Premium", price: "₹14,999", euro: "~€140", features: ["Everything in Standard", "30-min 1-on-1 Strategy Call with Dr. Sangeeta"], cta: "Enroll Premium", msg: "Hi! I'm interested in the Premium tier (₹14,999) of the MediSpire Blueprint Course.", highlighted: false },
+  { 
+    name: "Healthcare German Plan", 
+    price: "₹4,999", 
+    euro: "~€47", 
+    features: [
+      { text: "The Clinical Foundation (9 Medical Modules)", included: true },
+      { text: "For Doctors, Dentists, Nurses & Allied Health", included: true },
+      { text: "Standard PDF downloads", included: true },
+      { text: "The Settlement Playbook (9 Lifestyle Modules)", included: false },
+      { text: "1-on-1 Strategy Call", included: false }
+    ], 
+    cta: "Enroll in Plan", 
+    highlighted: false 
+  },
+  { 
+    name: "Complete German Guide A to Z", 
+    price: "₹9,999", 
+    euro: "~€93", 
+    badge: "Most Popular", 
+    features: [
+      { text: "The Clinical Foundation (9 Medical Modules)", included: true },
+      { text: "The Settlement Playbook (9 Lifestyle Modules)", included: true },
+      { text: "All 6 Freebie Templates & Checklists", included: true },
+      { text: "Exclusive Community Access & Q&A", included: true },
+      { text: "1-on-1 Strategy Call", included: false }
+    ], 
+    cta: "Enroll in Complete Guide", 
+    highlighted: true 
+  },
+  { 
+    name: "Complete Guide + 1-on-1", 
+    price: "₹14,999", 
+    euro: "~€140", 
+    features: [
+      { text: "The Clinical Foundation (9 Medical Modules)", included: true },
+      { text: "The Settlement Playbook (9 Lifestyle Modules)", included: true },
+      { text: "All 6 Freebie Templates & Checklists", included: true },
+      { text: "Exclusive Community Access & Q&A", included: true },
+      { text: "30-min 1-on-1 Strategy Call with Dr. Sangeeta", included: true }
+    ], 
+    cta: "Enroll in Premium", 
+    highlighted: false 
+  },
 ];
 
 function ModuleItem({ module, index, isOpen, toggle }: { module: typeof courseModules[0]; index: number; isOpen: boolean; toggle: () => void }) {
@@ -69,11 +117,15 @@ function ModuleItem({ module, index, isOpen, toggle }: { module: typeof courseMo
   );
 }
 
+const trackAModules = courseModules.slice(0, 9);
+const trackBModules = courseModules.slice(9);
+
 export default function CoursePage() {
   const { openBooking } = useBooking();
-  const [openModule, setOpenModule] = useState<number | null>(0);
+  const [openModule, setOpenModule] = useState<string | null>("A-0");
 
   const handleWhatsApp = (msg: string) => window.open(`https://wa.me/918310010112?text=${encodeURIComponent(msg)}`, "_blank");
+  const handleEnroll = () => window.open("https://superprofile.bio/course/Medispire-early-access", "_blank");
 
   return (
     <div className="w-full bg-white">
@@ -100,7 +152,7 @@ export default function CoursePage() {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-4 text-base rounded-full shadow-[0_0_30px_rgba(234,179,8,0.4)] hover:shadow-[0_0_45px_rgba(234,179,8,0.6)] transition-all" onClick={() => handleWhatsApp("Hi! I want to enroll in the MediSpire Blueprint Course. Please share the details.")}>
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-4 text-base rounded-full shadow-[0_0_30px_rgba(234,179,8,0.4)] hover:shadow-[0_0_45px_rgba(234,179,8,0.6)] transition-all" onClick={handleEnroll}>
                 Enroll Now <ArrowRight className="ml-2" size={18}/>
               </Button>
               <Button size="lg" variant="outline" className="border-white/25 text-white bg-white/8 hover:bg-white/15 font-semibold px-10 py-4 text-base rounded-full backdrop-blur-sm" onClick={openBooking}>
@@ -154,15 +206,40 @@ export default function CoursePage() {
       {/* CURRICULUM */}
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <span className="text-accent font-bold text-xs tracking-widest uppercase">The Curriculum</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2 mb-3">10 Modules. No fluff. No gaps.</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">Each module is taught by a doctor who lived through it. Click any module to preview what's inside.</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2 mb-3">18 Modules. Two Distinct Tracks.</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">We've separated the core medical processes from practical living advice. See exactly what you get in each track.</p>
           </div>
-          <div className="space-y-3">
-            {courseModules.map((m, i) => (
-              <ModuleItem key={i} module={m} index={i} isOpen={openModule === i} toggle={() => setOpenModule(openModule === i ? null : i)} />
-            ))}
+          
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+               <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-black text-xl shrink-0">A</div>
+               <div>
+                 <h3 className="text-2xl font-bold text-primary">The Clinical Foundation</h3>
+                 <p className="text-sm font-medium text-muted-foreground">Included in all plans (9 Medical Modules, ~9-10 hours)</p>
+               </div>
+            </div>
+            <div className="space-y-3">
+              {trackAModules.map((m, i) => (
+                <ModuleItem key={`A-${i}`} module={m} index={i} isOpen={openModule === `A-${i}`} toggle={() => setOpenModule(openModule === `A-${i}` ? null : `A-${i}`)} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+               <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center text-primary font-black text-xl shrink-0">B</div>
+               <div>
+                 <h3 className="text-2xl font-bold text-primary">The Settlement Playbook</h3>
+                 <p className="text-sm font-medium text-muted-foreground">Included in 'Complete German Guide' and '1-on-1' tiers (9 Lifestyle Modules, ~7-8 hours)</p>
+               </div>
+            </div>
+            <div className="space-y-3">
+              {trackBModules.map((m, i) => (
+                <ModuleItem key={`B-${i}`} module={m} index={i + 9} isOpen={openModule === `B-${i}`} toggle={() => setOpenModule(openModule === `B-${i}` ? null : `B-${i}`)} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -219,16 +296,25 @@ export default function CoursePage() {
                     <div className={`text-sm mt-1.5 ${tier.highlighted ? "text-white/55" : "text-muted-foreground"}`}>{tier.euro} · one-time payment</div>
                   </div>
                   <ul className="space-y-4 flex-1 mb-8">
-                    {tier.features.map((f, j) => (
-                      <li key={j} className="flex items-start gap-3">
-                        <CheckCircle2 className="text-accent shrink-0 mt-0.5" size={17}/>
-                        <span className={`text-sm leading-snug ${tier.highlighted ? "text-white/85" : "text-foreground/75"}`}>{f}</span>
-                      </li>
-                    ))}
+                    {tier.features.map((f, j) => {
+                      const isString = typeof f === 'string';
+                      const text = isString ? f : f.text;
+                      const included = isString ? true : f.included;
+                      return (
+                        <li key={j} className={`flex items-start gap-3 ${!included ? 'opacity-50' : ''}`}>
+                          {included ? (
+                            <CheckCircle2 className="text-accent shrink-0 mt-0.5" size={17}/>
+                          ) : (
+                            <div className="w-[17px] h-[17px] mt-0.5 shrink-0 flex items-center justify-center"><div className="w-1.5 h-px bg-current rounded-full" /></div>
+                          )}
+                          <span className={`text-sm leading-snug ${tier.highlighted ? (included ? "text-white/90" : "text-white/50") : (included ? "text-foreground/80" : "text-foreground/50")}`}>{text}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                   <Button
                     className={`w-full h-12 font-bold rounded-xl transition-all ${tier.highlighted ? "bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_20px_rgba(234,179,8,0.3)]" : "bg-transparent border-2 border-border hover:border-primary/40 hover:bg-primary/5 text-foreground"}`}
-                    onClick={() => handleWhatsApp(tier.msg)}
+                    onClick={handleEnroll}
                   >
                     {tier.cta}
                   </Button>

@@ -417,7 +417,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">Germany Ready Blueprint</h3>
                   <p className="text-muted-foreground mb-6">
-                    The only A-Z course taught by practicing Indian-origin doctors in Germany. 10 modules, 12+ hours, 3 tiers starting at ₹4,999.
+                    The only A-Z course taught by practicing Indian-origin doctors in Germany. 18 modules, 16+ hours, 3 tiers starting at ₹4,999.
                   </p>
                   <span className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
                     View Curriculum & Enroll <ChevronRight size={16} />
