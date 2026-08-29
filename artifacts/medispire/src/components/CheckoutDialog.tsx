@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 interface CheckoutDialogProps {
-  product: "consultation" | "course" | "course_9999";
+  product: "consultation" | "course" | "course_9999" | "prebook";
   amountLabel: string;
   buttonText: string;
   buttonClassName?: string;
@@ -109,7 +109,9 @@ export function CheckoutDialog({ product, amountLabel, buttonText, buttonClassNa
         <DialogHeader>
           <DialogTitle>Complete Your Booking</DialogTitle>
           <DialogDescription>
-            You are about to purchase the {product === "consultation" ? "1-on-1 Consultation" : product === "course_9999" ? "Complete Guide Course" : "Premium Course Bundle"} for {amountLabel}.
+            {product === "prebook" 
+              ? "You are pre-booking the Germany Ready Course. Lock in a 50% discount on launch day for a deposit of ₹500." 
+              : `You are about to purchase the ${product === "consultation" ? "1-on-1 Consultation" : product === "course_9999" ? "Complete Guide Course" : "Premium Course Bundle"} for ${amountLabel}.`}
           </DialogDescription>
         </DialogHeader>
         

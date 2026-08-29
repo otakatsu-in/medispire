@@ -16,6 +16,8 @@ export async function onRequestPost(context) {
       amount = 14999;
     } else if (product === "course_9999") {
       amount = 9999;
+    } else if (product === "prebook") {
+      amount = 500;
     } else {
       return new Response(JSON.stringify({ error: "Invalid product" }), { status: 400 });
     }

@@ -34,7 +34,7 @@ const courseModules = [
   { title: "Module 18: Life After You Move", duration: "45 mins", icon: "star", lessons: ["Homesickness", "Social circle", "Indian community", "Mental health", "Family relocation"] },
 ];
 
-const freebies = [
+  const freebies = [
   { title: "German-style CV Template", desc: "Profession-specific, hospital-ready" },
   { title: "Cover Letter Template", desc: "Written in professional German" },
   { title: "Master Document Checklist", desc: "Sorted by profession, nothing missed" },
@@ -57,9 +57,9 @@ const pricingTiers = [
       { text: "Exclusive Community Access", included: false, bold: true },
       { text: "1-on-1 Strategy Call", included: false, bold: true }
     ], 
-    cta: "Enroll in Plan", 
+    cta: "Pre-Book for ₹500", 
     highlighted: false,
-    checkoutProduct: null
+    checkoutProduct: "prebook" as const
   },
   { 
     name: "Complete Guide", 
@@ -74,9 +74,9 @@ const pricingTiers = [
       { text: "Exclusive Community Access & Q&A", included: true, bold: true },
       { text: "30-min Strategy Call with Dr. Sangeeta", included: false, bold: true }
     ], 
-    cta: "Enroll in Guide", 
+    cta: "Pre-Book for ₹500", 
     highlighted: true,
-    checkoutProduct: "course_9999" as const
+    checkoutProduct: "prebook" as const
   },
   { 
     name: "Complete Guide + 1-on-1", 
@@ -91,9 +91,9 @@ const pricingTiers = [
       { text: "Exclusive Community Access & Q&A", included: true, bold: true },
       { text: "30-min Strategy Call with Dr. Sangeeta", included: true, bold: true }
     ], 
-    cta: "Enroll in Premium", 
+    cta: "Pre-Book for ₹500", 
     highlighted: false,
-    checkoutProduct: "course" as const
+    checkoutProduct: "prebook" as const
   },
 ];
 
@@ -128,9 +128,12 @@ export default function CoursePage() {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-4 text-base rounded-full shadow-[0_0_30px_rgba(234,179,8,0.4)] hover:shadow-[0_0_45px_rgba(234,179,8,0.6)] transition-all" onClick={handleEnroll}>
-                Enroll Now <ArrowRight className="ml-2" size={18}/>
-              </Button>
+              <CheckoutDialog
+                product="prebook"
+                amountLabel="₹500 Deposit"
+                buttonText="Pre-Book Course (₹500)"
+                buttonClassName="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-4 text-base rounded-full shadow-[0_0_30px_rgba(234,179,8,0.4)] hover:shadow-[0_0_45px_rgba(234,179,8,0.6)] transition-all h-auto"
+              />
               <Button size="lg" variant="outline" className="border-white/25 text-white bg-white/8 hover:bg-white/15 font-semibold px-10 py-4 text-base rounded-full backdrop-blur-sm" onClick={openBooking}>
                 Join Free Webinar First
               </Button>
@@ -185,10 +188,10 @@ export default function CoursePage() {
       <section className="py-24 px-4 bg-[#F8FAFC]">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
-            <span className="text-accent font-bold text-xs tracking-widest uppercase">Pricing</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2 mb-4">Choose Your Tier</h2>
+            <span className="text-accent font-bold text-xs tracking-widest uppercase">Pricing (Pre-Launch Offer)</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2 mb-4">Pre-Book & Save 50%</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Relocating costs ₹30–50+ lakhs. This course saves you 6 months of confusion and prevents thousands in avoidable mistakes.
+              Pre-book the course today for just ₹500 and lock in a 50% discount on whichever tier you choose when the course officially launches!
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">

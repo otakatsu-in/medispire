@@ -36,6 +36,7 @@ const mockApiPlugin = () => ({
             if (product === "consultation") amount = 8999;
             else if (product === "course") amount = 14999;
             else if (product === "course_9999") amount = 9999;
+            else if (product === "prebook") amount = 500;
             else throw new Error("Invalid product");
 
             const customerId = `cust_${customer_phone?.replace(/\D/g, '') || Date.now()}`.substring(0, 50);
