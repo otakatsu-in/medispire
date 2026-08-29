@@ -40,9 +40,13 @@ export function CheckoutDialog({ product, amountLabel, buttonText, buttonClassNa
       });
 
       const data = await res.json();
-
+      
       if (!res.ok) {
-        throw new Error(data.error || "Failed to initiate payment");
+        let msg = data.error || "Failed to create order";
+        if (data.details && data.details.message) {
+           msg += `: ${data.details.message}`;
+        }
+        throw new Error(msg);
       }
 
       // Initialize Cashfree SDK (Loaded via index.html script tag)

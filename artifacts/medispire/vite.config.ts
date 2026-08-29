@@ -3,10 +3,26 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
+import fs from "fs";
+
 // Simple Vite plugin to mock the Cloudflare function locally
 const mockApiPlugin = () => ({
   name: 'mock-api',
   configureServer(server) {
+    // Manually parse .dev.vars for local testing
+    let localEnv: Record<string, string> = {};
+    try {
+      const envContent = fs.readFileSync(path.resolve(import.meta.dirname, ".dev.vars"), "utf-8");
+      envContent.split("\n").forEach(line => {
+        const [key, ...val] = line.split("=");
+        if (key && val.length > 0) {
+          localEnv[key.trim()] = val.join("=").replace(/^"|"$/g, "").trim();
+        }
+      });
+    } catch (e) {
+      console.warn("Could not load .dev.vars - API mocking may fail");
+    }
+
     server.middlewares.use((req, res, next) => {
       if (req.url === '/api/create-order' && req.method === 'POST') {
         let body = '';
@@ -19,16 +35,19 @@ const mockApiPlugin = () => ({
             let amount = 0;
             if (product === "consultation") amount = 8999;
             else if (product === "course") amount = 14999;
+            else if (product === "course_9999") amount = 9999;
             else throw new Error("Invalid product");
 
             const customerId = `cust_${customer_phone?.replace(/\D/g, '') || Date.now()}`.substring(0, 50);
 
-            // Forward the request directly to Cashfree Sandbox API using the hardcoded keys for local testing
-            const cfRes = await fetch("https://sandbox.cashfree.com/pg/orders", {
+            const isProd = localEnv.CASHFREE_ENVIRONMENT === "PRODUCTION";
+            const baseUrl = isProd ? "https://api.cashfree.com/pg/orders" : "https://sandbox.cashfree.com/pg/orders";
+
+            const cfRes = await fetch(baseUrl, {
               method: "POST",
               headers: {
-                "x-client-id": process.env.CASHFREE_APP_ID || "",
-                "x-client-secret": process.env.CASHFREE_SECRET_KEY || "",
+                "x-client-id": localEnv.CASHFREE_APP_ID || process.env.CASHFREE_APP_ID || "",
+                "x-client-secret": localEnv.CASHFREE_SECRET_KEY || process.env.CASHFREE_SECRET_KEY || "",
                 "x-api-version": "2023-08-01",
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -44,14 +63,18 @@ const mockApiPlugin = () => ({
                   customer_name: customer_name || "Test User"
                 },
                 order_meta: {
-                  return_url: "http://localhost:5173/?payment_status={order_id}"
+                  return_url: isProd 
+                    ? "https://localhost:5173/?payment_status={order_id}" 
+                    : "http://localhost:5173/?payment_status={order_id}"
                 }
               })
             });
             const data = await cfRes.json();
+            if (!cfRes.ok) throw new Error(data.message || "Cashfree API error");
+            
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify(data));
-          } catch (e) {
+          } catch (e: any) {
             res.statusCode = 500;
             res.end(JSON.stringify({ error: e.message }));
           }

@@ -22,7 +22,8 @@ export async function onRequestPost(context) {
 
     const orderId = `order_${Date.now()}`;
     // Cashfree expects customer_id to not have spaces/special chars (usually max 50 chars)
-    const customerId = `cust_${customer_phone.replace(/\D/g, '') || Date.now()}`.substring(0, 50);
+    const cleanPhone = customer_phone ? customer_phone.replace(/\D/g, '').substring(0, 14) : "9999999999";
+    const customerId = `cust_${cleanPhone || Date.now()}`.substring(0, 50);
 
     const isProd = env.CASHFREE_ENVIRONMENT === "PRODUCTION";
     const baseUrl = isProd ? "https://api.cashfree.com/pg/orders" : "https://sandbox.cashfree.com/pg/orders";
@@ -33,9 +34,9 @@ export async function onRequestPost(context) {
       order_currency: "INR",
       customer_details: {
         customer_id: customerId,
-        customer_name: customer_name,
-        customer_email: customer_email,
-        customer_phone: customer_phone
+        customer_name: customer_name || "Unknown",
+        customer_email: customer_email || "test@example.com",
+        customer_phone: cleanPhone
       },
       order_meta: {
         return_url: `${new URL(request.url).origin}/?payment_status={order_id}`
