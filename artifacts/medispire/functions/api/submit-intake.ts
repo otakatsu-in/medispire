@@ -1,6 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { consultationIntake, orders } from "../../../lib/db/src/schema";
+import { consultationIntake, orders } from "@workspace/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function onRequestPost(context) {

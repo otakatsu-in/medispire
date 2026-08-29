@@ -1,6 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { orders } from "../../../lib/db/src/schema";
+import { orders } from "@workspace/db/schema";
 
 export async function onRequestPost(context) {
   const { request, env } = context;
