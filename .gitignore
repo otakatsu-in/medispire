@@ -49,3 +49,6 @@ Thumbs.db
 .local/
 
 /functions
+
+artifacts/medispire/.dev.vars
+artifacts/medispire/.wrangler/
