@@ -137,6 +137,13 @@ export function Layout({ children }: { children: ReactNode }) {
                 </Link>
               </li>
 
+              {/* Consultation */}
+              <li>
+                <Link href="/consultation" className={`px-3 xl:px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-white/10 hover:text-white ${location === '/consultation' ? 'text-accent' : 'text-primary-foreground'}`}>
+                  Consultation
+                </Link>
+              </li>
+
               {/* Resources */}
               <li className="relative group">
                 <button className="flex items-center gap-1 px-3 xl:px-4 py-2 rounded-md text-sm font-medium text-primary-foreground transition-all hover:bg-white/10 hover:text-white group-hover:bg-white/10 group-hover:text-white">
@@ -235,6 +242,14 @@ export function Layout({ children }: { children: ReactNode }) {
               The Course
             </Link>
 
+            <Link 
+              href="/consultation"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${location === '/consultation' ? 'bg-white/10 text-accent' : 'text-primary-foreground hover:bg-white/5'}`}
+            >
+              1-on-1 Consultation
+            </Link>
+
             <div className="px-3 py-2 mt-1 border-l-2 border-white/20 ml-1 flex flex-col gap-2">
               <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Resources</span>
               {resourceLinks.map((item) => (
@@ -313,6 +328,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <ul className="space-y-3 text-sm text-primary-foreground/80">
               <li><Link href="/services#tutors" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Authorized Tutors</Link></li>
               <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> Blueprint Course</Link></li>
+              <li><Link href="/consultation" className="hover:text-accent transition-colors flex items-center gap-2"><ChevronDown size={14} className="-rotate-90"/> 1-on-1 Consultation</Link></li>
             </ul>
           </div>
 

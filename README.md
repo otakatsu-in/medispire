@@ -50,13 +50,43 @@ Both backend endpoints include strict Cross-Site Request Forgery (CSRF) protecti
 
 ## 🔐 Environment Variables
 
-To deploy or run the backend locally, the following environment variables must be defined (in the Cloudflare Dashboard -> Variables and Secrets, or in a local `.dev.vars` file):
+To deploy or run the backend locally, the following environment variables must be defined (in the Cloudflare Dashboard -> Variables and Secrets, or in a local `artifacts/medispire/.dev.vars` file):
 
 - `DATABASE_URL`: Connection string for the Neon PostgreSQL database.
 - `TELEGRAM_BOT_TOKEN`: The bot token provided by BotFather.
 - `TELEGRAM_CHAT_ID`: The ID of the Telegram user(s) to notify.
 - `TELEGRAM_GROUP_ID`: The ID of the Telegram group to notify (e.g., `-100...`).
 - `BREVO_API_KEY`: API key for Brevo transactional emails.
+
+---
+
+## 🗄️ Database Initialization
+
+If you are setting up a **new Neon Database**, it will be empty by default. You MUST push the Drizzle schema to create the tables before the backend can save data.
+
+1. CD into the database library:
+   ```bash
+   cd lib/db
+   ```
+2. Export your connection string and push the schema:
+   ```bash
+   export DATABASE_URL="postgresql://neondb_owner:..."
+   npm run push
+   ```
+
+---
+
+## ☁️ Cloudflare Pages Deployment
+
+Because this project uses a monorepo structure, Cloudflare Pages must be configured correctly in the Dashboard to detect the frontend and the `functions/` directory.
+
+In your Cloudflare Dashboard **Settings -> Builds & deployments**, ensure your settings exactly match:
+- **Framework preset**: `None`
+- **Build command**: `npm run build`
+- **Build output directory**: `dist/public`
+- **Root directory**: `artifacts/medispire`
+
+*Note on Backend Dependencies*: Cloudflare's `wrangler` compiles the `functions/` directory from the root of the repository. Therefore, all backend dependencies (like `@neondatabase/serverless`, `drizzle-orm`, `zod`, and `@workspace/db`) **must be listed in the root `package.json`**, otherwise the Cloudflare build will fail to resolve them.
 
 ---
 
@@ -84,9 +114,10 @@ To deploy or run the backend locally, the following environment variables must b
 
 3. **Start the Full-Stack Environment (Frontend + Backend)**
    ```bash
+   cd artifacts/medispire
    npm run dev:fullstack
    ```
-   This builds the frontend to the `dist` folder and uses Cloudflare Wrangler to serve both your static assets and the `functions/api/` locally. This is the **recommended way to test forms and database logic locally**.
+   This builds the frontend to the `dist` folder and uses Cloudflare Wrangler to serve both your static assets and the `functions/api/` locally on `http://localhost:8788`. This is the **recommended way to test forms and database logic locally**.
 
 4. **Build for Production**
    ```bash
@@ -102,9 +133,10 @@ To deploy or run the backend locally, the following environment variables must b
 
 1. **Backend Exists**: The backend is powered by Cloudflare Pages Functions (`artifacts/medispire/functions/api/`). Do NOT create a separate Express server or Node backend.
 2. **Database Integration**: We use Neon DB + Drizzle ORM (`@workspace/db`). When creating new forms, ensure the data is validated via Zod and inserted into the correct database table before sending Telegram alerts.
-3. **Security**: Never expose API keys (`BREVO_API_KEY`, `TELEGRAM_BOT_TOKEN`, `DATABASE_URL`) in the React frontend. Always route third-party API calls through the Cloudflare `/api/` functions.
+3. **Security & CSRF**: Never expose API keys in the React frontend. Both backend endpoints have strict CSRF protection (checking for `.pages.dev` or `medispire.in`). If testing locally on Wrangler, ensure `http://localhost:8788` is permitted.
 4. **Routing**: The app uses `wouter`, not `react-router-dom`. Use `<Link href="...">` and `useLocation()`.
 5. **Centralized Variables**: The webinar date must be updated via `src/config/webinar.ts`, NEVER hardcoded in UI components.
+6. **Cloudflare Monorepo Quirks**: Any new backend library used in `functions/` MUST be added to the root `package.json` for Cloudflare to build successfully.
 
 ## 📝 License & Ownership
 Property of Medispire UG (Germany) and otakatsu-in. All rights reserved.

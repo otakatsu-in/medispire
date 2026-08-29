@@ -23,8 +23,33 @@ export const webinarRegistrations = pgTable("webinar_registrations", {
   createdAt:   timestamp("created_at").defaultNow().notNull(),
 });
 
+export const orders = pgTable("orders", {
+  id:            serial("id").primaryKey(),
+  orderId:       text("order_id").notNull().unique(), // The Cashfree order_id
+  product:       text("product").notNull(),           // "consultation" or "course"
+  amount:        text("amount").notNull(),            // E.g., "8999"
+  customerName:  text("customer_name").notNull(),
+  customerEmail: text("customer_email").notNull(),
+  customerPhone: text("customer_phone").notNull(),
+  status:        text("status").default("INITIATED").notNull(), // INITIATED, SUCCESS, FAILED
+  createdAt:     timestamp("created_at").defaultNow().notNull(),
+});
+
+export const consultationIntake = pgTable("consultation_intake", {
+  id:        serial("id").primaryKey(),
+  orderId:   text("order_id").notNull().unique(), // Link to the order
+  formData:  text("form_data").notNull(),         // Store the entire questionnaire as a JSON string
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export type InsertLead                = typeof leads.$inferInsert;
 export type Lead                      = typeof leads.$inferSelect;
 
 export type InsertWebinarRegistration = typeof webinarRegistrations.$inferInsert;
 export type WebinarRegistration       = typeof webinarRegistrations.$inferSelect;
+
+export type InsertOrder               = typeof orders.$inferInsert;
+export type Order                     = typeof orders.$inferSelect;
+
+export type InsertConsultationIntake  = typeof consultationIntake.$inferInsert;
+export type ConsultationIntake        = typeof consultationIntake.$inferSelect;

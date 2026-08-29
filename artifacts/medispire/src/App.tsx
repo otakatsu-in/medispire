@@ -17,6 +17,7 @@ import ForAlliedHealth from "@/pages/ForAlliedHealth";
 import EligibilityChecker from "@/pages/EligibilityChecker";
 import CostEstimator from "@/pages/CostEstimator";
 import Services from "@/pages/Services";
+import Consultation from "@/pages/Consultation";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Resources from "@/pages/Resources";
@@ -30,6 +31,7 @@ import DocumentChecklist from "@/pages/DocumentChecklist";
 import StateComparison from "@/pages/StateComparison";
 import LanguageTimeline from "@/pages/LanguageTimeline";
 import ReadinessChecklist from "@/pages/ReadinessChecklist";
+import PaymentSuccess from "@/pages/PaymentSuccess";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -58,6 +60,7 @@ function Router() {
         <Route path="/eligibility-checker" component={EligibilityChecker} />
         <Route path="/cost-estimator" component={CostEstimator} />
         <Route path="/services" component={Services} />
+        <Route path="/consultation" component={Consultation} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/resources" component={Resources} />
@@ -71,6 +74,7 @@ function Router() {
         <Route path="/tools/state-compare" component={StateComparison} />
         <Route path="/tools/language-timeline" component={LanguageTimeline} />
         <Route path="/tools/readiness-checklist" component={ReadinessChecklist} />
+        <Route path="/payment-success" component={PaymentSuccess} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
