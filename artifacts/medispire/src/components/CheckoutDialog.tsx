@@ -53,7 +53,7 @@ export function CheckoutDialog({ product, amountLabel, buttonText, buttonClassNa
 
       // @ts-ignore
       const cashfree = Cashfree({
-        mode: "sandbox" // Change to "production" when going live
+        mode: "production"
       });
 
       cashfree.checkout({
