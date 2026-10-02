@@ -74,7 +74,7 @@ export async function onRequestPost({ request, env }: any) {
     }
 
     const { name, email, phone, profession, question, webinarDate, source } = parsed.data;
-    const currentWebinarDate = webinarDate ?? "Sunday 6 PM";
+    const currentWebinarDate = webinarDate ?? "Saturday 24th Oct 6 PM";
 
     // 2. Save to Neon Database
     if (env.DATABASE_URL) {
